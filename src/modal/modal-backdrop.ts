@@ -1,11 +1,12 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ElementRef} from '@angular/core';
 
 @Component({
   selector: 'ngb-modal-backdrop',
-  template: '',
+  template: '<ng-content></ng-content>',
   host:
-      {'[class]': '"modal-backdrop fade show" + (backdropClass ? " " + backdropClass : "")', 'style': 'z-index: 1050'}
+      {'[class]': '"reveal-overlay" + (backdropClass ? " " + backdropClass : "")', 'style': 'display:block'}
 })
 export class NgbModalBackdrop {
   @Input() backdropClass: string;
+  constructor(public elementRef: ElementRef){}
 }

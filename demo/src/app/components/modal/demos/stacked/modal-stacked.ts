@@ -23,7 +23,7 @@ export class NgbdModal1Content {
 
   open() {
     this.modalService.open(NgbdModal2Content, {
-      size: 'lg'
+      size: 'large'
     });
   }
 }

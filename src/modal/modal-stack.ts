@@ -8,6 +8,7 @@ import {
   Injector,
   RendererFactory2,
   TemplateRef,
+  ElementRef,
 } from '@angular/core';
 import {Subject} from 'rxjs';
 
@@ -62,9 +63,9 @@ export class NgbModalStack {
     const activeModal = new NgbActiveModal();
     const contentRef = this._getContentRef(moduleCFR, options.injector || contentInjector, content, activeModal);
 
-    let backdropCmptRef: ComponentRef<NgbModalBackdrop> =
-        options.backdrop !== false ? this._attachBackdrop(moduleCFR, containerEl) : null;
-    let windowCmptRef: ComponentRef<NgbModalWindow> = this._attachWindowComponent(moduleCFR, containerEl, contentRef);
+    let backdropCmptRef: ComponentRef<NgbModalBackdrop>  = options.backdrop ?  this._attachBackdrop(moduleCFR, containerEl) : null;
+    const attachedElement = backdropCmptRef ? backdropCmptRef.instance.elementRef.nativeElement : containerEl;
+    let windowCmptRef: ComponentRef<NgbModalWindow> = this._attachWindowComponent(moduleCFR, attachedElement, contentRef, options.backdrop);
     let ngbModalRef: NgbModalRef = new NgbModalRef(windowCmptRef, contentRef, backdropCmptRef, options.beforeDismiss);
 
     this._registerModalRef(ngbModalRef);
@@ -75,9 +76,9 @@ export class NgbModalStack {
     activeModal.dismiss = (reason: any) => { ngbModalRef.dismiss(reason); };
 
     this._applyWindowOptions(windowCmptRef.instance, options);
-    if (this._modalRefs.length === 1) {
-      renderer.addClass(this._document.body, 'modal-open');
-    }
+    // if (this._modalRefs.length === 1) {
+    //   renderer.addClass(this._document.body, 'modal-open');
+    // }
 
     if (backdropCmptRef && backdropCmptRef.instance) {
       this._applyBackdropOptions(backdropCmptRef.instance, options);
@@ -97,12 +98,13 @@ export class NgbModalStack {
     return backdropCmptRef;
   }
 
-  private _attachWindowComponent(moduleCFR: ComponentFactoryResolver, containerEl: any, contentRef: any):
+  private _attachWindowComponent(moduleCFR: ComponentFactoryResolver, attachedElementRef: HTMLElement, contentRef: any, backdrop = true):
       ComponentRef<NgbModalWindow> {
     let windowFactory = moduleCFR.resolveComponentFactory(NgbModalWindow);
     let windowCmptRef = windowFactory.create(this._injector, contentRef.nodes);
+    windowCmptRef.instance.backdrop = backdrop;
     this._applicationRef.attachView(windowCmptRef.hostView);
-    containerEl.appendChild(windowCmptRef.location.nativeElement);
+    attachedElementRef.appendChild(windowCmptRef.location.nativeElement);
     return windowCmptRef;
   }
 

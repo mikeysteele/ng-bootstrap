@@ -32,14 +32,14 @@ export class NgbdModalOptions {
   }
 
   openSm(content) {
-    this.modalService.open(content, { size: 'sm' });
+    this.modalService.open(content, { size: 'small' });
   }
 
   openLg(content) {
-    this.modalService.open(content, { size: 'lg' });
+    this.modalService.open(content, { size: 'large' });
   }
 
   openVerticallyCentered(content) {
-    this.modalService.open(content, { centered: true });
+    this.modalService.open(content, { centered: true, backdrop: false });
   }
 }

@@ -63,7 +63,7 @@ export interface NgbModalOptions {
   /**
    * Size of a new modal window.
    */
-  size?: 'sm' | 'lg';
+  size?: 'tiny '| 'small' | 'large';
 
   /**
    * A custom class to append to the modal window.
