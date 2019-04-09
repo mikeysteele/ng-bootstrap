@@ -8,6 +8,8 @@ import {Injectable} from '@angular/core';
  */
 @Injectable({providedIn: 'root'})
 export class NgbAccordionConfig {
-  closeOthers = false;
+  multiExpand = true;
+  allowAllClosed = false;
+
   type: string;
 }

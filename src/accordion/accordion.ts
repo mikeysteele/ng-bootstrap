@@ -177,7 +177,7 @@ export interface NgbPanelChangeEvent {
 @Component({
   selector: 'ngb-accordion',
   exportAs: 'ngbAccordion',
-  host: {'class': 'accordion', 'role': 'tablist', '[attr.aria-multiselectable]': '!closeOtherPanels'},
+  host: {'class': 'accordion', 'role': 'tablist', '[attr.aria-multiselectable]': 'multiExpand'},
   template: `
     <ng-template #t ngbPanelHeader let-panel>
       <a [ngbPanelToggle]="panel">
@@ -212,11 +212,18 @@ export class NgbAccordion implements AfterContentChecked {
   @Input() activeIds: string | string[] = [];
 
   /**
-   *  If `true`, only one panel could be opened at a time.
+   *  If `false`, only one panel could be opened at a time.
    *
    *  Opening a new panel will close others.
    */
-  @Input('closeOthers') closeOtherPanels: boolean;
+  @Input() multiExpand: boolean;
+
+  /**
+   *  If `false`, one panel must be opened at all times.
+   *
+   *  Opening a new panel will close others.
+   */
+  @Input() allowAllClosed: boolean;
 
   /**
    * If `true`, panel content will be detached from DOM and not simply hidden when the panel is collapsed.
@@ -240,7 +247,8 @@ export class NgbAccordion implements AfterContentChecked {
 
   constructor(config: NgbAccordionConfig) {
     this.type = config.type;
-    this.closeOtherPanels = config.allowAllClosed;
+    this.multiExpand = config.multiExpand;
+    this.allowAllClosed = config.allowAllClosed;
   }
 
   /**
@@ -256,12 +264,12 @@ export class NgbAccordion implements AfterContentChecked {
   expand(panelId: string): void { this._changeOpenState(this._findPanelById(panelId), true); }
 
   /**
-   * Expands all panels, if `[closeOthers]` is `false`.
+   * Expands all panels, if `[multiExpand]` is `false`.
    *
-   * If `[closeOthers]` is `true`, it will expand the first panel, unless there is already a panel opened.
+   * If `[multiExpand]` is `false`, it will expand the first panel, unless there is already a panel opened.
    */
   expandAll(): void {
-    if (this.closeOtherPanels) {
+    if (!this.multiExpand) {
       if (this.activeIds.length === 0 && this.panels.length) {
         this._changeOpenState(this.panels.first, true);
       }
@@ -275,7 +283,9 @@ export class NgbAccordion implements AfterContentChecked {
    *
    * Has no effect if the panel is already collapsed or disabled.
    */
-  collapse(panelId: string) { this._changeOpenState(this._findPanelById(panelId), false); }
+  collapse(panelId: string) { 
+      this._changeOpenState(this._findPanelById(panelId), false); }
+    
 
   /**
    * Collapses all opened panels.
@@ -305,15 +315,23 @@ export class NgbAccordion implements AfterContentChecked {
     // update panels open states
     this.panels.forEach(panel => panel.isOpen = !panel.disabled && this.activeIds.indexOf(panel.id) > -1);
 
-    // closeOthers updates
-    if (this.activeIds.length > 1 && this.closeOtherPanels) {
+    // multiExpand updates
+    if (this.activeIds.length > 1 && !this.multiExpand) {
       this._closeOthers(this.activeIds[0]);
       this._updateActiveIds();
+    }
+    //check one is open
+    if (!this.allowAllClosed && !this.activeIds.length){
+      this._changeOpenState(this.panels.first, true);
     }
   }
 
   private _changeOpenState(panel: NgbPanel, nextState: boolean) {
+    const canClose = (this.allowAllClosed || this.activeIds.length > 1)
     if (panel && !panel.disabled && panel.isOpen !== nextState) {
+      if (!nextState && !canClose){
+        return;
+      }
       let defaultPrevented = false;
 
       this.panelChange.emit(
@@ -322,7 +340,7 @@ export class NgbAccordion implements AfterContentChecked {
       if (!defaultPrevented) {
         panel.isOpen = nextState;
 
-        if (nextState && this.closeOtherPanels) {
+        if (nextState && !this.multiExpand) {
           this._closeOthers(panel.id);
         }
         this._updateActiveIds();

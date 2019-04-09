@@ -47,7 +47,7 @@ function expectOpenPanels(nativeEl: HTMLElement, openPanelsDef: boolean[]) {
 
 describe('ngb-accordion', () => {
   let html = `
-    <ngb-accordion #acc="ngbAccordion" [closeOthers]="closeOthers" [activeIds]="activeIds"
+    <ngb-accordion #acc="ngbAccordion" [multiExpand]="multiExpand" [activeIds]="activeIds"
       (panelChange)="changeCallback($event)" [type]="classType">
       <ngb-panel *ngFor="let panel of panels" [id]="panel.id" [disabled]="panel.disabled" [type]="panel.type">
         <ng-template ngbPanelTitle>{{panel.title}}</ng-template>
@@ -66,7 +66,7 @@ describe('ngb-accordion', () => {
     const defaultConfig = new NgbAccordionConfig();
     const accordionCmp = new NgbAccordion(defaultConfig);
     expect(accordionCmp.type).toBe(defaultConfig.type);
-    expect(accordionCmp.closeOtherPanels).toBe(defaultConfig.allowAllClosed);
+    expect(accordionCmp.multiExpand).toBe(defaultConfig.multiExpand);
   });
 
   it('should have no open panels', () => {
@@ -157,14 +157,14 @@ describe('ngb-accordion', () => {
     expectOpenPanels(el, [false, false, false]);
   });
 
-  it('should allow only one panel to be active with "closeOthers" flag', () => {
+  it('should allow only one panel to be active with "multiExpand" flag', () => {
     const fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
 
     const tc = fixture.componentInstance;
     const el = fixture.nativeElement;
 
-    tc.closeOthers = true;
+    tc.multiExpand = true;
     fixture.detectChanges();
     expect(el.children[0].getAttribute('aria-multiselectable')).toBe('false');
 
@@ -177,7 +177,7 @@ describe('ngb-accordion', () => {
     expectOpenPanels(el, [false, true, false]);
   });
 
-  it('should update the activeIds after closeOthers is set to true', () => {
+  it('should update the activeIds after multiExpand is set to true', () => {
     const fixture = TestBed.createComponent(TestComponent);
     const tc = fixture.componentInstance;
     const el = fixture.nativeElement;
@@ -186,11 +186,11 @@ describe('ngb-accordion', () => {
     fixture.detectChanges();
     expectOpenPanels(el, [true, true, true]);
 
-    tc.closeOthers = true;
+    tc.multiExpand = true;
     fixture.detectChanges();
     expectOpenPanels(el, [true, false, false]);
 
-    tc.closeOthers = false;
+    tc.multiExpand = false;
     fixture.detectChanges();
     expectOpenPanels(el, [true, false, false]);
   });
@@ -397,7 +397,7 @@ describe('ngb-accordion', () => {
   it('should only open one at a time', () => {
     const fixture = TestBed.createComponent(TestComponent);
     const tc = fixture.componentInstance;
-    tc.closeOthers = true;
+    tc.multiExpand = true;
     fixture.detectChanges();
 
     const headingLinks = getPanelsTitle(fixture.nativeElement);
@@ -420,7 +420,7 @@ describe('ngb-accordion', () => {
     const tc = fixture.componentInstance;
 
     tc.activeIds = ['one', 'two'];
-    tc.closeOthers = true;
+    tc.multiExpand = true;
     fixture.detectChanges();
 
     expectOpenPanels(fixture.nativeElement, [true, false, false]);
@@ -505,7 +505,7 @@ describe('ngb-accordion', () => {
 
   it('should not remove collapsed panels content from DOM with `destroyOnHide` flag', () => {
     const testHtml = `
-    <ngb-accordion #acc="ngbAccordion" [closeOthers]="true" [destroyOnHide]="false">
+    <ngb-accordion #acc="ngbAccordion" [multiExpand]="true" [destroyOnHide]="false">
      <ngb-panel *ngFor="let panel of panels" [id]="panel.id">
        <ng-template ngbPanelTitle>{{panel.title}}</ng-template>
        <ng-template ngbPanelContent>{{panel.content}}</ng-template>
@@ -565,7 +565,7 @@ describe('ngb-accordion', () => {
 
   it('should have specified type of accordion ', () => {
     const testHtml = `
-    <ngb-accordion #acc="ngbAccordion" [closeOthers]="closeOthers" [type]="classType">
+    <ngb-accordion #acc="ngbAccordion" [multiExpand]="multiExpand" [type]="classType">
      <ngb-panel *ngFor="let panel of panels" [id]="panel.id" [disabled]="panel.disabled">
        <ng-template ngbPanelTitle>{{panel.title}}</ng-template>
        <ng-template ngbPanelContent>{{panel.content}}</ng-template>
@@ -619,7 +619,7 @@ describe('ngb-accordion', () => {
 
     beforeEach(inject([NgbAccordionConfig], (c: NgbAccordionConfig) => {
       config = c;
-      config.allowAllClosed = true;
+      config.multiExpand = false;
       config.type = 'success';
     }));
 
@@ -628,14 +628,14 @@ describe('ngb-accordion', () => {
       fixture.detectChanges();
 
       let accordion = fixture.componentInstance;
-      expect(accordion.closeOtherPanels).toBe(config.allowAllClosed);
+      expect(accordion.multiExpand).toBe(config.multiExpand);
       expect(accordion.type).toBe(config.type);
     });
   });
 
   describe('Custom config as provider', () => {
     let config = new NgbAccordionConfig();
-    config.allowAllClosed = true;
+    config.multiExpand = false;
     config.type = 'success';
 
     beforeEach(() => {
@@ -648,7 +648,7 @@ describe('ngb-accordion', () => {
       fixture.detectChanges();
 
       let accordion = fixture.componentInstance;
-      expect(accordion.closeOtherPanels).toBe(config.allowAllClosed);
+      expect(accordion.multiExpand).toBe(config.multiExpand);
       expect(accordion.type).toBe(config.type);
     });
   });
@@ -762,10 +762,10 @@ describe('ngb-accordion', () => {
       expectOpenPanels(nativeElement, [true, false]);
     });
 
-    it('should expandAll when closeOthers is false', () => {
+    it('should expandAll when multiExpand is false', () => {
 
       const testHtml = `
-      <ngb-accordion [closeOthers]="false">
+      <ngb-accordion [multiExpand]="false">
         <ngb-panel id="first"></ngb-panel>
         <ngb-panel id="second"></ngb-panel>
       </ngb-accordion>`;
@@ -779,9 +779,9 @@ describe('ngb-accordion', () => {
       expectOpenPanels(nativeElement, [true, true]);
     });
 
-    it('should expand first panel when closeOthers is true and none of panels is expanded', () => {
+    it('should expand first panel when multiExpand is true and none of panels is expanded', () => {
       const testHtml = `
-      <ngb-accordion [closeOthers]="true">
+      <ngb-accordion [multiExpand]="true">
         <ngb-panel id="first"></ngb-panel>
         <ngb-panel id="second"></ngb-panel>
       </ngb-accordion>`;
@@ -795,9 +795,9 @@ describe('ngb-accordion', () => {
       expectOpenPanels(nativeElement, [true, false]);
     });
 
-    it('should do nothing if closeOthers is true and one panel is expanded', () => {
+    it('should do nothing if multiExpand is true and one panel is expanded', () => {
       const testHtml = `
-      <ngb-accordion [closeOthers]="true" activeIds="second">
+      <ngb-accordion [multiExpand]="true" activeIds="second">
         <ngb-panel id="first"></ngb-panel>
         <ngb-panel id="second"></ngb-panel>
       </ngb-accordion>`;
@@ -833,7 +833,7 @@ describe('ngb-accordion', () => {
 class TestComponent {
   activeIds: string | string[] = [];
   classType;
-  closeOthers = false;
+  multiExpand = false;
   panels = [
     {id: 'one', disabled: false, title: 'Panel 1', content: 'foo', type: ''},
     {id: 'two', disabled: false, title: 'Panel 2', content: 'bar', type: ''},

@@ -9,7 +9,7 @@ import {NgbAccordionConfig} from '@ng-bootstrap/ng-bootstrap';
 export class NgbdAccordionConfig {
   constructor(config: NgbAccordionConfig) {
     // customize default values of accordions used by this component tree
-    config.closeOthers = true;
+    config.multiExpand = true;
     config.type = 'info';
   }
 }
