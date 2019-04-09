@@ -66,7 +66,7 @@ describe('ngb-accordion', () => {
     const defaultConfig = new NgbAccordionConfig();
     const accordionCmp = new NgbAccordion(defaultConfig);
     expect(accordionCmp.type).toBe(defaultConfig.type);
-    expect(accordionCmp.closeOtherPanels).toBe(defaultConfig.closeOthers);
+    expect(accordionCmp.closeOtherPanels).toBe(defaultConfig.allowAllClosed);
   });
 
   it('should have no open panels', () => {
@@ -619,7 +619,7 @@ describe('ngb-accordion', () => {
 
     beforeEach(inject([NgbAccordionConfig], (c: NgbAccordionConfig) => {
       config = c;
-      config.closeOthers = true;
+      config.allowAllClosed = true;
       config.type = 'success';
     }));
 
@@ -628,14 +628,14 @@ describe('ngb-accordion', () => {
       fixture.detectChanges();
 
       let accordion = fixture.componentInstance;
-      expect(accordion.closeOtherPanels).toBe(config.closeOthers);
+      expect(accordion.closeOtherPanels).toBe(config.allowAllClosed);
       expect(accordion.type).toBe(config.type);
     });
   });
 
   describe('Custom config as provider', () => {
     let config = new NgbAccordionConfig();
-    config.closeOthers = true;
+    config.allowAllClosed = true;
     config.type = 'success';
 
     beforeEach(() => {
@@ -648,7 +648,7 @@ describe('ngb-accordion', () => {
       fixture.detectChanges();
 
       let accordion = fixture.componentInstance;
-      expect(accordion.closeOtherPanels).toBe(config.closeOthers);
+      expect(accordion.closeOtherPanels).toBe(config.allowAllClosed);
       expect(accordion.type).toBe(config.type);
     });
   });

@@ -40,10 +40,8 @@ export interface NgbPanelHeaderContext {
  * @since 4.1.0
  */
 @Directive({
-  selector: 'button[ngbPanelToggle]',
+  selector: '[ngbPanelToggle]',
   host: {
-    'type': 'button',
-    '[disabled]': 'panel.disabled',
     '[class.collapsed]': '!panel.isOpen',
     '[attr.aria-expanded]': 'panel.isOpen',
     '[attr.aria-controls]': 'panel.id',
@@ -182,21 +180,21 @@ export interface NgbPanelChangeEvent {
   host: {'class': 'accordion', 'role': 'tablist', '[attr.aria-multiselectable]': '!closeOtherPanels'},
   template: `
     <ng-template #t ngbPanelHeader let-panel>
-      <button class="btn btn-link" [ngbPanelToggle]="panel">
+      <a [ngbPanelToggle]="panel">
         {{panel.title}}<ng-template [ngTemplateOutlet]="panel.titleTpl?.templateRef"></ng-template>
-      </button>
+      </a>
     </ng-template>
     <ng-template ngFor let-panel [ngForOf]="panels">
-      <div class="card">
-        <div role="tab" id="{{panel.id}}-header" [class]="'card-header ' + (panel.type ? 'bg-'+panel.type: type ? 'bg-'+type : '')">
+      <div class="accordion-item">
+      
+ 
+        <div role="tab" id="{{panel.id}}-header" [class]="'accordion-title ' + (panel.type ? 'bg-'+panel.type: type ? 'bg-'+type : '')">
           <ng-template [ngTemplateOutlet]="panel.headerTpl?.templateRef || t"
                        [ngTemplateOutletContext]="{$implicit: panel, opened: panel.isOpen}"></ng-template>
         </div>
         <div id="{{panel.id}}" role="tabpanel" [attr.aria-labelledby]="panel.id + '-header'"
-             class="collapse" [class.show]="panel.isOpen" *ngIf="!destroyOnHide || panel.isOpen">
-          <div class="card-body">
+             class="accordion-content" [ngStyle]="{display: panel.isOpen? 'block' : 'none'}" *ngIf="!destroyOnHide || panel.isOpen">
                <ng-template [ngTemplateOutlet]="panel.contentTpl?.templateRef"></ng-template>
-          </div>
         </div>
       </div>
     </ng-template>
@@ -242,7 +240,7 @@ export class NgbAccordion implements AfterContentChecked {
 
   constructor(config: NgbAccordionConfig) {
     this.type = config.type;
-    this.closeOtherPanels = config.closeOthers;
+    this.closeOtherPanels = config.allowAllClosed;
   }
 
   /**
