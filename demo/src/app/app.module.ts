@@ -5,7 +5,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AppComponent} from './app.component';
 import {routing} from './app.routing';
 import {NgbdAccordionModule} from './components/accordion/accordion.module';
-import {NgbdAlertModule} from './components/alert/alert.module';
+import {NgbdCalloutModule} from './components/callout/callout.module';
 import {NgbdButtonsModule} from './components/buttons/buttons.module';
 import {NgbdCarouselModule} from './components/carousel/carousel.module';
 import {NgbdCollapseModule} from './components/collapse/collapse.module';
@@ -27,7 +27,7 @@ import {NgbdSharedModule} from './shared';
 
 const DEMOS = [
   NgbdAccordionModule,
-  NgbdAlertModule,
+  NgbdCalloutModule,
   NgbdButtonsModule,
   NgbdCarouselModule,
   NgbdCollapseModule,

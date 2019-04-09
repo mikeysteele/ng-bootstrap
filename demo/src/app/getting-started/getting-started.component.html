@@ -44,11 +44,11 @@
     </tbody>
   </table>
 
-  <ngb-alert type="warning" [dismissible]="false">
+  <ngb-callout type="warning" [closeable]="false">
     <p>Should I add <b>bootstrap.js</b> or <b>bootstrap.min.js</b> to my project?</p>
 
     No, the goal of ng-bootstrap is to <i>completely replace</i> JavaScript implementation for components. Nor should you include other dependencies like jQuery or popper.js. It is not necessary and might interfere with ng-bootstrap code.
-  </ngb-alert>
+  </ngb-callout>
 
   <ngbd-page-header title="Supported Browsers" fragment="browsers"></ngbd-page-header>
 
@@ -68,7 +68,7 @@
 
   <ngbd-code [code]="codeRoot" lang="typescript"></ngbd-code>
 
-  <p>Alternatively you could only import modules with components you need, ex. pagination and alert.
+  <p>Alternatively you could only import modules with components you need, ex. pagination and callout.
     The resulting bundle will be smaller in this case.</p>
 
   <ngbd-code [code]="codeOther" lang="typescript"></ngbd-code>

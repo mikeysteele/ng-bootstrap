@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { NgbdAlertCloseable } from './alert-closeable';
+import { NgbdCalloutConfig } from './callout-config';
 
 @NgModule({
   imports: [BrowserModule, NgbModule],
-  declarations: [NgbdAlertCloseable],
-  exports: [NgbdAlertCloseable],
-  bootstrap: [NgbdAlertCloseable]
+  declarations: [NgbdCalloutConfig],
+  exports: [NgbdCalloutConfig],
+  bootstrap: [NgbdCalloutConfig]
 })
-export class NgbdAlertCloseableModule {}
+export class NgbdCalloutConfigModule {}

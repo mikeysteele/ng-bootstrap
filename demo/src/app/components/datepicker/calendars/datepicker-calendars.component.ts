@@ -65,10 +65,10 @@ const DEMOS = [
       <li><code>NgbCalendarIslamicUmalqura</code></li>
     </ul>
 
-    <ngb-alert [dismissible]="false">
+    <ngb-callout [closeable]="false">
       Please note that calendar support is experimental!
       We're not calendar experts and any community help is very much appreciated.
-    </ngb-alert>
+    </ngb-callout>
 
     <p>
       To use any of them, simply provide a different calendar implementation.

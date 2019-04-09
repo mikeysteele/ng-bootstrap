@@ -1,0 +1,6 @@
+<p *ngFor="let callout of callouts">
+  <ngb-callout [type]="callout.type" (close)="close(callout)">{{ callout.message }}</ngb-callout>
+</p>
+<p>
+  <button type="button" class="btn btn-primary" (click)="reset()">Reset</button>
+</p>

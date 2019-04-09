@@ -1,7 +1,7 @@
 import {NgModule, ModuleWithProviders} from '@angular/core';
 
 import {NgbAccordionModule} from './accordion/accordion.module';
-import {NgbAlertModule} from './alert/alert.module';
+import {NgbCalloutModule} from './callout/callout.module';
 import {NgbButtonsModule} from './buttons/buttons.module';
 import {NgbCarouselModule} from './carousel/carousel.module';
 import {NgbCollapseModule} from './collapse/collapse.module';
@@ -29,7 +29,7 @@ export {
   NgbPanelHeaderContext,
   NgbPanelToggle
 } from './accordion/accordion.module';
-export {NgbAlertModule, NgbAlertConfig, NgbAlert} from './alert/alert.module';
+export {NgbCalloutModule, NgbCalloutConfig, NgbCallout} from './callout/callout.module';
 export {NgbButtonsModule, NgbButtonLabel, NgbCheckBox, NgbRadio, NgbRadioGroup} from './buttons/buttons.module';
 export {NgbCarouselModule, NgbCarouselConfig, NgbCarousel, NgbSlide} from './carousel/carousel.module';
 export {NgbCollapseModule, NgbCollapse} from './collapse/collapse.module';
@@ -114,7 +114,7 @@ export {
 export {Placement} from './util/positioning';
 
 const NGB_MODULES = [
-  NgbAccordionModule, NgbAlertModule, NgbButtonsModule, NgbCarouselModule, NgbCollapseModule, NgbDatepickerModule,
+  NgbAccordionModule, NgbCalloutModule, NgbButtonsModule, NgbCarouselModule, NgbCollapseModule, NgbDatepickerModule,
   NgbDropdownModule, NgbModalModule, NgbPaginationModule, NgbPopoverModule, NgbProgressbarModule, NgbRatingModule,
   NgbTabsetModule, NgbTimepickerModule, NgbTooltipModule, NgbTypeaheadModule
 ];

@@ -2,7 +2,7 @@ import {ModuleWithProviders} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
 import {ROUTES as ACCORDION_ROUTES} from './components/accordion/accordion.module';
-import {ROUTES as ALERT_ROUTES} from './components/alert/alert.module';
+import {ROUTES as ALERT_ROUTES} from './components/callout/callout.module';
 import {ROUTES as BUTTONS_ROUTES} from './components/buttons/buttons.module';
 import {ROUTES as CAROUSEL_ROUTES} from './components/carousel/carousel.module';
 import {ROUTES as COLLAPSE_ROUTES} from './components/collapse/collapse.module';
@@ -25,9 +25,9 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: DefaultComponent },
   { path: 'getting-started', component: GettingStarted },
-  { path: 'components', pathMatch: 'full', redirectTo: 'components/alert' },
+  { path: 'components', pathMatch: 'full', redirectTo: 'components/callout' },
   { path: 'components/accordion', children: ACCORDION_ROUTES },
-  { path: 'components/alert', children: ALERT_ROUTES },
+  { path: 'components/callout', children: ALERT_ROUTES },
   { path: 'components/buttons', children: BUTTONS_ROUTES },
   { path: 'components/carousel', children: CAROUSEL_ROUTES },
   { path: 'components/collapse', children: COLLAPSE_ROUTES },

@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { NgbdAlertCustom } from './alert-custom';
+import { NgbdCalloutBasic } from './callout-basic';
 
 @NgModule({
   imports: [BrowserModule, NgbModule],
-  declarations: [NgbdAlertCustom],
-  exports: [NgbdAlertCustom],
-  bootstrap: [NgbdAlertCustom]
+  declarations: [NgbdCalloutBasic],
+  exports: [NgbdCalloutBasic],
+  bootstrap: [NgbdCalloutBasic]
 })
-export class NgbdAlertCustomModule {}
+export class NgbdCalloutBasicModule {}

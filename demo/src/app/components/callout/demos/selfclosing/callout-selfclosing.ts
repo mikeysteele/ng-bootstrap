@@ -3,17 +3,17 @@ import {Subject} from 'rxjs';
 import {debounceTime} from 'rxjs/operators';
 
 @Component({
-  selector: 'ngbd-alert-selfclosing',
-  templateUrl: './alert-selfclosing.html'
+  selector: 'ngbd-callout-selfclosing',
+  templateUrl: './callout-selfclosing.html'
 })
-export class NgbdAlertSelfclosing implements OnInit {
+export class NgbdCalloutSelfclosing implements OnInit {
   private _success = new Subject<string>();
 
-  staticAlertClosed = false;
+  staticCalloutClosed = false;
   successMessage: string;
 
   ngOnInit(): void {
-    setTimeout(() => this.staticAlertClosed = true, 20000);
+    setTimeout(() => this.staticCalloutClosed = true, 20000);
 
     this._success.subscribe((message) => this.successMessage = message);
     this._success.pipe(

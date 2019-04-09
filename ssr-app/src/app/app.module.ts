@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AccordionComponent } from './components/accordion.component';
-import { AlertComponent } from './components/alert.component';
+import { CalloutComponent } from './components/callout.component';
 import { AppComponent } from './app.component';
 import { ButtonsComponent } from './components/buttons.component';
 import { CarouselComponent } from './components/carousel.component';
@@ -25,7 +25,7 @@ import { TypeaheadComponent } from './components/typeahead.component';
 @NgModule({
   declarations: [
     AccordionComponent,
-    AlertComponent,
+    CalloutComponent,
     AppComponent,
     ButtonsComponent,
     CarouselComponent,

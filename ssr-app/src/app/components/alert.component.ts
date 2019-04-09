@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'alert-component',
+  selector: 'callout-component',
   template: `
-    <ngb-alert [dismissible]="false">Sample alert here</ngb-alert>
-    <ngb-alert>Sample dismissible alert here</ngb-alert>
+    <ngb-callout [closeable]="false">Sample callout here</ngb-callout>
+    <ngb-callout>Sample closeable callout here</ngb-callout>
   `
 })
-export class AlertComponent {
+export class CalloutComponent {
 }

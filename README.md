@@ -72,15 +72,15 @@ export class YourAppModule {
 }
 ```
 
-Alternatively you could only import modules with components you need, ex. pagination and alert. 
+Alternatively you could only import modules with components you need, ex. pagination and callout. 
 The resulting bundle will be smaller in this case.
 
 ```js
-import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbPaginationModule, NgbCalloutModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   ...
-  imports: [NgbPaginationModule, NgbAlertModule, ...],
+  imports: [NgbPaginationModule, NgbCalloutModule, ...],
   ...
 })
 export class YourAppModule {

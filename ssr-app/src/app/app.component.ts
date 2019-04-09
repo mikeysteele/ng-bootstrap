@@ -9,8 +9,8 @@ import { Component } from '@angular/core';
       <h2 class="mt-5">Accordion</h2>
       <accordion-component></accordion-component>
 
-      <h2 class="mt-5">Alert</h2>
-      <alert-component></alert-component>
+      <h2 class="mt-5">Callout</h2>
+      <callout-component></callout-component>
 
       <h2 class="mt-5">Buttons</h2>
       <buttons-component></buttons-component>
