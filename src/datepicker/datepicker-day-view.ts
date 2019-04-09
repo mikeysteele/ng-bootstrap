@@ -8,7 +8,7 @@ import {NgbDatepickerI18n} from './datepicker-i18n';
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./datepicker-day-view.scss'],
   host: {
-    'class': 'btn-light',
+    'class': 'primary',
     '[class.bg-primary]': 'selected',
     '[class.text-white]': 'selected',
     '[class.text-muted]': 'isMuted()',

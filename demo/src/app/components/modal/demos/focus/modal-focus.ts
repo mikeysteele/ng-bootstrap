@@ -17,8 +17,8 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
     </p>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
-    <button type="button" class="btn btn-danger" (click)="modal.close('Ok click')">Ok</button>
+    <button type="button" class="button btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
+    <button type="button" class="button btn-danger" (click)="modal.close('Ok click')">Ok</button>
   </div>
   `
 })
@@ -42,8 +42,8 @@ export class NgbdModalConfirm {
     </p>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
-    <button type="button" ngbAutofocus class="btn btn-danger" (click)="modal.close('Ok click')">Ok</button>
+    <button type="button" class="button btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
+    <button type="button" ngbAutofocus class="button btn-danger" (click)="modal.close('Ok click')">Ok</button>
   </div>
   `
 })
@@ -61,7 +61,7 @@ const MODALS = {
   templateUrl: './modal-focus.html'
 })
 export class NgbdModalFocus {
-  withAutofocus = `<button type="button" ngbAutofocus class="btn btn-danger"
+  withAutofocus = `<button type="button" ngbAutofocus class="button btn-danger"
       (click)="modal.close('Ok click')">Ok</button>`;
 
   constructor(private _modalService: NgbModal) {}

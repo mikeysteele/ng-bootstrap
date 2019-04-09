@@ -11,10 +11,10 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
     </div>
     <div class="modal-body">
       <p>Hello, World!</p>
-      <p><button class="btn btn-lg btn-outline-primary" (click)="open()">Launch demo modal</button></p>
+      <p><button class="button btn-lg btn-outline-primary" (click)="open()">Launch demo modal</button></p>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+      <button type="button" class="button btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
     </div>
   `
 })
@@ -40,7 +40,7 @@ export class NgbdModal1Content {
       <p>Hello, World!</p>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+      <button type="button" class="button btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
     </div>
   `
 })
