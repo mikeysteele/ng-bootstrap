@@ -17,7 +17,7 @@ import { PaginationComponent } from './components/pagination.component';
 import { PopoverComponent } from './components/popover.component';
 import { ProgressComponent } from './components/progress.component';
 import { RatingComponent } from './components/rating.component';
-import { TabsetComponent } from './components/tabset.component';
+import { TabsComponent } from './components/tabs.component';
 import { TimepickerComponent } from './components/timepicker.component';
 import { TooltipComponent } from './components/tooltip.component';
 import { TypeaheadComponent } from './components/typeahead.component';
@@ -37,7 +37,7 @@ import { TypeaheadComponent } from './components/typeahead.component';
     PopoverComponent,
     ProgressComponent,
     RatingComponent,
-    TabsetComponent,
+    TabsComponent,
     TimepickerComponent,
     TooltipComponent,
     TypeaheadComponent

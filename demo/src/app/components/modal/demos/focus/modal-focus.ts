@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgfActiveModal, NgfModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'ngbd-modal-confirm',
@@ -22,8 +22,8 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   </div>
   `
 })
-export class NgbdModalConfirm {
-  constructor(public modal: NgbActiveModal) {}
+export class NgfdModalConfirm {
+  constructor(public modal: NgfActiveModal) {}
 }
 
 @Component({
@@ -47,24 +47,24 @@ export class NgbdModalConfirm {
   </div>
   `
 })
-export class NgbdModalConfirmAutofocus {
-  constructor(public modal: NgbActiveModal) {}
+export class NgfdModalConfirmAutofocus {
+  constructor(public modal: NgfActiveModal) {}
 }
 
 const MODALS = {
-  focusFirst: NgbdModalConfirm,
-  autofocus: NgbdModalConfirmAutofocus
+  focusFirst: NgfdModalConfirm,
+  autofocus: NgfdModalConfirmAutofocus
 };
 
 @Component({
   selector: 'ngbd-modal-focus',
   templateUrl: './modal-focus.html'
 })
-export class NgbdModalFocus {
+export class NgfdModalFocus {
   withAutofocus = `<button type="button" ngbAutofocus class="button btn-danger"
       (click)="modal.close('Ok click')">Ok</button>`;
 
-  constructor(private _modalService: NgbModal) {}
+  constructor(private _modalService: NgfModal) {}
 
   open(name: string) {
     this._modalService.open(MODALS[name]);

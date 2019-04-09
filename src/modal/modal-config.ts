@@ -1,9 +1,9 @@
 import {Injectable, Injector} from '@angular/core';
 
 /**
- * Options available when opening new modal windows with `NgbModal.open()` method.
+ * Options available when opening new modal windows with `NgfModal.open()` method.
  */
-export interface NgbModalOptions {
+export interface NgfModalOptions {
   /**
    * `aria-labelledby` attribute value to set on the modal window.
    *
@@ -79,7 +79,7 @@ export interface NgbModalOptions {
 }
 
 /**
- * A configuration service for the [`NgbModal`](#/components/modal/api#NgbModal) service.
+ * A configuration service for the [`NgfModal`](#/components/modal/api#NgfModal) service.
  *
  * You can inject this service, typically in your root component, and customize the values of its properties in
  * order to provide default values for all modals used in the application.
@@ -87,7 +87,7 @@ export interface NgbModalOptions {
 * @since 3.1.0
 */
 @Injectable({providedIn: 'root'})
-export class NgbModalConfig implements NgbModalOptions {
+export class NgfModalConfig implements NgfModalOptions {
   backdrop: boolean | 'static' = true;
   keyboard = true;
 }

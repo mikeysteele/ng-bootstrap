@@ -36,9 +36,9 @@
   </table>
 
   <div class="d-flex justify-content-between p-2">
-    <ngb-pagination
+    <ngf-pagination
       [collectionSize]="total$ | async" [(page)]="service.page" [pageSize]="service.pageSize">
-    </ngb-pagination>
+    </ngf-pagination>
 
     <select class="custom-select" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
       <option [ngValue]="2">2 items per page</option>

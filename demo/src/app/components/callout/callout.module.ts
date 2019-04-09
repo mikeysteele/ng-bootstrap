@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 
-import { NgbdSharedModule } from '../../shared';
+import { NgfdSharedModule } from '../../shared';
 import { ComponentWrapper } from '../../shared/component-wrapper/component-wrapper.component';
-import { NgbdComponentsSharedModule, NgbdDemoList } from '../shared';
-import { NgbdApiPage } from '../shared/api-page/api.component';
-import { NgbdExamplesPage } from '../shared/examples-page/examples.component';
+import { NgfdComponentsSharedModule, NgfdDemoList } from '../shared';
+import { NgfdApiPage } from '../shared/api-page/api.component';
+import { NgfdExamplesPage } from '../shared/examples-page/examples.component';
 import { NgbdCalloutBasic } from './demos/basic/callout-basic';
 import { NgbdCalloutBasicModule } from './demos/basic/callout-basic.module';
 import { NgbdCalloutCloseable } from './demos/closeable/callout-closeable';
@@ -95,16 +95,16 @@ export const ROUTES = [
     path: '',
     component: ComponentWrapper,
     children: [
-      { path: 'examples', component: NgbdExamplesPage },
-      { path: 'api', component: NgbdApiPage }
+      { path: 'examples', component: NgfdExamplesPage },
+      { path: 'api', component: NgfdApiPage }
     ]
   }
 ];
 
 @NgModule({
   imports: [
-    NgbdSharedModule,
-    NgbdComponentsSharedModule,
+    NgfdSharedModule,
+    NgfdComponentsSharedModule,
     NgbdCalloutBasicModule,
     NgbdCalloutCloseableModule,
     NgbdCalloutCustomModule,
@@ -113,7 +113,7 @@ export const ROUTES = [
   ]
 })
 export class NgbdCalloutModule {
-  constructor(demoList: NgbdDemoList) {
+  constructor(demoList: NgfdDemoList) {
     demoList.register('callout', DEMOS);
   }
 }

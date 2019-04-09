@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgfModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { NgbdDatepickerRange } from './datepicker-range';
 
 @NgModule({
-  imports: [BrowserModule, NgbModule],
+  imports: [BrowserModule, NgfModule],
   declarations: [NgbdDatepickerRange],
   exports: [NgbdDatepickerRange],
   bootstrap: [NgbdDatepickerRange]

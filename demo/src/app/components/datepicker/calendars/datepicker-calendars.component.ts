@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 
-import {NgbdExamplesPage} from '../../shared/examples-page/examples.component';
+import {NgfdExamplesPage} from '../../shared/examples-page/examples.component';
 import {NgbdDatepickerHebrew} from '../demos/hebrew/datepicker-hebrew';
 import {NgbdDatepickerHebrewModule} from '../demos/hebrew/datepicker-hebrew.module';
 import {NgbdDatepickerIslamicCivilModule} from '../demos/islamiccivil/datepicker-islamic-civil.module';
@@ -65,10 +65,10 @@ const DEMOS = [
       <li><code>NgbCalendarIslamicUmalqura</code></li>
     </ul>
 
-    <ngb-callout [closeable]="false">
+    <ngf-callout [closeable]="false">
       Please note that calendar support is experimental!
       We're not calendar experts and any community help is very much appreciated.
-    </ngb-callout>
+    </ngf-callout>
 
     <p>
       To use any of them, simply provide a different calendar implementation.
@@ -95,7 +95,7 @@ const DEMOS = [
     </ngbd-widget-demo>
   `
 })
-export class NgbdDatepickerCalendarsComponent extends NgbdExamplesPage {
+export class NgbdDatepickerCalendarsComponent extends NgfdExamplesPage {
   demos = DEMOS;
 
   snippets = {

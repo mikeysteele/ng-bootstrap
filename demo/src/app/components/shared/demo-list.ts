@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 
-export interface NgbdDemoConfig {
+export interface NgfdDemoConfig {
   title: string;
   code?: string;
   markup?: string;
@@ -9,18 +9,18 @@ export interface NgbdDemoConfig {
   showCode?: boolean;
 }
 
-export interface NgbdDemoListConfig { [demo: string]: NgbdDemoConfig; }
+export interface NgfdDemoListConfig { [demo: string]: NgfdDemoConfig; }
 
-export interface NgbdDemoOverviewConfig { [anchor: string]: string; }
+export interface NgbfDemoOverviewConfig { [anchor: string]: string; }
 
 @Injectable({providedIn: 'root'})
-export class NgbdDemoList {
-  private _demos: {[widget: string]: NgbdDemoListConfig} = {};
+export class NgfdDemoList {
+  private _demos: {[widget: string]: NgfdDemoListConfig} = {};
 
-  private _overviews: {[widget: string]: NgbdDemoOverviewConfig} = {};
+  private _overviews: {[widget: string]: NgbfDemoOverviewConfig} = {};
 
 
-  register(widget: string, list: NgbdDemoListConfig, overview?: NgbdDemoOverviewConfig) {
+  register(widget: string, list: NgfdDemoListConfig, overview?: NgbfDemoOverviewConfig) {
     this._demos[widget] = list;
     if (overview) {
       this._overviews[widget] = overview;

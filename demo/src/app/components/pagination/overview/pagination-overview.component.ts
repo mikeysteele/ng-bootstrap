@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 
-import {NgbdDemoList} from '../../shared';
+import {NgfdDemoList} from '../../shared';
 import {NgbdOverview} from '../../shared/overview';
 
 
@@ -16,13 +16,13 @@ export class NgbdPaginationOverviewComponent {
   </tr>
 </table>`;
 
-  NGB_PAGINATION = `<ngb-pagination
+  NGB_PAGINATION = `<ngf-pagination
   [(page)]="page"
   [pageSize]="pageSize"
-  [collectionSize]="items.length"></ngb-pagination>`;
+  [collectionSize]="items.length"></ngf-pagination>`;
 
   CUSTOM_CSS = `
-ngb-pagination li {
+ngf-pagination li {
   &:first-child a {
     span {
       display: none;
@@ -35,19 +35,19 @@ ngb-pagination li {
 `;
 
   CUSTOM_TPL = `
-<ngb-pagination>
+<ngf-pagination>
   <ng-template ngbPaginationFirst>First</ng-template>
   <ng-template ngbPaginationLast>Last</ng-template>
   <ng-template ngbPaginationPrevious>Prev</ng-template>
   <ng-template ngbPaginationNext>Next</ng-template>
   <ng-template ngbPaginationEllipsis>...</ng-template>
   <ng-template ngbPaginationNumber let-page>{{ page }}</ng-template>
-</ngb-pagination>
+</ngf-pagination>
 `;
 
   sections: NgbdOverview = {};
 
-  constructor(demoList: NgbdDemoList) {
+  constructor(demoList: NgfdDemoList) {
     this.sections = demoList.getOverviewSections('pagination');
   }
 }

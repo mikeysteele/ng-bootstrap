@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgfModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'ngbd-modal-options',
@@ -18,10 +18,10 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
     }
   `]
 })
-export class NgbdModalOptions {
+export class NgfdModalOptions {
   closeResult: string;
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgfModal) {}
 
   openBackDropCustomClass(content) {
     this.modalService.open(content, {backdropClass: 'light-blue-backdrop'});

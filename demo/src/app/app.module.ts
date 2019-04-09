@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgfModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {AppComponent} from './app.component';
 import {routing} from './app.routing';
@@ -11,19 +11,19 @@ import {NgbdCarouselModule} from './components/carousel/carousel.module';
 import {NgbdCollapseModule} from './components/collapse/collapse.module';
 import {NgbdDatepickerModule} from './components/datepicker/datepicker.module';
 import {NgbdDropdownModule} from './components/dropdown/dropdown.module';
-import {NgbdModalModule} from './components/modal/modal.module';
+import {NgfdModalModule} from './components/modal/modal.module';
 import {NgbdPaginationModule} from './components/pagination/pagination.module';
 import {NgbdPopoverModule} from './components/popover/popover.module';
 import {NgbdProgressbarModule} from './components/progressbar/progressbar.module';
 import {NgbdRatingModule} from './components/rating/rating.module';
 import {NgbdTableModule} from './components/table/table.module';
-import {NgbdTabsetModule} from './components/tabset/tabset.module';
+import {NgbdTabsModule} from './components/tabs/tabs.module';
 import {NgbdTimepickerModule} from './components/timepicker/timepicker.module';
 import {NgbdTooltipModule} from './components/tooltip/tooltip.module';
 import {NgbdTypeaheadModule} from './components/typeahead/typeahead.module';
 import {DefaultComponent} from './default';
 import {GettingStarted} from './getting-started';
-import {NgbdSharedModule} from './shared';
+import {NgfdSharedModule} from './shared';
 
 const DEMOS = [
   NgbdAccordionModule,
@@ -33,13 +33,13 @@ const DEMOS = [
   NgbdCollapseModule,
   NgbdDatepickerModule,
   NgbdDropdownModule,
-  NgbdModalModule,
+  NgfdModalModule,
   NgbdPaginationModule,
   NgbdPopoverModule,
   NgbdProgressbarModule,
   NgbdRatingModule,
   NgbdTableModule,
-  NgbdTabsetModule,
+  NgbdTabsModule,
   NgbdTimepickerModule,
   NgbdTooltipModule,
   NgbdTypeaheadModule
@@ -47,7 +47,7 @@ const DEMOS = [
 
 @NgModule({
   declarations: [AppComponent, DefaultComponent, GettingStarted],
-  imports: [BrowserModule, routing, NgbModule, NgbdSharedModule, ...DEMOS],
+  imports: [BrowserModule, routing, NgfModule, NgfdSharedModule, ...DEMOS],
   bootstrap: [AppComponent]
 })
 export class NgbdModule {}

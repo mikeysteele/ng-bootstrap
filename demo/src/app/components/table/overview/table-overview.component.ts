@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { environment } from '../../../../environments/environment';
 
-import { NgbdDemoList } from '../../shared';
+import { NgfdDemoList } from '../../shared';
 import { NgbdOverview } from '../../shared/overview';
 
 @Component({
@@ -19,7 +19,7 @@ export class NgbdTableOverviewComponent {
 
   sections: NgbdOverview = {};
 
-  constructor(demoList: NgbdDemoList) {
+  constructor(demoList: NgfdDemoList) {
     this.sections = demoList.getOverviewSections('table');
   }
 }

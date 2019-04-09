@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgfModule } from '@ng-bootstrap/ng-bootstrap';
 
 import {
-  NgbdModal1Content,
-  NgbdModal2Content,
-  NgbdModalStacked
+  NgfdModal1Content,
+  NgfdModal2Content,
+  NgfdModalStacked
 } from './modal-stacked';
 
 @NgModule({
-  imports: [BrowserModule, NgbModule],
-  declarations: [NgbdModalStacked, NgbdModal1Content, NgbdModal2Content],
-  exports: [NgbdModalStacked],
-  bootstrap: [NgbdModalStacked],
-  entryComponents: [NgbdModal1Content, NgbdModal2Content]
+  imports: [BrowserModule, NgfModule],
+  declarations: [NgfdModalStacked, NgfdModal1Content, NgfdModal2Content],
+  exports: [NgfdModalStacked],
+  bootstrap: [NgfdModalStacked],
+  entryComponents: [NgfdModal1Content, NgfdModal2Content]
 })
-export class NgbdModalStackedModule {}
+export class NgfdModalStackedModule {}

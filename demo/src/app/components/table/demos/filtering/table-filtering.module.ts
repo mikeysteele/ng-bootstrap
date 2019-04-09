@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgfModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { NgbdTableFiltering } from './table-filtering';
 
@@ -12,7 +12,7 @@ import { NgbdTableFiltering } from './table-filtering';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgfModule
   ],
   declarations: [NgbdTableFiltering],
   exports: [NgbdTableFiltering],

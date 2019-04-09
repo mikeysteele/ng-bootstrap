@@ -22,14 +22,14 @@
 
   <p>Corresponding code could be something like:</p>
   <ngbd-code lang="html" [code]="NGFOR"></ngbd-code>
-  <p>and the associated <code>&lt;ngb-pagination&gt;</code> would be like:</p>
+  <p>and the associated <code>&lt;ngf-pagination&gt;</code> would be like:</p>
   <ngbd-code lang="html" [code]="NGB_PAGINATION"></ngbd-code>
 
   <br />
-  <ngb-callout type="warning" [closeable]="false">
+  <ngf-callout type="warning" [closeable]="false">
     Be aware that both <code>page</code> and <code>pageSize</code> have default values,
     which are respectively <code>1</code> and <code>10</code>.
-  </ngb-callout>
+  </ngf-callout>
 
   <h4>Filtering and sorting</h4>
   <p>
@@ -73,9 +73,9 @@
 
   <p>
     In this case we customize all pagination links, but you can pick only the ones you need of course.
-    The template <a routerLink="../api" fragment="NgbPaginationLinkContext"><code>NgbPaginationLinkContext</code></a>
+    The template <a routerLink="../api" fragment="NgfPaginationLinkContext"><code>NgfPaginationLinkContext</code></a>
     is available for all templates and for page numbers there is a
-    <a routerLink="../api" fragment="NgbPaginationNumberContext"><code>NgbPaginationNumberContext</code></a>
+    <a routerLink="../api" fragment="NgfPaginationNumberContext"><code>NgfPaginationNumberContext</code></a>
     that adds displayed number on top.
   </p>
 

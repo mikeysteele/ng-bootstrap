@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgfModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { NgbdModalConfig } from './modal-config';
+import { NgfdModalConfig } from './modal-config';
 
 @NgModule({
-  imports: [BrowserModule, NgbModule],
-  declarations: [NgbdModalConfig],
-  exports: [NgbdModalConfig],
-  bootstrap: [NgbdModalConfig]
+  imports: [BrowserModule, NgfModule],
+  declarations: [NgfdModalConfig],
+  exports: [NgfdModalConfig],
+  bootstrap: [NgfdModalConfig]
 })
-export class NgbdModalConfigModule {}
+export class NgfdModalConfigModule {}

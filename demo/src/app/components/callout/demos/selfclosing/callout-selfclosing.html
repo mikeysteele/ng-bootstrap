@@ -1,14 +1,14 @@
 <p>
   Static self-closing callout that disappears after 20 seconds (refresh the page if it has already disappeared)
 </p>
-<ngb-callout *ngIf="!staticCalloutClosed" (close)="staticCalloutClosed = true">Check out our awesome new features!</ngb-callout>
+<ngf-callout *ngIf="!staticCalloutClosed" (close)="staticCalloutClosed = true">Check out our awesome new features!</ngf-callout>
 
 <hr/>
 
 <p>
   Show a self-closing success message that disappears after 5 seconds.
 </p>
-<ngb-callout *ngIf="successMessage" type="success" (close)="successMessage = null">{{ successMessage }}</ngb-callout>
+<ngf-callout *ngIf="successMessage" type="success" (close)="successMessage = null">{{ successMessage }}</ngf-callout>
 <p>
   <button class="button btn-primary" (click)="changeSuccessMessage()">Change message</button>
 </p>

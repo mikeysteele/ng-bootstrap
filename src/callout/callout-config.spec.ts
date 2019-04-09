@@ -1,8 +1,8 @@
-import {NgbCalloutConfig} from './callout-config';
+import {NgfCalloutConfig} from './callout-config';
 
-describe('ngb-callout-config', () => {
+describe('ngf-callout-config', () => {
   it('should have sensible default values', () => {
-    const config = new NgbCalloutConfig();
+    const config = new NgfCalloutConfig();
 
     expect(config.closeable).toBe(true);
     expect(config.type).toBe('warning');

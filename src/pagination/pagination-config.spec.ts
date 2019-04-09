@@ -1,8 +1,8 @@
-import {NgbPaginationConfig} from './pagination-config';
+import {NgfPaginationConfig} from './pagination-config';
 
-describe('ngb-pagination-config', () => {
+describe('ngf-pagination-config', () => {
   it('should have sensible default values', () => {
-    const config = new NgbPaginationConfig();
+    const config = new NgfPaginationConfig();
 
     expect(config.disabled).toBe(false);
     expect(config.boundaryLinks).toBe(false);

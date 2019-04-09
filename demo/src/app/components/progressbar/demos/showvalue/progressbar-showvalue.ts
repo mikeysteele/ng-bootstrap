@@ -4,7 +4,7 @@ import {Component} from '@angular/core';
   selector: 'ngbd-progressbar-showvalue',
   templateUrl: './progressbar-showvalue.html',
   styles: [`
-    ngb-progressbar {
+    ngf-progressbar {
       margin-top: 5rem;
     }
   `]

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { NgbdDemoList } from '../../shared';
+import { NgfdDemoList } from '../../shared';
 import { NgbdOverview } from '../../shared/overview';
 
 @Component({
@@ -128,7 +128,7 @@ providers: [{provide: NgbDatepickerI18n, useClass: YourOwnDatepickerI18n}]
 
   sections: NgbdOverview = {};
 
-  constructor(demoList: NgbdDemoList) {
+  constructor(demoList: NgfdDemoList) {
     this.sections = demoList.getOverviewSections('datepicker');
   }
 }

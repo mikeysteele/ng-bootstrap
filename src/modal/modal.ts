@@ -1,8 +1,8 @@
 import {Injectable, Injector, ComponentFactoryResolver} from '@angular/core';
 
-import {NgbModalOptions, NgbModalConfig} from './modal-config';
-import {NgbModalRef} from './modal-ref';
-import {NgbModalStack} from './modal-stack';
+import {NgfModalOptions, NgfModalConfig} from './modal-config';
+import {NgfModalRef} from './modal-ref';
+import {NgfModalStack} from './modal-stack';
 
 /**
  * A service for opening modal windows.
@@ -11,21 +11,21 @@ import {NgbModalStack} from './modal-stack';
  * the `.open()` method.
  */
 @Injectable({providedIn: 'root'})
-export class NgbModal {
+export class NgfModal {
   constructor(
-      private _moduleCFR: ComponentFactoryResolver, private _injector: Injector, private _modalStack: NgbModalStack,
-      private _config: NgbModalConfig) {}
+      private _moduleCFR: ComponentFactoryResolver, private _injector: Injector, private _modalStack: NgfModalStack,
+      private _config: NgfModalConfig) {}
 
   /**
    * Opens a new modal window with the specified content and supplied options.
    *
    * Content can be provided as a `TemplateRef` or a component type. If you pass a component type as content,
-   * then instances of those components can be injected with an instance of the `NgbActiveModal` class. You can then
-   * use `NgbActiveModal` methods to close / dismiss modals from "inside" of your component.
+   * then instances of those components can be injected with an instance of the `NgfActiveModal` class. You can then
+   * use `NgfActiveModal` methods to close / dismiss modals from "inside" of your component.
    *
-   * Also see the [`NgbModalOptions`](#/components/modal/api#NgbModalOptions) for the list of supported options.
+   * Also see the [`NgfModalOptions`](#/components/modal/api#NgfModalOptions) for the list of supported options.
    */
-  open(content: any, options: NgbModalOptions = {}): NgbModalRef {
+  open(content: any, options: NgfModalOptions = {}): NgfModalRef {
     const combinedOptions = Object.assign({}, this._config, options);
     return this._modalStack.open(this._moduleCFR, this._injector, content, combinedOptions);
   }

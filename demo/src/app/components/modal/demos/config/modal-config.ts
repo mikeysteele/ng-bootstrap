@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgfModalConfig, NgfModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'ngbd-modal-config',
   templateUrl: './modal-config.html',
-  // add NgbModalConfig and NgbModal to the component providers
-  providers: [NgbModalConfig, NgbModal]
+  // add NgfModalConfig and NgfModal to the component providers
+  providers: [NgfModalConfig, NgfModal]
 })
-export class NgbdModalConfig {
-  constructor(config: NgbModalConfig, private modalService: NgbModal) {
+export class NgfdModalConfig {
+  constructor(config: NgfModalConfig, private modalService: NgfModal) {
     // customize default values of modals used by this component tree
     config.backdrop = 'static';
     config.keyboard = false;

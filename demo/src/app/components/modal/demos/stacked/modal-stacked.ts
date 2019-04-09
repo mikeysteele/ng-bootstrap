@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgfActiveModal, NgfModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   template: `
@@ -18,11 +18,11 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
     </div>
   `
 })
-export class NgbdModal1Content {
-  constructor(private modalService: NgbModal, public activeModal: NgbActiveModal) {}
+export class NgfdModal1Content {
+  constructor(private modalService: NgfModal, public activeModal: NgfActiveModal) {}
 
   open() {
-    this.modalService.open(NgbdModal2Content, {
+    this.modalService.open(NgfdModal2Content, {
       size: 'large'
     });
   }
@@ -44,18 +44,18 @@ export class NgbdModal1Content {
     </div>
   `
 })
-export class NgbdModal2Content {
-  constructor(public activeModal: NgbActiveModal) {}
+export class NgfdModal2Content {
+  constructor(public activeModal: NgfActiveModal) {}
 }
 
 @Component({
   selector: 'ngbd-modal-stacked',
   templateUrl: './modal-stacked.html'
 })
-export class NgbdModalStacked {
-  constructor(private modalService: NgbModal) {}
+export class NgfdModalStacked {
+  constructor(private modalService: NgfModal) {}
 
   open() {
-    this.modalService.open(NgbdModal1Content);
+    this.modalService.open(NgfdModal1Content);
   }
 }

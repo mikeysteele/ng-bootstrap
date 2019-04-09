@@ -9,22 +9,22 @@ export class GettingStarted {
   codeInstall = `npm install --save @ng-bootstrap/ng-bootstrap`;
 
   codeRoot = `
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgfModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   ...
-  imports: [NgbModule, ...],
+  imports: [NgfModule, ...],
   ...
 })
 export class YourAppModule {
 }`;
 
   codeOther = `
-import {NgbPaginationModule, NgbCalloutModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgfPaginationModule, NgfCalloutModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   ...
-  imports: [NgbPaginationModule, NgbCalloutModule, ...],
+  imports: [NgfPaginationModule, NgfCalloutModule, ...],
   ...
 })
 export class YourAppModule {

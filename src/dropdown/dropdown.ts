@@ -23,7 +23,7 @@ import {Placement, PlacementArray, positionElements} from '../util/positioning';
 import {ngbAutoClose} from '../util/autoclose';
 import {Key} from '../util/key';
 
-import {NgbDropdownConfig} from './dropdown-config';
+import {NgfDropdownConfig} from './dropdown-config';
 
 /**
  * A directive you should put put on a dropdown item to enable keyboard navigation.
@@ -31,8 +31,8 @@ import {NgbDropdownConfig} from './dropdown-config';
  *
  * @since 4.1.0
  */
-@Directive({selector: '[ngbDropdownItem]', host: {'class': 'dropdown-item', '[class.disabled]': 'disabled'}})
-export class NgbDropdownItem {
+@Directive({selector: '[ngfDropdownItem]', host: {'class': 'dropdown-item', '[class.disabled]': 'disabled'}})
+export class NgfDropdownItem {
   private _disabled = false;
 
   @Input()
@@ -49,7 +49,7 @@ export class NgbDropdownItem {
  * A directive that wraps dropdown menu content and dropdown items.
  */
 @Directive({
-  selector: '[ngbDropdownMenu]',
+  selector: '[ngfDropdownMenu]',
   host: {
     '[class.dropdown-menu]': 'true',
     '[class.show]': 'dropdown.isOpen()',
@@ -60,32 +60,32 @@ export class NgbDropdownItem {
     '(keydown.End)': 'dropdown.onKeyDown($event)'
   }
 })
-export class NgbDropdownMenu {
+export class NgfDropdownMenu {
   placement: Placement = 'bottom';
   isOpen = false;
 
-  @ContentChildren(NgbDropdownItem) menuItems: QueryList<NgbDropdownItem>;
+  @ContentChildren(NgfDropdownItem) menuItems: QueryList<NgfDropdownItem>;
 
-  constructor(@Inject(forwardRef(() => NgbDropdown)) public dropdown) {}
+  constructor(@Inject(forwardRef(() => NgfDropdown)) public dropdown) {}
 }
 
 /**
  * A directive to mark an element to which dropdown menu will be anchored.
  *
- * This is a simple version of the `NgbDropdownToggle` directive.
+ * This is a simple version of the `NgfDropdownToggle` directive.
  * It plays the same role, but doesn't listen to click events to toggle dropdown menu thus enabling support
  * for events other than click.
  *
  * @since 1.1.0
  */
 @Directive({
-  selector: '[ngbDropdownAnchor]',
+  selector: '[ngfDropdownAnchor]',
   host: {'class': 'dropdown-toggle', 'aria-haspopup': 'true', '[attr.aria-expanded]': 'dropdown.isOpen()'}
 })
-export class NgbDropdownAnchor {
+export class NgfDropdownAnchor {
   anchorEl;
 
-  constructor(@Inject(forwardRef(() => NgbDropdown)) public dropdown, private _elementRef: ElementRef<HTMLElement>) {
+  constructor(@Inject(forwardRef(() => NgfDropdown)) public dropdown, private _elementRef: ElementRef<HTMLElement>) {
     this.anchorEl = _elementRef.nativeElement;
   }
 
@@ -95,10 +95,10 @@ export class NgbDropdownAnchor {
 /**
  * A directive to mark an element that will toggle dropdown via the `click` event.
  *
- * You can also use `NgbDropdownAnchor` as an alternative.
+ * You can also use `NgfDropdownAnchor` as an alternative.
  */
 @Directive({
-  selector: '[ngbDropdownToggle]',
+  selector: '[ngfDropdownToggle]',
   host: {
     'class': 'dropdown-toggle',
     'aria-haspopup': 'true',
@@ -109,10 +109,10 @@ export class NgbDropdownAnchor {
     '(keydown.Home)': 'dropdown.onKeyDown($event)',
     '(keydown.End)': 'dropdown.onKeyDown($event)'
   },
-  providers: [{provide: NgbDropdownAnchor, useExisting: forwardRef(() => NgbDropdownToggle)}]
+  providers: [{provide: NgfDropdownAnchor, useExisting: forwardRef(() => NgfDropdownToggle)}]
 })
-export class NgbDropdownToggle extends NgbDropdownAnchor {
-  constructor(@Inject(forwardRef(() => NgbDropdown)) dropdown, elementRef: ElementRef<HTMLElement>) {
+export class NgfDropdownToggle extends NgfDropdownAnchor {
+  constructor(@Inject(forwardRef(() => NgfDropdown)) dropdown, elementRef: ElementRef<HTMLElement>) {
     super(dropdown, elementRef);
   }
 
@@ -122,16 +122,16 @@ export class NgbDropdownToggle extends NgbDropdownAnchor {
 /**
  * A directive that provides contextual overlays for displaying lists of links and more.
  */
-@Directive({selector: '[ngbDropdown]', exportAs: 'ngbDropdown', host: {'[class.show]': 'isOpen()'}})
-export class NgbDropdown implements OnInit, OnDestroy {
+@Directive({selector: '[ngfDropdown]', exportAs: 'ngfDropdown', host: {'[class.show]': 'isOpen()'}})
+export class NgfDropdown implements OnInit, OnDestroy {
   private _closed$ = new Subject<void>();
   private _zoneSubscription: Subscription;
   private _bodyContainer: HTMLElement;
 
-  @ContentChild(NgbDropdownMenu) private _menu: NgbDropdownMenu;
-  @ContentChild(NgbDropdownMenu, {read: ElementRef}) private _menuElement: ElementRef;
+  @ContentChild(NgfDropdownMenu) private _menu: NgfDropdownMenu;
+  @ContentChild(NgfDropdownMenu, {read: ElementRef}) private _menuElement: ElementRef;
 
-  @ContentChild(NgbDropdownAnchor) private _anchor: NgbDropdownAnchor;
+  @ContentChild(NgfDropdownAnchor) private _anchor: NgfDropdownAnchor;
 
   /**
    * Indicates whether the dropdown should be closed when clicking one of dropdown items or pressing ESC.
@@ -179,7 +179,7 @@ export class NgbDropdown implements OnInit, OnDestroy {
   @Output() openChange = new EventEmitter<boolean>();
 
   constructor(
-      private _changeDetector: ChangeDetectorRef, config: NgbDropdownConfig, @Inject(DOCUMENT) private _document: any,
+      private _changeDetector: ChangeDetectorRef, config: NgfDropdownConfig, @Inject(DOCUMENT) private _document: any,
       private _ngZone: NgZone, private _elementRef: ElementRef<HTMLElement>, private _renderer: Renderer2) {
     this.placement = config.placement;
     this.container = config.container;

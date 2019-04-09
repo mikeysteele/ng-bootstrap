@@ -4,7 +4,7 @@ import {rightClick} from '../../tools.po';
 export class DropdownAutoClosePage {
   async clickOutside() { await $('#outside-button').click(); }
 
-  getDropdown(dropDownSelector = '') { return $(`${dropDownSelector}[ngbDropdown]`); }
+  getDropdown(dropDownSelector = '') { return $(`${dropDownSelector}[ngfDropdown]`); }
 
   getFirstItem(dropdown: ElementFinder) { return dropdown.$$(`.dropdown-item`).first(); }
 
@@ -13,7 +13,7 @@ export class DropdownAutoClosePage {
   async rightClickOutside() { await rightClick($('#outside-button')); }
 
   async open(dropdown: ElementFinder) {
-    await dropdown.$(`button[ngbDropdownToggle]`).click();
+    await dropdown.$(`button[ngfDropdownToggle]`).click();
     expect(await this.isOpened(dropdown)).toBeTruthy(`Dropdown should have been opened`);
   }
 

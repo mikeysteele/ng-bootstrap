@@ -39,7 +39,7 @@ export function getApis(component) {
     <ngbd-api-docs-config *ngFor="let config of configs" [type]="config"></ngbd-api-docs-config>
   `
 })
-export class NgbdApiPage {
+export class NgfdApiPage {
   classes: string[];
   components: string[];
   configs: string[];

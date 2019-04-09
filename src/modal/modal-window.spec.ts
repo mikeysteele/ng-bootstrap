@@ -1,15 +1,15 @@
 import {TestBed, ComponentFixture} from '@angular/core/testing';
 
-import {NgbModalWindow} from './modal-window';
+import {NgfModalWindow} from './modal-window';
 import {ModalDismissReasons} from './modal-dismiss-reasons';
 
-describe('ngb-modal-dialog', () => {
+describe('ngf-modal-dialog', () => {
 
-  let fixture: ComponentFixture<NgbModalWindow>;
+  let fixture: ComponentFixture<NgfModalWindow>;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({declarations: [NgbModalWindow]});
-    fixture = TestBed.createComponent(NgbModalWindow);
+    TestBed.configureTestingModule({declarations: [NgfModalWindow]});
+    fixture = TestBed.createComponent(NgfModalWindow);
   });
 
   describe('basic rendering functionality', () => {

@@ -42,8 +42,8 @@ import { Component } from '@angular/core';
       <h2 class="mt-5">Rating</h2>
       <rating-component></rating-component>
 
-      <h2 class="mt-5">Tabset</h2>
-      <tabset-component></tabset-component>
+      <h2 class="mt-5">Tabs</h2>
+      <tabs-component></tabs-component>
 
       <h2 class="mt-5">Timepicker</h2>
       <timepicker-component></timepicker-component>

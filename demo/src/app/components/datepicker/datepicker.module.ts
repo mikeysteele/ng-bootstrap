@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 
-import { NgbdSharedModule } from '../../shared';
+import { NgfdSharedModule } from '../../shared';
 import { ComponentWrapper } from '../../shared/component-wrapper/component-wrapper.component';
-import { NgbdComponentsSharedModule, NgbdDemoList } from '../shared';
-import { NgbdApiPage } from '../shared/api-page/api.component';
-import { NgbdExamplesPage } from '../shared/examples-page/examples.component';
+import { NgfdComponentsSharedModule, NgfdDemoList } from '../shared';
+import { NgfdApiPage } from '../shared/api-page/api.component';
+import { NgfdExamplesPage } from '../shared/examples-page/examples.component';
 import {
   DEMO_CALENDAR_MODULES,
   NgbdDatepickerCalendarsComponent
@@ -117,17 +117,17 @@ export const ROUTES = [
     data: { OVERVIEW },
     children: [
       { path: 'overview', component: NgbdDatepickerOverviewComponent },
-      { path: 'examples', component: NgbdExamplesPage },
+      { path: 'examples', component: NgfdExamplesPage },
       { path: 'calendars', component: NgbdDatepickerCalendarsComponent },
-      { path: 'api', component: NgbdApiPage }
+      { path: 'api', component: NgfdApiPage }
     ]
   }
 ];
 
 @NgModule({
   imports: [
-    NgbdSharedModule,
-    NgbdComponentsSharedModule,
+    NgfdSharedModule,
+    NgfdComponentsSharedModule,
     NgbdDatepickerBasicModule,
     NgbdDatepickerPopupModule,
     NgbdDatepickerDisabledModule,
@@ -147,7 +147,7 @@ export const ROUTES = [
   ]
 })
 export class NgbdDatepickerModule {
-  constructor(demoList: NgbdDemoList) {
+  constructor(demoList: NgfdDemoList) {
     demoList.register('datepicker', DEMOS, OVERVIEW);
   }
 }

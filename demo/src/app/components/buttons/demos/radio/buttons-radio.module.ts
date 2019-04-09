@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgfModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { NgbdButtonsRadio } from './buttons-radio';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, NgbModule],
+  imports: [BrowserModule, FormsModule, NgfModule],
   declarations: [NgbdButtonsRadio],
   exports: [NgbdButtonsRadio],
   bootstrap: [NgbdButtonsRadio]

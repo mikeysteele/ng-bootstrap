@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 
-import { NgbdSharedModule } from '../../shared';
+import { NgfdSharedModule } from '../../shared';
 import { NgbdApiDocs, NgbdApiDocsBadge, NgbdApiDocsClass, NgbdApiDocsConfig } from './api-docs';
-import { NgbdApiPage } from './api-page/api.component';
+import { NgfdApiPage } from './api-page/api.component';
 import { NgbdWidgetDemoComponent } from './examples-page/demo.component';
-import { NgbdExamplesPage } from './examples-page/examples.component';
+import { NgfdExamplesPage } from './examples-page/examples.component';
 import { NgbdOverviewDirective, NgbdOverviewSectionComponent } from './overview';
 
 export * from './demo-list';
 
 @NgModule({
-  imports: [NgbdSharedModule],
+  imports: [NgfdSharedModule],
   declarations: [
     NgbdApiDocsBadge,
     NgbdApiDocs,
@@ -18,8 +18,8 @@ export * from './demo-list';
     NgbdApiDocsConfig,
     NgbdOverviewDirective,
     NgbdOverviewSectionComponent,
-    NgbdExamplesPage,
-    NgbdApiPage,
+    NgfdExamplesPage,
+    NgfdApiPage,
     NgbdWidgetDemoComponent
   ],
   exports: [
@@ -29,9 +29,9 @@ export * from './demo-list';
     NgbdApiDocsConfig,
     NgbdOverviewDirective,
     NgbdOverviewSectionComponent,
-    NgbdExamplesPage,
-    NgbdApiPage,
+    NgfdExamplesPage,
+    NgfdApiPage,
     NgbdWidgetDemoComponent
   ]
 })
-export class NgbdComponentsSharedModule {}
+export class NgfdComponentsSharedModule {}

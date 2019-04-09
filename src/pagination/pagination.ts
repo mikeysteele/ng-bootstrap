@@ -11,21 +11,21 @@ import {
   TemplateRef
 } from '@angular/core';
 import { getValueInRange, isNumber } from '../util/util';
-import { NgbPaginationConfig } from './pagination-config';
+import { NgfPaginationConfig } from './pagination-config';
 
 /**
  * A context for the
- * * `NgbPaginationFirst`
- * * `NgbPaginationPrevious`
- * * `NgbPaginationNext`
- * * `NgbPaginationLast`
- * * `NgbPaginationEllipsis`
+ * * `NgfPaginationFirst`
+ * * `NgfPaginationPrevious`
+ * * `NgfPaginationNext`
+ * * `NgfPaginationLast`
+ * * `NgfPaginationEllipsis`
  *
  * link templates in case you want to override one.
  *
  * @since 4.1.0
  */
-export interface NgbPaginationLinkContext {
+export interface NgfPaginationLinkContext {
   /**
    * The currently selected page number
    */
@@ -38,13 +38,13 @@ export interface NgbPaginationLinkContext {
 }
 
 /**
- * A context for the `NgbPaginationNumber` link template in case you want to override one.
+ * A context for the `NgfPaginationNumber` link template in case you want to override one.
  *
- * Extends `NgbPaginationLinkContext`.
+ * Extends `NgfPaginationLinkContext`.
  *
  * @since 4.1.0
  */
-export interface NgbPaginationNumberContext extends NgbPaginationLinkContext {
+export interface NgfPaginationNumberContext extends NgfPaginationLinkContext {
   /**
    * The page number, displayed by the current page link.
    */
@@ -57,8 +57,8 @@ export interface NgbPaginationNumberContext extends NgbPaginationLinkContext {
  * @since 4.1.0
  */
 @Directive({ selector: 'ng-template[ngbPaginationEllipsis]' })
-export class NgbPaginationEllipsis {
-  constructor(public templateRef: TemplateRef<NgbPaginationLinkContext>) { }
+export class NgfPaginationEllipsis {
+  constructor(public templateRef: TemplateRef<NgfPaginationLinkContext>) { }
 }
 
 /**
@@ -67,8 +67,8 @@ export class NgbPaginationEllipsis {
  * @since 4.1.0
  */
 @Directive({ selector: 'ng-template[ngbPaginationFirst]' })
-export class NgbPaginationFirst {
-  constructor(public templateRef: TemplateRef<NgbPaginationLinkContext>) { }
+export class NgfPaginationFirst {
+  constructor(public templateRef: TemplateRef<NgfPaginationLinkContext>) { }
 }
 
 /**
@@ -77,8 +77,8 @@ export class NgbPaginationFirst {
  * @since 4.1.0
  */
 @Directive({ selector: 'ng-template[ngbPaginationLast]' })
-export class NgbPaginationLast {
-  constructor(public templateRef: TemplateRef<NgbPaginationLinkContext>) { }
+export class NgfPaginationLast {
+  constructor(public templateRef: TemplateRef<NgfPaginationLinkContext>) { }
 }
 
 /**
@@ -87,8 +87,8 @@ export class NgbPaginationLast {
  * @since 4.1.0
  */
 @Directive({ selector: 'ng-template[ngbPaginationNext]' })
-export class NgbPaginationNext {
-  constructor(public templateRef: TemplateRef<NgbPaginationLinkContext>) { }
+export class NgfPaginationNext {
+  constructor(public templateRef: TemplateRef<NgfPaginationLinkContext>) { }
 }
 
 /**
@@ -97,8 +97,8 @@ export class NgbPaginationNext {
  * @since 4.1.0
  */
 @Directive({ selector: 'ng-template[ngbPaginationNumber]' })
-export class NgbPaginationNumber {
-  constructor(public templateRef: TemplateRef<NgbPaginationNumberContext>) { }
+export class NgfPaginationNumber {
+  constructor(public templateRef: TemplateRef<NgfPaginationNumberContext>) { }
 }
 
 /**
@@ -107,15 +107,15 @@ export class NgbPaginationNumber {
  * @since 4.1.0
  */
 @Directive({ selector: 'ng-template[ngbPaginationPrevious]' })
-export class NgbPaginationPrevious {
-  constructor(public templateRef: TemplateRef<NgbPaginationLinkContext>) { }
+export class NgfPaginationPrevious {
+  constructor(public templateRef: TemplateRef<NgfPaginationLinkContext>) { }
 }
 
 /**
  * A component that displays page numbers and allows to customize them in several ways.
  */
 @Component({
-  selector: 'ngb-pagination',
+  selector: 'ngf-pagination',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { 'role': 'navigation' },
   template: `
@@ -181,16 +181,16 @@ export class NgbPaginationPrevious {
     </ul>
   `
 })
-export class NgbPagination implements OnChanges {
+export class NgfPagination implements OnChanges {
   pageCount = 0;
   pages: number[] = [];
 
-  @ContentChild(NgbPaginationEllipsis) tplEllipsis: NgbPaginationEllipsis;
-  @ContentChild(NgbPaginationFirst) tplFirst: NgbPaginationFirst;
-  @ContentChild(NgbPaginationLast) tplLast: NgbPaginationLast;
-  @ContentChild(NgbPaginationNext) tplNext: NgbPaginationNext;
-  @ContentChild(NgbPaginationNumber) tplNumber: NgbPaginationNumber;
-  @ContentChild(NgbPaginationPrevious) tplPrevious: NgbPaginationPrevious;
+  @ContentChild(NgfPaginationEllipsis) tplEllipsis: NgfPaginationEllipsis;
+  @ContentChild(NgfPaginationFirst) tplFirst: NgfPaginationFirst;
+  @ContentChild(NgfPaginationLast) tplLast: NgfPaginationLast;
+  @ContentChild(NgfPaginationNext) tplNext: NgfPaginationNext;
+  @ContentChild(NgfPaginationNumber) tplNumber: NgfPaginationNumber;
+  @ContentChild(NgfPaginationPrevious) tplPrevious: NgfPaginationPrevious;
 
   /**
    * If `true`, pagination links will be disabled.
@@ -261,7 +261,7 @@ export class NgbPagination implements OnChanges {
    */
   @Input() size: 'sm' | 'lg';
 
-  constructor(config: NgbPaginationConfig) {
+  constructor(config: NgfPaginationConfig) {
     this.disabled = config.disabled;
     this.boundaryLinks = config.boundaryLinks;
     this.directionLinks = config.directionLinks;

@@ -1,5 +1,5 @@
 <p *ngFor="let callout of callouts">
-  <ngb-callout [type]="callout.type" (close)="close(callout)">{{ callout.message }}</ngb-callout>
+  <ngf-callout [type]="callout.type" (close)="close(callout)">{{ callout.message }}</ngf-callout>
 </p>
 <p>
   <button type="button" class="button btn-primary" (click)="reset()">Reset</button>

@@ -2,38 +2,38 @@ import {NgModule, ModuleWithProviders} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
 import {
-  NgbPagination,
-  NgbPaginationEllipsis,
-  NgbPaginationFirst,
-  NgbPaginationLast,
-  NgbPaginationNext,
-  NgbPaginationNumber,
-  NgbPaginationPrevious
+  NgfPagination,
+  NgfPaginationEllipsis,
+  NgfPaginationFirst,
+  NgfPaginationLast,
+  NgfPaginationNext,
+  NgfPaginationNumber,
+  NgfPaginationPrevious
 } from './pagination';
 
 export {
-  NgbPagination,
-  NgbPaginationEllipsis,
-  NgbPaginationFirst,
-  NgbPaginationLast,
-  NgbPaginationNext,
-  NgbPaginationNumber,
-  NgbPaginationPrevious
+  NgfPagination,
+  NgfPaginationEllipsis,
+  NgfPaginationFirst,
+  NgfPaginationLast,
+  NgfPaginationNext,
+  NgfPaginationNumber,
+  NgfPaginationPrevious
 } from './pagination';
-export {NgbPaginationConfig} from './pagination-config';
+export {NgfPaginationConfig} from './pagination-config';
 
 const DIRECTIVES = [
-  NgbPagination, NgbPaginationEllipsis, NgbPaginationFirst, NgbPaginationLast, NgbPaginationNext, NgbPaginationNumber,
-  NgbPaginationPrevious
+  NgfPagination, NgfPaginationEllipsis, NgfPaginationFirst, NgfPaginationLast, NgfPaginationNext, NgfPaginationNumber,
+  NgfPaginationPrevious
 ];
 
 @NgModule({declarations: DIRECTIVES, exports: DIRECTIVES, imports: [CommonModule]})
-export class NgbPaginationModule {
+export class NgfPaginationModule {
   /**
    * Importing with '.forRoot()' is no longer necessary, you can simply import the module.
    * Will be removed in 4.0.0.
    *
    * @deprecated 3.0.0
    */
-  static forRoot(): ModuleWithProviders { return {ngModule: NgbPaginationModule}; }
+  static forRoot(): ModuleWithProviders { return {ngModule: NgfPaginationModule}; }
 }

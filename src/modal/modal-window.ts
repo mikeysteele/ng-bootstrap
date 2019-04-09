@@ -17,7 +17,7 @@ import { ModalDismissReasons } from './modal-dismiss-reasons';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-  selector: 'ngb-modal-window',
+  selector: 'ngf-modal-window',
   host: {
     '[class]': '"reveal" + (windowClass ? " " + windowClass : "") + (backdrop?  "" : " without-overlay") + (size?  " "+size : "")',
     'role': 'dialog',
@@ -33,7 +33,7 @@ import { DomSanitizer } from '@angular/platform-browser';
       <ng-content></ng-content>
     `
 })
-export class NgbModalWindow implements OnInit,
+export class NgfModalWindow implements OnInit,
   AfterViewInit, OnDestroy {
   private _elWithFocus: Element;  // element that is focused prior to modal opening
   public style = {};

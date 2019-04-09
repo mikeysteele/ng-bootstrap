@@ -3,9 +3,9 @@ import {createGenericTestComponent} from '../test/common';
 
 import {Component} from '@angular/core';
 
-import {NgbCalloutModule} from './callout.module';
-import {NgbCallout} from './callout';
-import {NgbCalloutConfig} from './callout-config';
+import {NgfCalloutModule} from './callout.module';
+import {NgfCallout} from './callout';
+import {NgfCalloutConfig} from './callout-config';
 
 const createTestComponent = (html: string) =>
     createGenericTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
@@ -22,19 +22,19 @@ function getCloseButtonIcon(element: HTMLElement): HTMLSpanElement {
   return <HTMLSpanElement>element.querySelector('button > span');
 }
 
-describe('ngb-callout', () => {
+describe('ngf-callout', () => {
 
-  beforeEach(() => { TestBed.configureTestingModule({declarations: [TestComponent], imports: [NgbCalloutModule]}); });
+  beforeEach(() => { TestBed.configureTestingModule({declarations: [TestComponent], imports: [NgfCalloutModule]}); });
 
   it('should initialize inputs with default values', () => {
-    const defaultConfig = new NgbCalloutConfig();
-    const calloutCmp = TestBed.createComponent(NgbCallout).componentInstance;
+    const defaultConfig = new NgfCalloutConfig();
+    const calloutCmp = TestBed.createComponent(NgfCallout).componentInstance;
     expect(calloutCmp.closeable).toBe(defaultConfig.closeable);
     expect(calloutCmp.type).toBe(defaultConfig.type);
   });
 
   it('should apply those default values to the template', () => {
-    const fixture = createTestComponent('<ngb-callout>Cool!</ngb-callout>');
+    const fixture = createTestComponent('<ngf-callout>Cool!</ngf-callout>');
     const calloutEl = getCalloutElement(fixture.nativeElement);
 
     expect(calloutEl.getAttribute('role')).toEqual('callout');
@@ -43,7 +43,7 @@ describe('ngb-callout', () => {
   });
 
   it('should allow specifying callout type', () => {
-    const fixture = createTestComponent('<ngb-callout type="success">Cool!</ngb-callout>');
+    const fixture = createTestComponent('<ngf-callout type="success">Cool!</ngf-callout>');
     const calloutEl = getCalloutElement(fixture.nativeElement);
 
     expect(calloutEl.getAttribute('role')).toEqual('callout');
@@ -51,7 +51,7 @@ describe('ngb-callout', () => {
   });
 
   it('should allow changing callout type', () => {
-    const fixture = createTestComponent('<ngb-callout [type]="type">Cool!</ngb-callout>');
+    const fixture = createTestComponent('<ngf-callout [type]="type">Cool!</ngf-callout>');
     const calloutEl = getCalloutElement(fixture.nativeElement);
 
     expect(calloutEl).toHaveCssClass('callout-success');
@@ -64,7 +64,7 @@ describe('ngb-callout', () => {
   });
 
   it('should allow adding custom CSS classes', () => {
-    const fixture = createTestComponent('<ngb-callout type="success" class="myClass">Cool!</ngb-callout>');
+    const fixture = createTestComponent('<ngf-callout type="success" class="myClass">Cool!</ngf-callout>');
     const calloutEl = getCalloutElement(fixture.nativeElement);
 
     expect(calloutEl).toHaveCssClass('callout');
@@ -73,7 +73,7 @@ describe('ngb-callout', () => {
   });
 
   it('should render close button when closeable', () => {
-    const fixture = createTestComponent('<ngb-callout [closeable]="true">Watch out!</ngb-callout>');
+    const fixture = createTestComponent('<ngf-callout [closeable]="true">Watch out!</ngf-callout>');
     const calloutEl = getCalloutElement(fixture.nativeElement);
     const buttonEl = getCloseButton(calloutEl);
     const buttonIconEl = getCloseButtonIcon(calloutEl);
@@ -87,7 +87,7 @@ describe('ngb-callout', () => {
   });
 
   it('should not render the close button if it is not closeable', () => {
-    const fixture = createTestComponent(`<ngb-callout [closeable]="false">Don't close!</ngb-callout>`);
+    const fixture = createTestComponent(`<ngf-callout [closeable]="false">Don't close!</ngf-callout>`);
     const calloutEl = getCalloutElement(fixture.nativeElement);
 
     expect(calloutEl).not.toHaveCssClass('callout-closeable');
@@ -96,7 +96,7 @@ describe('ngb-callout', () => {
 
   it('should fire an event after closing a closeable callout', () => {
     const fixture =
-        createTestComponent('<ngb-callout [closeable]="true" (close)="closed = true">Watch out!</ngb-callout>');
+        createTestComponent('<ngf-callout [closeable]="true" (close)="closed = true">Watch out!</ngf-callout>');
     const calloutEl = getCalloutElement(fixture.nativeElement);
     const buttonEl = getCloseButton(calloutEl);
 
@@ -106,25 +106,25 @@ describe('ngb-callout', () => {
   });
 
   it('should project the content given into the component', () => {
-    const fixture = createTestComponent('<ngb-callout>Cool!</ngb-callout>');
+    const fixture = createTestComponent('<ngf-callout>Cool!</ngf-callout>');
     const calloutEl = getCalloutElement(fixture.nativeElement);
 
     expect(calloutEl.textContent).toContain('Cool!');
   });
 
   describe('Custom config', () => {
-    let config: NgbCalloutConfig;
+    let config: NgfCalloutConfig;
 
-    beforeEach(() => { TestBed.configureTestingModule({imports: [NgbCalloutModule]}); });
+    beforeEach(() => { TestBed.configureTestingModule({imports: [NgfCalloutModule]}); });
 
-    beforeEach(inject([NgbCalloutConfig], (c: NgbCalloutConfig) => {
+    beforeEach(inject([NgfCalloutConfig], (c: NgfCalloutConfig) => {
       config = c;
       config.closeable = false;
       config.type = 'success';
     }));
 
     it('should initialize inputs with provided config', () => {
-      const fixture = TestBed.createComponent(NgbCallout);
+      const fixture = TestBed.createComponent(NgfCallout);
       fixture.detectChanges();
 
       const callout = fixture.componentInstance;
@@ -134,17 +134,17 @@ describe('ngb-callout', () => {
   });
 
   describe('Custom config as provider', () => {
-    let config = new NgbCalloutConfig();
+    let config = new NgfCalloutConfig();
     config.closeable = false;
     config.type = 'success';
 
     beforeEach(() => {
       TestBed.configureTestingModule(
-          {imports: [NgbCalloutModule], providers: [{provide: NgbCalloutConfig, useValue: config}]});
+          {imports: [NgfCalloutModule], providers: [{provide: NgfCalloutConfig, useValue: config}]});
     });
 
     it('should initialize inputs with provided config as provider', () => {
-      const fixture = TestBed.createComponent(NgbCallout);
+      const fixture = TestBed.createComponent(NgfCallout);
       fixture.detectChanges();
 
       const callout = fixture.componentInstance;
@@ -154,7 +154,7 @@ describe('ngb-callout', () => {
   });
 });
 
-@Component({selector: 'test-cmp', template: '', entryComponents: [NgbCallout]})
+@Component({selector: 'test-cmp', template: '', entryComponents: [NgfCallout]})
 class TestComponent {
   name = 'World';
   closed = false;

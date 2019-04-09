@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 
-import { NgbdSharedModule } from '../../shared';
+import { NgfdSharedModule } from '../../shared';
 import { ComponentWrapper } from '../../shared/component-wrapper/component-wrapper.component';
-import { NgbdComponentsSharedModule, NgbdDemoList } from '../shared';
-import { NgbdApiPage } from '../shared/api-page/api.component';
-import { NgbdExamplesPage } from '../shared/examples-page/examples.component';
+import { NgfdComponentsSharedModule, NgfdDemoList } from '../shared';
+import { NgfdApiPage } from '../shared/api-page/api.component';
+import { NgfdExamplesPage } from '../shared/examples-page/examples.component';
 import { NgbdPopoverAutoclose } from './demos/autoclose/popover-autoclose';
 import { NgbdPopoverAutocloseModule } from './demos/autoclose/popover-autoclose.module';
 import { NgbdPopoverBasic } from './demos/basic/popover-basic';
@@ -95,16 +95,16 @@ export const ROUTES = [
     path: '',
     component: ComponentWrapper,
     children: [
-      { path: 'examples', component: NgbdExamplesPage },
-      { path: 'api', component: NgbdApiPage }
+      { path: 'examples', component: NgfdExamplesPage },
+      { path: 'api', component: NgfdApiPage }
     ]
   }
 ];
 
 @NgModule({
   imports: [
-    NgbdSharedModule,
-    NgbdComponentsSharedModule,
+    NgfdSharedModule,
+    NgfdComponentsSharedModule,
     NgbdPopoverBasicModule,
     NgbdPopoverTplContentModule,
     NgbdPopoverTplWithContextModule,
@@ -118,7 +118,7 @@ export const ROUTES = [
   ]
 })
 export class NgbdPopoverModule {
-  constructor(demoList: NgbdDemoList) {
+  constructor(demoList: NgfdDemoList) {
     demoList.register('popover', DEMOS);
   }
 }

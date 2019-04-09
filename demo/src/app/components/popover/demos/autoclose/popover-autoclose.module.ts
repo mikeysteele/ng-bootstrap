@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgfModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { NgbdPopoverAutoclose } from './popover-autoclose';
 
 @NgModule({
-  imports: [BrowserModule, NgbModule],
+  imports: [BrowserModule, NgfModule],
   declarations: [NgbdPopoverAutoclose],
   exports: [NgbdPopoverAutoclose],
   bootstrap: [NgbdPopoverAutoclose]

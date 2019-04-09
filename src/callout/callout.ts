@@ -12,7 +12,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 
-import {NgbCalloutConfig} from './callout-config';
+import {NgfCalloutConfig} from './callout-config';
 
 /**
  * Callout is a component to provide contextual feedback messages for user.
@@ -20,7 +20,7 @@ import {NgbCalloutConfig} from './callout-config';
  * It supports several callout types and can be dismissed.
  */
 @Component({
-  selector: 'ngb-callout',
+  selector: 'ngf-callout',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   host: {'role': 'callout', 'class': 'callout', '[class.callout-closeable]': 'closeable'},
@@ -33,7 +33,7 @@ import {NgbCalloutConfig} from './callout-config';
     `,
   styleUrls: ['./callout.scss']
 })
-export class NgbCallout implements OnInit,
+export class NgfCallout implements OnInit,
     OnChanges {
   /**
    * If `true`, callout can be dismissed by the user.
@@ -54,7 +54,7 @@ export class NgbCallout implements OnInit,
    */
   @Output() close = new EventEmitter<void>();
 
-  constructor(config: NgbCalloutConfig, private _renderer: Renderer2, private _element: ElementRef) {
+  constructor(config: NgfCalloutConfig, private _renderer: Renderer2, private _element: ElementRef) {
     this.closeable = config.closeable;
     this.type = config.type;
   }

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 
-import { NgbdSharedModule } from '../../shared';
+import { NgfdSharedModule } from '../../shared';
 import { ComponentWrapper } from '../../shared/component-wrapper/component-wrapper.component';
-import { NgbdComponentsSharedModule, NgbdDemoList } from '../shared';
-import { NgbdExamplesPage } from '../shared/examples-page/examples.component';
+import { NgfdComponentsSharedModule, NgfdDemoList } from '../shared';
+import { NgfdExamplesPage } from '../shared/examples-page/examples.component';
 import { NgbdTableBasic } from './demos/basic/table-basic';
 import { NgbdTableBasicModule } from './demos/basic/table-basic.module';
 import { NgbdTableComplete } from './demos/complete/table-complete';
@@ -119,15 +119,15 @@ export const ROUTES = [
     data: { OVERVIEW },
     children: [
       { path: 'overview', component: NgbdTableOverviewComponent },
-      { path: 'examples', component: NgbdExamplesPage }
+      { path: 'examples', component: NgfdExamplesPage }
     ]
   }
 ];
 
 @NgModule({
   imports: [
-    NgbdSharedModule,
-    NgbdComponentsSharedModule,
+    NgfdSharedModule,
+    NgfdComponentsSharedModule,
     NgbdTableBasicModule,
     NgbdTableSortableModule,
     NgbdTableFilteringModule,
@@ -137,7 +137,7 @@ export const ROUTES = [
   declarations: [NgbdTableOverviewComponent, NgbdTableOverviewDemo]
 })
 export class NgbdTableModule {
-  constructor(demoList: NgbdDemoList) {
+  constructor(demoList: NgfdDemoList) {
     demoList.register('table', DEMOS, OVERVIEW);
   }
 }

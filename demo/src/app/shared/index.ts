@@ -3,7 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgfModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { Analytics } from './analytics/analytics';
 import { CodeHighlightService } from './code/code-highlight.service';
@@ -17,7 +17,7 @@ import { NgbdFragment } from './fragment/fragment.directive';
 export {componentsList} from './side-nav/side-nav.component';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, NgbModule],
+  imports: [CommonModule, RouterModule, NgfModule],
   exports: [
     CommonModule,
     RouterModule,
@@ -27,7 +27,7 @@ export {componentsList} from './side-nav/side-nav.component';
     NgbdFragment,
     SideNavComponent,
     NgbdCodeComponent,
-    NgbModule,
+    NgfModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -42,5 +42,5 @@ export {componentsList} from './side-nav/side-nav.component';
   ],
   providers: [Analytics, CodeHighlightService]
 })
-export class NgbdSharedModule {
+export class NgfdSharedModule {
 }

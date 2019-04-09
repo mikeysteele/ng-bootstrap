@@ -1,35 +1,35 @@
 import {NgModule, ModuleWithProviders} from '@angular/core';
 
-import {NgbAccordionModule} from './accordion/accordion.module';
-import {NgbCalloutModule} from './callout/callout.module';
+import {NgfAccordionModule} from './accordion/accordion.module';
+import {NgfCalloutModule} from './callout/callout.module';
 import {NgbButtonsModule} from './buttons/buttons.module';
 import {NgbCarouselModule} from './carousel/carousel.module';
 import {NgbCollapseModule} from './collapse/collapse.module';
 import {NgbDatepickerModule} from './datepicker/datepicker.module';
-import {NgbDropdownModule} from './dropdown/dropdown.module';
-import {NgbModalModule} from './modal/modal.module';
-import {NgbPaginationModule} from './pagination/pagination.module';
+import {NgfDropdownModule} from './dropdown/dropdown.module';
+import {NgfModalModule} from './modal/modal.module';
+import {NgfPaginationModule} from './pagination/pagination.module';
 import {NgbPopoverModule} from './popover/popover.module';
-import {NgbProgressbarModule} from './progressbar/progressbar.module';
+import {NgfProgressbarModule} from './progressbar/progressbar.module';
 import {NgbRatingModule} from './rating/rating.module';
-import {NgbTabsetModule} from './tabset/tabset.module';
+import {NgfTabsModule} from './tabs/tabs.module';
 import {NgbTimepickerModule} from './timepicker/timepicker.module';
 import {NgbTooltipModule} from './tooltip/tooltip.module';
 import {NgbTypeaheadModule} from './typeahead/typeahead.module';
 
 export {
-  NgbAccordionModule,
-  NgbPanelChangeEvent,
-  NgbAccordionConfig,
-  NgbAccordion,
-  NgbPanel,
-  NgbPanelTitle,
-  NgbPanelContent,
-  NgbPanelHeader,
-  NgbPanelHeaderContext,
-  NgbPanelToggle
+  NgfAccordionModule,
+  NgfPanelChangeEvent,
+  NgfAccordionConfig,
+  NgfAccordion,
+  NgfPanel,
+  NgfPanelTitle,
+  NgfPanelContent,
+  NgfPanelHeader,
+  NgfPanelHeaderContext,
+  NgfPanelToggle
 } from './accordion/accordion.module';
-export {NgbCalloutModule, NgbCalloutConfig, NgbCallout} from './callout/callout.module';
+export {NgfCalloutModule, NgfCalloutConfig, NgfCallout} from './callout/callout.module';
 export {NgbButtonsModule, NgbButtonLabel, NgbCheckBox, NgbRadio, NgbRadioGroup} from './buttons/buttons.module';
 export {NgbCarouselModule, NgbCarouselConfig, NgbCarousel, NgbSlide} from './carousel/carousel.module';
 export {NgbCollapseModule, NgbCollapse} from './collapse/collapse.module';
@@ -55,46 +55,46 @@ export {
   NgbInputDatepicker
 } from './datepicker/datepicker.module';
 export {
-  NgbDropdownModule,
-  NgbDropdownAnchor,
-  NgbDropdownConfig,
-  NgbDropdownItem,
-  NgbDropdownMenu,
-  NgbDropdownToggle,
-  NgbDropdown
+  NgfDropdownModule,
+  NgfDropdownAnchor,
+  NgfDropdownConfig,
+  NgfDropdownItem,
+  NgfDropdownMenu,
+  NgfDropdownToggle,
+  NgfDropdown
 } from './dropdown/dropdown.module';
 export {
-  NgbModalModule,
-  NgbModal,
-  NgbModalConfig,
-  NgbModalOptions,
-  NgbActiveModal,
-  NgbModalRef,
+  NgfModalModule,
+  NgfModal,
+  NgfModalConfig,
+  NgfModalOptions,
+  NgfActiveModal,
+  NgfModalRef,
   ModalDismissReasons
 } from './modal/modal.module';
 export {
-  NgbPaginationModule,
-  NgbPaginationConfig,
-  NgbPagination,
-  NgbPaginationEllipsis,
-  NgbPaginationFirst,
-  NgbPaginationLast,
-  NgbPaginationNext,
-  NgbPaginationNumber,
-  NgbPaginationPrevious
+  NgfPaginationModule,
+  NgfPaginationConfig,
+  NgfPagination,
+  NgfPaginationEllipsis,
+  NgfPaginationFirst,
+  NgfPaginationLast,
+  NgfPaginationNext,
+  NgfPaginationNumber,
+  NgfPaginationPrevious
 } from './pagination/pagination.module';
 export {NgbPopoverModule, NgbPopoverConfig, NgbPopover} from './popover/popover.module';
-export {NgbProgressbarModule, NgbProgressbarConfig, NgbProgressbar} from './progressbar/progressbar.module';
+export {NgfProgressbarModule, NgfProgressbarConfig, NgfProgressbar} from './progressbar/progressbar.module';
 export {NgbRatingModule, NgbRatingConfig, NgbRating} from './rating/rating.module';
 export {
-  NgbTabsetModule,
+  NgfTabsModule,
   NgbTabChangeEvent,
-  NgbTabsetConfig,
-  NgbTabset,
-  NgbTab,
+  NgfTabsConfig,
+  NgfTabs,
+  NgfTab,
   NgbTabContent,
   NgbTabTitle
-} from './tabset/tabset.module';
+} from './tabs/tabs.module';
 export {
   NgbTimepickerModule,
   NgbTimepickerConfig,
@@ -113,19 +113,19 @@ export {
 
 export {Placement} from './util/positioning';
 
-const NGB_MODULES = [
-  NgbAccordionModule, NgbCalloutModule, NgbButtonsModule, NgbCarouselModule, NgbCollapseModule, NgbDatepickerModule,
-  NgbDropdownModule, NgbModalModule, NgbPaginationModule, NgbPopoverModule, NgbProgressbarModule, NgbRatingModule,
-  NgbTabsetModule, NgbTimepickerModule, NgbTooltipModule, NgbTypeaheadModule
+const NGF_MODULES = [
+  NgfAccordionModule, NgfCalloutModule, NgbButtonsModule, NgbCarouselModule, NgbCollapseModule, NgbDatepickerModule,
+  NgfDropdownModule, NgfModalModule, NgfPaginationModule, NgbPopoverModule, NgfProgressbarModule, NgbRatingModule,
+  NgfTabsModule, NgbTimepickerModule, NgbTooltipModule, NgbTypeaheadModule
 ];
 
-@NgModule({imports: NGB_MODULES, exports: NGB_MODULES})
-export class NgbModule {
+@NgModule({imports: NGF_MODULES, exports: NGF_MODULES})
+export class NgfModule {
   /**
    * Importing with '.forRoot()' is no longer necessary, you can simply import the module.
    * Will be removed in 4.0.0.
    *
    * @deprecated 3.0.0
    */
-  static forRoot(): ModuleWithProviders { return {ngModule: NgbModule}; }
+  static forRoot(): ModuleWithProviders { return {ngModule: NgfModule}; }
 }

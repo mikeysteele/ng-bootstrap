@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 
-import { NgbdSharedModule } from '../../shared';
+import { NgfdSharedModule } from '../../shared';
 import { ComponentWrapper } from '../../shared/component-wrapper/component-wrapper.component';
-import { NgbdComponentsSharedModule, NgbdDemoList } from '../shared';
-import { NgbdApiPage } from '../shared/api-page/api.component';
-import { NgbdExamplesPage } from '../shared/examples-page/examples.component';
+import { NgfdComponentsSharedModule, NgfdDemoList } from '../shared';
+import { NgfdApiPage } from '../shared/api-page/api.component';
+import { NgfdExamplesPage } from '../shared/examples-page/examples.component';
 import { NgbdPaginationAdvanced } from './demos/advanced/pagination-advanced';
 import { NgbdPaginationAdvancedModule } from './demos/advanced/pagination-advanced.module';
 import { NgbdPaginationBasic } from './demos/basic/pagination-basic';
@@ -79,16 +79,16 @@ export const ROUTES = [
     data: { OVERVIEW },
     children: [
       { path: 'overview', component: NgbdPaginationOverviewComponent },
-      { path: 'examples', component: NgbdExamplesPage },
-      { path: 'api', component: NgbdApiPage }
+      { path: 'examples', component: NgfdExamplesPage },
+      { path: 'api', component: NgfdApiPage }
     ]
   }
 ];
 
 @NgModule({
   imports: [
-    NgbdSharedModule,
-    NgbdComponentsSharedModule,
+    NgfdSharedModule,
+    NgfdComponentsSharedModule,
     NgbdPaginationAdvancedModule,
     NgbdPaginationBasicModule,
     NgbdPaginationSizeModule,
@@ -100,7 +100,7 @@ export const ROUTES = [
   declarations: [NgbdPaginationOverviewComponent]
 })
 export class NgbdPaginationModule {
-  constructor(demoList: NgbdDemoList) {
+  constructor(demoList: NgfdDemoList) {
     demoList.register('pagination', DEMOS, OVERVIEW);
   }
 }

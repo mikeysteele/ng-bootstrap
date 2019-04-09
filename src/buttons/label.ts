@@ -1,7 +1,10 @@
-import {Directive} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 
-@Directive({
+@Component({
   selector: '[ngbButtonLabel]',
+  encapsulation: ViewEncapsulation.None,
+  template: '<ng-content></ng-content>',
+  styles: ['input[type="checkbox"], input[type="radio"] { display: none;}'],
   host:
       {'[class.button]': 'true', '[class.active]': 'active', '[class.disabled]': 'disabled', '[class.focus]': 'focused'}
 })

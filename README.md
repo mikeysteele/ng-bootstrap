@@ -76,11 +76,11 @@ Alternatively you could only import modules with components you need, ex. pagina
 The resulting bundle will be smaller in this case.
 
 ```js
-import {NgbPaginationModule, NgbCalloutModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgfPaginationModule, NgfCalloutModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   ...
-  imports: [NgbPaginationModule, NgbCalloutModule, ...],
+  imports: [NgfPaginationModule, NgfCalloutModule, ...],
   ...
 })
 export class YourAppModule {

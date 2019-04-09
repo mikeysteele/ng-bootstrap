@@ -4,7 +4,7 @@ import {createGenericTestComponent} from '../test/common';
 
 import {Component} from '@angular/core';
 
-import {NgbAccordionModule, NgbPanelChangeEvent, NgbAccordionConfig, NgbAccordion} from './accordion.module';
+import {NgfAccordionModule, NgfPanelChangeEvent, NgfAccordionConfig, NgfAccordion} from './accordion.module';
 
 const createTestComponent = (html: string) =>
     createGenericTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
@@ -45,26 +45,26 @@ function expectOpenPanels(nativeEl: HTMLElement, openPanelsDef: boolean[]) {
   expect(result).toEqual(openPanelsDef);
 }
 
-describe('ngb-accordion', () => {
+describe('ngf-accordion', () => {
   let html = `
-    <ngb-accordion #acc="ngbAccordion" [multiExpand]="multiExpand" [activeIds]="activeIds"
+    <ngf-accordion #acc="ngfAccordion" [multiExpand]="multiExpand" [activeIds]="activeIds"
       (panelChange)="changeCallback($event)" [type]="classType">
-      <ngb-panel *ngFor="let panel of panels" [id]="panel.id" [disabled]="panel.disabled" [type]="panel.type">
-        <ng-template ngbPanelTitle>{{panel.title}}</ng-template>
-        <ng-template ngbPanelContent>{{panel.content}}</ng-template>
-      </ngb-panel>
-    </ngb-accordion>
+      <ngf-panel *ngFor="let panel of panels" [id]="panel.id" [disabled]="panel.disabled" [type]="panel.type">
+        <ng-template ngfPanelTitle>{{panel.title}}</ng-template>
+        <ng-template ngfPanelContent>{{panel.content}}</ng-template>
+      </ngf-panel>
+    </ngf-accordion>
     <button *ngFor="let panel of panels" (click)="acc.toggle(panel.id)">Toggle the panel {{ panel.id }}</button>
   `;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({declarations: [TestComponent], imports: [NgbAccordionModule]});
+    TestBed.configureTestingModule({declarations: [TestComponent], imports: [NgfAccordionModule]});
     TestBed.overrideComponent(TestComponent, {set: {template: html}});
   });
 
   it('should initialize inputs with default values', () => {
-    const defaultConfig = new NgbAccordionConfig();
-    const accordionCmp = new NgbAccordion(defaultConfig);
+    const defaultConfig = new NgfAccordionConfig();
+    const accordionCmp = new NgfAccordion(defaultConfig);
     expect(accordionCmp.type).toBe(defaultConfig.type);
     expect(accordionCmp.multiExpand).toBe(defaultConfig.multiExpand);
   });
@@ -81,7 +81,7 @@ describe('ngb-accordion', () => {
 
   it('should have proper css classes', () => {
     const fixture = TestBed.createComponent(TestComponent);
-    const accordion = fixture.debugElement.query(By.directive(NgbAccordion));
+    const accordion = fixture.debugElement.query(By.directive(NgfAccordion));
     expect(accordion.nativeElement).toHaveCssClass('accordion');
   });
 
@@ -209,11 +209,11 @@ describe('ngb-accordion', () => {
 
   it('can use a title without template', () => {
     const testHtml = `
-    <ngb-accordion>
-     <ngb-panel [title]="panels[0].title">
-       <ng-template ngbPanelContent>{{panels[0].content}}</ng-template>
-     </ngb-panel>
-    </ngb-accordion>
+    <ngf-accordion>
+     <ngf-panel [title]="panels[0].title">
+       <ng-template ngfPanelContent>{{panels[0].content}}</ng-template>
+     </ngf-panel>
+    </ngf-accordion>
     `;
     const fixture = createTestComponent(testHtml);
 
@@ -225,15 +225,15 @@ describe('ngb-accordion', () => {
 
   it('can mix title and template', () => {
     const testHtml = `
-    <ngb-accordion>
-     <ngb-panel [title]="panels[0].title">
-       <ng-template ngbPanelContent>{{panels[0].content}}</ng-template>
-     </ngb-panel>
-     <ngb-panel>
-      <ng-template ngbPanelTitle>{{panels[1].title}}</ng-template>
-      <ng-template ngbPanelContent>{{panels[1].content}}</ng-template>
-     </ngb-panel>
-    </ngb-accordion>
+    <ngf-accordion>
+     <ngf-panel [title]="panels[0].title">
+       <ng-template ngfPanelContent>{{panels[0].content}}</ng-template>
+     </ngf-panel>
+     <ngf-panel>
+      <ng-template ngfPanelTitle>{{panels[1].title}}</ng-template>
+      <ng-template ngfPanelContent>{{panels[1].content}}</ng-template>
+     </ngf-panel>
+    </ngf-accordion>
     `;
     const fixture = createTestComponent(testHtml);
 
@@ -246,20 +246,20 @@ describe('ngb-accordion', () => {
 
   it('can use header as a template', () => {
     const testHtml = `
-    <ngb-accordion>
-     <ngb-panel>
-       <ng-template ngbPanelHeader>
-         <button ngbPanelToggle>Title 1</button>
+    <ngf-accordion>
+     <ngf-panel>
+       <ng-template ngfPanelHeader>
+         <button ngfPanelToggle>Title 1</button>
        </ng-template>
-       <ng-template ngbPanelContent>Content 1</ng-template>
-     </ngb-panel>
-     <ngb-panel>
-       <ng-template ngbPanelHeader>
-         <button ngbPanelToggle>Title 2</button>
+       <ng-template ngfPanelContent>Content 1</ng-template>
+     </ngf-panel>
+     <ngf-panel>
+       <ng-template ngfPanelHeader>
+         <button ngfPanelToggle>Title 2</button>
        </ng-template>
-       <ng-template ngbPanelContent>Content 2</ng-template>
-     </ngb-panel>
-    </ngb-accordion>
+       <ng-template ngfPanelContent>Content 2</ng-template>
+     </ngf-panel>
+    </ngf-accordion>
     `;
     const fixture = createTestComponent(testHtml);
     const titles = getPanelsTitle(fixture.nativeElement);
@@ -268,14 +268,14 @@ describe('ngb-accordion', () => {
 
   it('can should pass context to a header template', () => {
     const testHtml = `
-    <ngb-accordion [activeIds]="activeIds">
-     <ngb-panel id="one">
-       <ng-template ngbPanelHeader let-opened="opened">
-         <button ngbPanelToggle>{{ opened ? 'opened' : 'closed' }}</button>
+    <ngf-accordion [activeIds]="activeIds">
+     <ngf-panel id="one">
+       <ng-template ngfPanelHeader let-opened="opened">
+         <button ngfPanelToggle>{{ opened ? 'opened' : 'closed' }}</button>
        </ng-template>
-       <ng-template ngbPanelContent>Content 1</ng-template>
-     </ngb-panel>
-    </ngb-accordion>
+       <ng-template ngfPanelContent>Content 1</ng-template>
+     </ngf-panel>
+    </ngf-accordion>
     `;
     const fixture = createTestComponent(testHtml);
     const titleButton = getPanelsTitle(fixture.nativeElement)[0];
@@ -292,21 +292,21 @@ describe('ngb-accordion', () => {
 
   it('can should prefer header as a template to other ways of providing a title', () => {
     const testHtml = `
-    <ngb-accordion>
-     <ngb-panel title="Panel Title 1">
-       <ng-template ngbPanelHeader>
-         <button ngbPanelToggle>Header Title 1</button>
+    <ngf-accordion>
+     <ngf-panel title="Panel Title 1">
+       <ng-template ngfPanelHeader>
+         <button ngfPanelToggle>Header Title 1</button>
        </ng-template>
-       <ng-template ngbPanelContent>Content 1</ng-template>
-     </ngb-panel>
-     <ngb-panel>
-       <ng-template ngbPanelTitle>Panel Title 2</ng-template>
-       <ng-template ngbPanelHeader>
-         <button ngbPanelToggle>Header Title 2</button>
+       <ng-template ngfPanelContent>Content 1</ng-template>
+     </ngf-panel>
+     <ngf-panel>
+       <ng-template ngfPanelTitle>Panel Title 2</ng-template>
+       <ng-template ngfPanelHeader>
+         <button ngfPanelToggle>Header Title 2</button>
        </ng-template>
-       <ng-template ngbPanelContent>Content 2</ng-template>
-     </ngb-panel>
-    </ngb-accordion>
+       <ng-template ngfPanelContent>Content 2</ng-template>
+     </ngf-panel>
+    </ngf-accordion>
     `;
     const fixture = createTestComponent(testHtml);
     const titles = getPanelsTitle(fixture.nativeElement);
@@ -316,18 +316,18 @@ describe('ngb-accordion', () => {
 
   it('should not pick up titles from nested accordions', () => {
     const testHtml = `
-    <ngb-accordion activeIds="open_me">
-     <ngb-panel title="parent title" id="open_me">
-       <ng-template ngbPanelContent>
-         <ngb-accordion>
-           <ngb-panel>
-             <ng-template ngbPanelTitle>child title</ng-template>
-             <ng-template ngbPanelContent>child content</ng-template>
-           </ngb-panel>
-          </ngb-accordion>
+    <ngf-accordion activeIds="open_me">
+     <ngf-panel title="parent title" id="open_me">
+       <ng-template ngfPanelContent>
+         <ngf-accordion>
+           <ngf-panel>
+             <ng-template ngfPanelTitle>child title</ng-template>
+             <ng-template ngfPanelContent>child content</ng-template>
+           </ngf-panel>
+          </ngf-accordion>
        </ng-template>
-     </ngb-panel>
-    </ngb-accordion>
+     </ngf-panel>
+    </ngf-accordion>
     `;
     const fixture = createTestComponent(testHtml);
     // additional change detection is required to reproduce the problem in the test environment
@@ -344,13 +344,13 @@ describe('ngb-accordion', () => {
   });
 
   it('should not crash for an empty accordion', () => {
-    const fixture = createTestComponent('<ngb-accordion></ngb-accordion>');
+    const fixture = createTestComponent('<ngf-accordion></ngf-accordion>');
     expect(getPanels(fixture.nativeElement).length).toBe(0);
   });
 
   it('should not crash for panels without content', () => {
     const fixture =
-        createTestComponent('<ngb-accordion activeIds="open_me"><ngb-panel id="open_me"></ngb-panel></ngb-accordion>');
+        createTestComponent('<ngf-accordion activeIds="open_me"><ngf-panel id="open_me"></ngf-panel></ngf-accordion>');
     const panelsContent = getPanelsContent(fixture.nativeElement);
 
     expect(panelsContent.length).toBe(1);
@@ -505,12 +505,12 @@ describe('ngb-accordion', () => {
 
   it('should not remove collapsed panels content from DOM with `destroyOnHide` flag', () => {
     const testHtml = `
-    <ngb-accordion #acc="ngbAccordion" [multiExpand]="true" [destroyOnHide]="false">
-     <ngb-panel *ngFor="let panel of panels" [id]="panel.id">
-       <ng-template ngbPanelTitle>{{panel.title}}</ng-template>
-       <ng-template ngbPanelContent>{{panel.content}}</ng-template>
-     </ngb-panel>
-    </ngb-accordion>
+    <ngf-accordion #acc="ngfAccordion" [multiExpand]="true" [destroyOnHide]="false">
+     <ngf-panel *ngFor="let panel of panels" [id]="panel.id">
+       <ng-template ngfPanelTitle>{{panel.title}}</ng-template>
+       <ng-template ngfPanelContent>{{panel.content}}</ng-template>
+     </ngf-panel>
+    </ngf-accordion>
     <button *ngFor="let panel of panels" (click)="acc.toggle(panel.id)">Toggle the panel {{ panel.id }}</button>
     `;
     const fixture = createTestComponent(testHtml);
@@ -565,12 +565,12 @@ describe('ngb-accordion', () => {
 
   it('should have specified type of accordion ', () => {
     const testHtml = `
-    <ngb-accordion #acc="ngbAccordion" [multiExpand]="multiExpand" [type]="classType">
-     <ngb-panel *ngFor="let panel of panels" [id]="panel.id" [disabled]="panel.disabled">
-       <ng-template ngbPanelTitle>{{panel.title}}</ng-template>
-       <ng-template ngbPanelContent>{{panel.content}}</ng-template>
-     </ngb-panel>
-    </ngb-accordion>
+    <ngf-accordion #acc="ngfAccordion" [multiExpand]="multiExpand" [type]="classType">
+     <ngf-panel *ngFor="let panel of panels" [id]="panel.id" [disabled]="panel.disabled">
+       <ng-template ngfPanelTitle>{{panel.title}}</ng-template>
+       <ng-template ngfPanelContent>{{panel.content}}</ng-template>
+     </ngf-panel>
+    </ngf-accordion>
     <button *ngFor="let panel of panels" (click)="acc.toggle(panel.id)">Toggle the panel {{ panel.id }}</button>
     `;
     const fixture = createTestComponent(testHtml);
@@ -613,18 +613,18 @@ describe('ngb-accordion', () => {
   });
 
   describe('Custom config', () => {
-    let config: NgbAccordionConfig;
+    let config: NgfAccordionConfig;
 
-    beforeEach(() => { TestBed.configureTestingModule({imports: [NgbAccordionModule]}); });
+    beforeEach(() => { TestBed.configureTestingModule({imports: [NgfAccordionModule]}); });
 
-    beforeEach(inject([NgbAccordionConfig], (c: NgbAccordionConfig) => {
+    beforeEach(inject([NgfAccordionConfig], (c: NgfAccordionConfig) => {
       config = c;
       config.multiExpand = false;
       config.type = 'success';
     }));
 
     it('should initialize inputs with provided config', () => {
-      const fixture = TestBed.createComponent(NgbAccordion);
+      const fixture = TestBed.createComponent(NgfAccordion);
       fixture.detectChanges();
 
       let accordion = fixture.componentInstance;
@@ -634,17 +634,17 @@ describe('ngb-accordion', () => {
   });
 
   describe('Custom config as provider', () => {
-    let config = new NgbAccordionConfig();
+    let config = new NgfAccordionConfig();
     config.multiExpand = false;
     config.type = 'success';
 
     beforeEach(() => {
       TestBed.configureTestingModule(
-          {imports: [NgbAccordionModule], providers: [{provide: NgbAccordionConfig, useValue: config}]});
+          {imports: [NgfAccordionModule], providers: [{provide: NgfAccordionConfig, useValue: config}]});
     });
 
     it('should initialize inputs with provided config as provider', () => {
-      const fixture = TestBed.createComponent(NgbAccordion);
+      const fixture = TestBed.createComponent(NgfAccordion);
       fixture.detectChanges();
 
       let accordion = fixture.componentInstance;
@@ -657,17 +657,17 @@ describe('ngb-accordion', () => {
 
     function createTestImperativeAccordion(testHtml: string) {
       const fixture = createTestComponent(testHtml);
-      const accordion = fixture.debugElement.query(By.directive(NgbAccordion)).componentInstance;
+      const accordion = fixture.debugElement.query(By.directive(NgfAccordion)).componentInstance;
       const nativeElement = fixture.nativeElement;
       return {fixture, accordion, nativeElement};
     }
 
     it('should check if a panel with a given id is expanded', () => {
       const testHtml = `
-      <ngb-accordion activeIds="first">
-        <ngb-panel id="first"></ngb-panel>
-        <ngb-panel id="second"></ngb-panel>
-      </ngb-accordion>`;
+      <ngf-accordion activeIds="first">
+        <ngf-panel id="first"></ngf-panel>
+        <ngf-panel id="second"></ngf-panel>
+      </ngf-accordion>`;
 
       const {accordion, nativeElement} = createTestImperativeAccordion(testHtml);
 
@@ -678,10 +678,10 @@ describe('ngb-accordion', () => {
 
     it('should expanded and collapse individual panels', () => {
       const testHtml = `
-      <ngb-accordion>
-        <ngb-panel id="first"></ngb-panel>
-        <ngb-panel id="second"></ngb-panel>
-      </ngb-accordion>`;
+      <ngf-accordion>
+        <ngf-panel id="first"></ngf-panel>
+        <ngf-panel id="second"></ngf-panel>
+      </ngf-accordion>`;
 
       const {accordion, nativeElement, fixture} = createTestImperativeAccordion(testHtml);
 
@@ -702,10 +702,10 @@ describe('ngb-accordion', () => {
 
     it('should not expand / collapse if already expanded / collapsed', () => {
       const testHtml = `
-      <ngb-accordion activeIds="first" (panelChange)="changeCallback()">
-        <ngb-panel id="first"></ngb-panel>
-        <ngb-panel id="second"></ngb-panel>
-      </ngb-accordion>`;
+      <ngf-accordion activeIds="first" (panelChange)="changeCallback()">
+        <ngf-panel id="first"></ngf-panel>
+        <ngf-panel id="second"></ngf-panel>
+      </ngf-accordion>`;
 
       const {accordion, nativeElement, fixture} = createTestImperativeAccordion(testHtml);
 
@@ -726,9 +726,9 @@ describe('ngb-accordion', () => {
 
     it('should not expand disabled panels', () => {
       const testHtml = `
-      <ngb-accordion (panelChange)="changeCallback()">
-        <ngb-panel id="first" [disabled]="true"></ngb-panel>
-      </ngb-accordion>`;
+      <ngf-accordion (panelChange)="changeCallback()">
+        <ngf-panel id="first" [disabled]="true"></ngf-panel>
+      </ngf-accordion>`;
 
       const {accordion, nativeElement, fixture} = createTestImperativeAccordion(testHtml);
 
@@ -744,10 +744,10 @@ describe('ngb-accordion', () => {
 
     it('should not expand / collapse when preventDefault called on the panelChange event', () => {
       const testHtml = `
-      <ngb-accordion activeIds="first" (panelChange)="preventDefaultCallback($event)">
-        <ngb-panel id="first"></ngb-panel>
-        <ngb-panel id="second"></ngb-panel>
-      </ngb-accordion>`;
+      <ngf-accordion activeIds="first" (panelChange)="preventDefaultCallback($event)">
+        <ngf-panel id="first"></ngf-panel>
+        <ngf-panel id="second"></ngf-panel>
+      </ngf-accordion>`;
 
       const {accordion, nativeElement, fixture} = createTestImperativeAccordion(testHtml);
 
@@ -765,10 +765,10 @@ describe('ngb-accordion', () => {
     it('should expandAll when multiExpand is false', () => {
 
       const testHtml = `
-      <ngb-accordion [multiExpand]="false">
-        <ngb-panel id="first"></ngb-panel>
-        <ngb-panel id="second"></ngb-panel>
-      </ngb-accordion>`;
+      <ngf-accordion [multiExpand]="false">
+        <ngf-panel id="first"></ngf-panel>
+        <ngf-panel id="second"></ngf-panel>
+      </ngf-accordion>`;
 
       const {accordion, nativeElement, fixture} = createTestImperativeAccordion(testHtml);
 
@@ -781,10 +781,10 @@ describe('ngb-accordion', () => {
 
     it('should expand first panel when multiExpand is true and none of panels is expanded', () => {
       const testHtml = `
-      <ngb-accordion [multiExpand]="true">
-        <ngb-panel id="first"></ngb-panel>
-        <ngb-panel id="second"></ngb-panel>
-      </ngb-accordion>`;
+      <ngf-accordion [multiExpand]="true">
+        <ngf-panel id="first"></ngf-panel>
+        <ngf-panel id="second"></ngf-panel>
+      </ngf-accordion>`;
 
       const {accordion, nativeElement, fixture} = createTestImperativeAccordion(testHtml);
 
@@ -797,10 +797,10 @@ describe('ngb-accordion', () => {
 
     it('should do nothing if multiExpand is true and one panel is expanded', () => {
       const testHtml = `
-      <ngb-accordion [multiExpand]="true" activeIds="second">
-        <ngb-panel id="first"></ngb-panel>
-        <ngb-panel id="second"></ngb-panel>
-      </ngb-accordion>`;
+      <ngf-accordion [multiExpand]="true" activeIds="second">
+        <ngf-panel id="first"></ngf-panel>
+        <ngf-panel id="second"></ngf-panel>
+      </ngf-accordion>`;
 
       const {accordion, nativeElement, fixture} = createTestImperativeAccordion(testHtml);
 
@@ -813,10 +813,10 @@ describe('ngb-accordion', () => {
 
     it('should collapse all panels', () => {
       const testHtml = `
-      <ngb-accordion activeIds="second">
-        <ngb-panel id="first"></ngb-panel>
-        <ngb-panel id="second"></ngb-panel>
-      </ngb-accordion>`;
+      <ngf-accordion activeIds="second">
+        <ngf-panel id="first"></ngf-panel>
+        <ngf-panel id="second"></ngf-panel>
+      </ngf-accordion>`;
 
       const {accordion, nativeElement, fixture} = createTestImperativeAccordion(testHtml);
 
@@ -839,6 +839,6 @@ class TestComponent {
     {id: 'two', disabled: false, title: 'Panel 2', content: 'bar', type: ''},
     {id: 'three', disabled: false, title: 'Panel 3', content: 'baz', type: ''}
   ];
-  changeCallback = (event: NgbPanelChangeEvent) => {};
-  preventDefaultCallback = (event: NgbPanelChangeEvent) => { event.preventDefault(); };
+  changeCallback = (event: NgfPanelChangeEvent) => {};
+  preventDefaultCallback = (event: NgfPanelChangeEvent) => { event.preventDefault(); };
 }

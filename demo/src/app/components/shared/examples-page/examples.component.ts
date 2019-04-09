@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 
-import {NgbdDemoList} from '../demo-list';
+import {NgfdDemoList} from '../demo-list';
 
 @Component({
   template: `
@@ -19,11 +19,11 @@ import {NgbdDemoList} from '../demo-list';
     </ngbd-widget-demo>
   `
 })
-export class NgbdExamplesPage {
+export class NgfdExamplesPage {
   component: string;
   demos = [];
 
-  constructor(route: ActivatedRoute, demoList: NgbdDemoList) {
+  constructor(route: ActivatedRoute, demoList: NgfdDemoList) {
     // We go up to parent route defining /components/:widget to read the widget name
     // This route is declared in root app.routing.ts.
     const componentName = (this.component =

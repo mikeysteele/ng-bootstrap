@@ -1,18 +1,18 @@
 import {NgModule, ModuleWithProviders} from '@angular/core';
-import {NgbDropdown, NgbDropdownAnchor, NgbDropdownToggle, NgbDropdownMenu, NgbDropdownItem} from './dropdown';
+import {NgfDropdown, NgfDropdownAnchor, NgfDropdownToggle, NgfDropdownMenu, NgfDropdownItem} from './dropdown';
 
-export {NgbDropdown, NgbDropdownAnchor, NgbDropdownToggle, NgbDropdownMenu, NgbDropdownItem} from './dropdown';
-export {NgbDropdownConfig} from './dropdown-config';
+export {NgfDropdown, NgfDropdownAnchor, NgfDropdownToggle, NgfDropdownMenu, NgfDropdownItem} from './dropdown';
+export {NgfDropdownConfig} from './dropdown-config';
 
-const NGB_DROPDOWN_DIRECTIVES = [NgbDropdown, NgbDropdownAnchor, NgbDropdownToggle, NgbDropdownMenu, NgbDropdownItem];
+const NGB_DROPDOWN_DIRECTIVES = [NgfDropdown, NgfDropdownAnchor, NgfDropdownToggle, NgfDropdownMenu, NgfDropdownItem];
 
 @NgModule({declarations: NGB_DROPDOWN_DIRECTIVES, exports: NGB_DROPDOWN_DIRECTIVES})
-export class NgbDropdownModule {
+export class NgfDropdownModule {
   /**
    * Importing with '.forRoot()' is no longer necessary, you can simply import the module.
    * Will be removed in 4.0.0.
    *
    * @deprecated 3.0.0
    */
-  static forRoot(): ModuleWithProviders { return {ngModule: NgbDropdownModule}; }
+  static forRoot(): ModuleWithProviders { return {ngModule: NgfDropdownModule}; }
 }

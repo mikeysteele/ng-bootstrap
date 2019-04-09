@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgfModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { NgbdPopoverTplwithcontext } from './popover-tplwithcontext';
 
 @NgModule({
-  imports: [BrowserModule, NgbModule],
+  imports: [BrowserModule, NgfModule],
   declarations: [NgbdPopoverTplwithcontext],
   exports: [NgbdPopoverTplwithcontext],
   bootstrap: [NgbdPopoverTplwithcontext]

@@ -5,16 +5,16 @@
 
 <form id="default" (contextmenu)="$event.preventDefault()">
   <div class="form-group form-inline">
-    <div id="dropdown" #d="ngbDropdown" ngbDropdown class="d-inline-block" [autoClose]="autoClose" [container]="container">
-      <button class="btn btn-outline-secondary" ngbDropdownToggle>Dropdown</button>
-      <div id="dropdownMenuId" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+    <div id="dropdown" #d="ngfDropdown" ngfDropdown class="d-inline-block" [autoClose]="autoClose" [container]="container">
+      <button class="btn btn-outline-secondary" ngfDropdownToggle>Dropdown</button>
+      <div id="dropdownMenuId" ngfDropdownMenu aria-labelledby="dropdownBasic1">
         <button class="dropdown-item">Item</button>
       </div>
     </div>
 
-    <div ngbDropdown class="d-inline-block ml-3">
-      <button class="btn btn-outline-secondary" id="autoclose-dropdown" ngbDropdownToggle>Choose Autoclose</button>
-      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+    <div ngfDropdown class="d-inline-block ml-3">
+      <button class="btn btn-outline-secondary" id="autoclose-dropdown" ngfDropdownToggle>Choose Autoclose</button>
+      <div ngfDropdownMenu aria-labelledby="dropdownBasic1">
         <button class="dropdown-item" id="autoclose-true" (click)="autoClose = true">True</button>
         <button class="dropdown-item" id="autoclose-false" (click)="autoClose = false">False</button>
         <button class="dropdown-item" id="autoclose-outside" (click)="autoClose = 'outside'">'Outside'</button>

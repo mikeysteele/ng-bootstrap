@@ -1,25 +1,25 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
 
-import {NgbModal} from './modal';
-import {NgbModalBackdrop} from './modal-backdrop';
-import {NgbModalWindow} from './modal-window';
+import {NgfModal} from './modal';
+import {NgfModalBackdrop} from './modal-backdrop';
+import {NgfModalWindow} from './modal-window';
 
-export {NgbModal} from './modal';
-export {NgbModalConfig, NgbModalOptions} from './modal-config';
-export {NgbModalRef, NgbActiveModal} from './modal-ref';
+export {NgfModal as NgfModal} from './modal';
+export {NgfModalConfig, NgfModalOptions as NgfModalOptions} from './modal-config';
+export {NgfModalRef, NgfActiveModal} from './modal-ref';
 export {ModalDismissReasons} from './modal-dismiss-reasons';
 
 @NgModule({
-  declarations: [NgbModalBackdrop, NgbModalWindow],
-  entryComponents: [NgbModalBackdrop, NgbModalWindow],
-  providers: [NgbModal]
+  declarations: [NgfModalBackdrop, NgfModalWindow],
+  entryComponents: [NgfModalBackdrop, NgfModalWindow],
+  providers: [NgfModal]
 })
-export class NgbModalModule {
+export class NgfModalModule {
   /**
    * Importing with '.forRoot()' is no longer necessary, you can simply import the module.
    * Will be removed in 4.0.0.
    *
    * @deprecated 3.0.0
    */
-  static forRoot(): ModuleWithProviders { return {ngModule: NgbModalModule}; }
+  static forRoot(): ModuleWithProviders { return {ngModule: NgfModalModule}; }
 }
