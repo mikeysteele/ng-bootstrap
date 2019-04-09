@@ -42,7 +42,7 @@ export interface NgbPanelHeaderContext {
 @Directive({
   selector: '[ngbPanelToggle]',
   host: {
-    '[class.collapsed]': '!panel.isOpen',
+    '[class.hidden]': '!panel.isOpen',
     '[attr.aria-expanded]': 'panel.isOpen',
     '[attr.aria-controls]': 'panel.id',
     '(click)': 'accordion.toggle(panel.id)'
@@ -279,18 +279,18 @@ export class NgbAccordion implements AfterContentChecked {
   }
 
   /**
-   * Collapses a panel with the given id.
+   * Hides a panel with the given id.
    *
-   * Has no effect if the panel is already collapsed or disabled.
+   * Has no effect if the panel is already hidden or disabled.
    */
-  collapse(panelId: string) { 
+  hide(panelId: string) { 
       this._changeOpenState(this._findPanelById(panelId), false); }
     
 
   /**
-   * Collapses all opened panels.
+   * Hides all opened panels.
    */
-  collapseAll() {
+  hideAll() {
     this.panels.forEach((panel) => { this._changeOpenState(panel, false); });
   }
 
