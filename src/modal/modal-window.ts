@@ -19,7 +19,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'ngb-modal-window',
   host: {
-    '[class]': '"reveal" + (windowClass ? " " + windowClass : "") + (backdrop?  "" : " without-overlay")',
+    '[class]': '"reveal" + (windowClass ? " " + windowClass : "") + (backdrop?  "" : " without-overlay") + (size?  " "+size : "")',
     'role': 'dialog',
     'tabindex': '-1',
     '(keyup.esc)': 'escKey($event)',
