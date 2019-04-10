@@ -1,4 +1,4 @@
-import {NgbDate} from './ngb-date';
+import {NgfDate} from './ngb-date';
 /**
  * The context for the datepicker 'day' template.
  *
@@ -12,7 +12,7 @@ export interface DayTemplateContext {
    *
    * @since 3.3.0
    */
-  $implicit: NgbDate;
+  $implicit: NgfDate;
 
   /**
    * The month currently displayed by the datepicker.
@@ -29,7 +29,7 @@ export interface DayTemplateContext {
   /**
    * The date that corresponds to the template.
    */
-  date: NgbDate;
+  date: NgfDate;
 
   /**
    * `True` if the current date is disabled.
@@ -47,7 +47,7 @@ export interface DayTemplateContext {
   selected: boolean;
 
   /**
-   * `True` if the current date is today (equal to `NgbCalendar.getToday()`).
+   * `True` if the current date is today (equal to `NgfCalendar.getToday()`).
    *
    * @since 4.1.0
    */

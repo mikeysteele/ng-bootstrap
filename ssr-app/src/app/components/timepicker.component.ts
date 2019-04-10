@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'timepicker-component',
   template: `
-    <ngb-timepicker [(ngModel)]="time"></ngb-timepicker>
+    <ngf-timepicker [(ngModel)]="time"></ngf-timepicker>
   `
 })
 export class TimepickerComponent {

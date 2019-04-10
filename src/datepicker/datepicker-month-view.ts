@@ -1,11 +1,11 @@
 import {Component, Input, TemplateRef, Output, EventEmitter, ViewEncapsulation} from '@angular/core';
 import {MonthViewModel, DayViewModel} from './datepicker-view-model';
-import {NgbDate} from './ngb-date';
-import {NgbDatepickerI18n} from './datepicker-i18n';
+import {NgfDate} from './ngb-date';
+import {NgfDatepickerI18n} from './datepicker-i18n';
 import {DayTemplateContext} from './datepicker-day-template-context';
 
 @Component({
-  selector: 'ngb-datepicker-month-view',
+  selector: 'ngf-datepicker-month-view',
   host: {'role': 'grid'},
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./datepicker-month-view.scss'],
@@ -33,15 +33,15 @@ import {DayTemplateContext} from './datepicker-day-template-context';
     </ng-template>
   `
 })
-export class NgbDatepickerMonthView {
+export class NgfDatepickerMonthView {
   @Input() dayTemplate: TemplateRef<DayTemplateContext>;
   @Input() month: MonthViewModel;
   @Input() showWeekdays;
   @Input() showWeekNumbers;
 
-  @Output() select = new EventEmitter<NgbDate>();
+  @Output() select = new EventEmitter<NgfDate>();
 
-  constructor(public i18n: NgbDatepickerI18n) {}
+  constructor(public i18n: NgfDatepickerI18n) {}
 
   doSelect(day: DayViewModel) {
     if (!day.context.disabled && !day.hidden) {

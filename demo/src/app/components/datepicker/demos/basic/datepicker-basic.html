@@ -1,12 +1,12 @@
 <p>Simple datepicker</p>
 
-<ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
+<ngf-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngf-datepicker>
 
 <hr/>
 
-<button class="button btn-sm btn-outline-primary mr-2" (click)="selectToday()">Select Today</button>
-<button class="button btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo()">To current month</button>
-<button class="button btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo({year: 2013, month: 2})">To Feb 2013</button>
+<button class="button small hollow primary margin-right-1" (click)="selectToday()">Select Today</button>
+<button class="button small hollow primary margin-right-1" (click)="dp.navigateTo()">To current month</button>
+<button class="button small hollow primary margin-right-1" (click)="dp.navigateTo({year: 2013, month: 2})">To Feb 2013</button>
 
 <hr/>
 

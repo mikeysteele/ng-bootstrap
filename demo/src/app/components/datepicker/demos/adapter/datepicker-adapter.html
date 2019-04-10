@@ -3,10 +3,10 @@ In this example we are converting from and to a JS native Date object</p>
 
 <div class="row">
   <div class="col-6">
-    <ngb-datepicker #d1 [(ngModel)]="model1" #c1="ngModel"></ngb-datepicker>
+    <ngf-datepicker #d1 [(ngModel)]="model1" #c1="ngModel"></ngf-datepicker>
 
     <hr/>
-    <button class="button btn-sm btn-outline-primary" (click)="model1 = today">Select Today</button>
+    <button class="button small hollow primary" (click)="model1 = today">Select Today</button>
     <hr/>
 
     <pre>Model: {{ model1 | json }}</pre>
@@ -18,16 +18,16 @@ In this example we are converting from and to a JS native Date object</p>
       <div class="form-group">
         <div class="input-group">
           <input class="form-control" placeholder="yyyy-mm-dd"
-                 name="d2" #c2="ngModel" [(ngModel)]="model2" ngbDatepicker #d2="ngbDatepicker">
+                 name="d2" #c2="ngModel" [(ngModel)]="model2" ngfDatepicker #d2="ngfDatepicker">
           <div class="input-group-append">
-            <button class="button btn-outline-secondary calendar" (click)="d2.toggle()" type="button"></button>
+            <button class="button hollow secondary calendar" (click)="d2.toggle()" type="button"></button>
           </div>
         </div>
       </div>
     </form>
 
     <hr/>
-    <button class="button btn-sm btn-outline-primary" (click)="model2 = today">Select Today</button>
+    <button class="button small hollow primary" (click)="model2 = today">Select Today</button>
     <hr/>
 
 

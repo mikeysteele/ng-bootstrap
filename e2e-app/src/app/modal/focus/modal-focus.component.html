@@ -2,7 +2,7 @@
 
 
 <!-- Simple Modal -->
-<button class="btn btn-outline-secondary" type="button" id="open-modal-simple" (click)="openModal()">Simple Modal</button>
+<button class="btn hollow secondary" type="button" id="open-modal-simple" (click)="openModal()">Simple Modal</button>
 
 <!-- Closeable Modal -->
 <ng-template #closeable let-modal>
@@ -22,11 +22,11 @@
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Close</button>
+    <button type="button" class="btn hollow dark" (click)="modal.close()">Close</button>
   </div>
 </ng-template>
 
-<button class="btn btn-outline-secondary ml-2" type="button" id="open-modal-template" (click)="openModal(closeable)">Template Modal</button>
+<button class="btn hollow secondary margin-left-1" type="button" id="open-modal-template" (click)="openModal(closeable)">Template Modal</button>
 
 <!-- Modal with autofocus -->
 <ng-template #autofocus let-modal>
@@ -40,8 +40,8 @@
     <p>Close button should be focused</p>
   </div>
   <div class="modal-footer">
-    <button ngbAutofocus type="button" class="btn btn-outline-dark" (click)="modal.close()">Close</button>
+    <button ngbAutofocus type="button" class="btn hollow dark" (click)="modal.close()">Close</button>
   </div>
 </ng-template>
 
-<button class="btn btn-outline-secondary ml-2" type="button" id="open-modal-autofocus" (click)="openModal(autofocus)">Autofocus Modal</button>
+<button class="btn hollow secondary margin-left-1" type="button" id="open-modal-autofocus" (click)="openModal(autofocus)">Autofocus Modal</button>

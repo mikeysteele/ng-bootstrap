@@ -45,7 +45,7 @@ export class NgfCallout implements OnInit,
   /**
    * Type of the callout.
    *
-   * Bootstrap provides styles for the following types: `'success'`, `'warning'`, `'alert'`, `'primary'`,
+   * Foundation provides styles for the following types: `'success'`, `'warning'`, `'alert'`, `'primary'`,
    * `'secondary'`.
    */
   @Input() type: string;

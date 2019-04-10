@@ -1,12 +1,12 @@
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
-import {NgfTabs, NgfTab, NgbTabContent, NgbTabTitle} from './tabs';
+import {NgfTabs, NgfTab, NgfTabContent, NgfTabTitle} from './tabs';
 
-export {NgfTabs, NgfTab, NgbTabContent, NgbTabTitle, NgbTabChangeEvent} from './tabs';
+export {NgfTabs, NgfTab, NgfTabContent, NgfTabTitle, NgfTabChangeEvent} from './tabs';
 export {NgfTabsConfig} from './tabs-config';
 
-const NGB_TABSET_DIRECTIVES = [NgfTabs, NgfTab, NgbTabContent, NgbTabTitle];
+const NGB_TABSET_DIRECTIVES = [NgfTabs, NgfTab, NgfTabContent, NgfTabTitle];
 
 @NgModule({declarations: NGB_TABSET_DIRECTIVES, exports: NGB_TABSET_DIRECTIVES, imports: [CommonModule]})
 export class NgfTabsModule {

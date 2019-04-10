@@ -9,7 +9,7 @@
 
 <form>
   <div class="form-group form-inline">
-      Full text search: <input class="form-control ml-2" type="text" name="searchTerm" [(ngModel)]="service.searchTerm"/>
+      Full text search: <input class="form-control margin-left-1" type="text" name="searchTerm" [(ngModel)]="service.searchTerm"/>
       <span class="ml-3" *ngIf="service.loading$ | async">Loading...</span>
   </div>
 
@@ -26,7 +26,7 @@
     <tr *ngFor="let country of countries$ | async">
       <th scope="row">{{ country.id }}</th>
       <td>
-        <img [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag" class="mr-2" style="width: 20px">
+        <img [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag" class="margin-right-1" style="width: 20px">
         <ngb-highlight [result]="country.name" [term]="service.searchTerm"></ngb-highlight>
       </td>
       <td><ngb-highlight [result]="country.area | number" [term]="service.searchTerm"></ngb-highlight></td>

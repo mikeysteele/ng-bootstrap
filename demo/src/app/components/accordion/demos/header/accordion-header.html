@@ -3,7 +3,7 @@
     <ng-template ngfPanelHeader let-opened="opened">
       <div class="d-flex align-items-center justify-content-between">
         <h5 class="m-0">First panel - {{ opened ? 'opened' : 'collapsed' }}</h5>
-        <button ngfPanelToggle class="button btn-link p-0">Toggle first</button>
+        <button ngfPanelToggle class="button clear p-0">Toggle first</button>
       </div>
     </ng-template>
     <ng-template ngfPanelContent>
@@ -20,11 +20,11 @@
       <div class="d-flex align-items-center justify-content-between">
         <h5 class="m-0">Second panel</h5>
         <div>
-          <button ngfPanelToggle class="button btn-sm btn-outline-primary ml-2">Toggle second</button>
-          <button type="button" class="button btn-sm btn-outline-secondary ml-2" (click)="disabled = !disabled">
+          <button ngfPanelToggle class="button small hollow primary margin-left-1">Toggle second</button>
+          <button type="button" class="button small hollow secondary margin-left-1" (click)="disabled = !disabled">
             {{ disabled ? 'En' : 'Dis' }}able third
           </button>
-          <button type="button" class="button btn-sm btn-outline-danger ml-2" (click)="a.collapseAll()">Collapse all</button>
+          <button type="button" class="button small hollow danger margin-left-1" (click)="a.collapseAll()">Collapse all</button>
         </div>
       </div>
     </ng-template>
@@ -40,7 +40,7 @@
   <ngf-panel [disabled]="disabled">
     <ng-template ngfPanelHeader>
       <div class="d-flex align-items-center justify-content-between">
-        <button ngfPanelToggle class="button btn-link container-fluid text-left pl-0">Third panel</button>
+        <button ngfPanelToggle class="button clear container-fluid text-left pl-0">Third panel</button>
         <p *ngIf="disabled" class="text-muted m-0 small">[I'm&nbsp;disabled]</p>
       </div>
     </ng-template>

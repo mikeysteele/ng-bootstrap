@@ -12,10 +12,10 @@ You can fork a StackBlitz from one of our [demos](https://ng-bootstrap.github.io
 Please note that we can _not_ act on bug reports without a _minimal_ reproduction scenario in a StackBlitz. Here is why:
 https://github.com/ng-bootstrap/ng-bootstrap#you-think-youve-found-a-bug
 
-### Versions of Angular, ng-bootstrap and Bootstrap:
+### Versions of Angular, ng-bootstrap and Foundation:
 
 Angular:
 
 ng-bootstrap:
 
-Bootstrap:
+Foundation:

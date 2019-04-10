@@ -1,13 +1,13 @@
 <p>You can easily control dropdowns programmatically using the exported dropdown instance.</p>
 
 <div class="d-inline-block" ngfDropdown #myDrop="ngfDropdown">
-  <button class="button primary mr-2" id="dropdownManual" ngfDropdownAnchor (focus)="myDrop.open()">Toggle dropdown</button>
+  <button class="button primary margin-right-1" id="dropdownManual" ngfDropdownAnchor (focus)="myDrop.open()">Toggle dropdown</button>
   <div ngfDropdownMenu aria-labelledby="dropdownManual">
     <button ngfDropdownItem>Action - 1</button>
     <button ngfDropdownItem>Another Action</button>
     <button ngfDropdownItem>Something else is here</button>
   </div>
 
-  <button class="button success mr-2" (click)="$event.stopPropagation(); myDrop.open();">Open from outside</button>
-  <button class="button danger mr-2" (click)="$event.stopPropagation(); myDrop.close();">Close from outside</button>
+  <button class="button success margin-right-1" (click)="$event.stopPropagation(); myDrop.open();">Open from outside</button>
+  <button class="button danger margin-right-1" (click)="$event.stopPropagation(); myDrop.close();">Close from outside</button>
 </div>

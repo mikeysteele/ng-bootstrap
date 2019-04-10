@@ -1,10 +1,10 @@
 import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy, ViewEncapsulation} from '@angular/core';
-import {NgbDate} from './ngb-date';
+import {NgfDate} from './ngb-date';
 import {toInteger} from '../util/util';
-import {NgbDatepickerI18n} from './datepicker-i18n';
+import {NgfDatepickerI18n} from './datepicker-i18n';
 
 @Component({
-  selector: 'ngb-datepicker-navigation-select',
+  selector: 'ngf-datepicker-navigation-select',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./datepicker-navigation-select.scss'],
@@ -29,17 +29,17 @@ import {NgbDatepickerI18n} from './datepicker-i18n';
     </select>
   `
 })
-export class NgbDatepickerNavigationSelect {
-  @Input() date: NgbDate;
+export class NgfDatepickerNavigationSelect {
+  @Input() date: NgfDate;
   @Input() disabled: boolean;
   @Input() months: number[];
   @Input() years: number[];
 
-  @Output() select = new EventEmitter<NgbDate>();
+  @Output() select = new EventEmitter<NgfDate>();
 
-  constructor(public i18n: NgbDatepickerI18n) {}
+  constructor(public i18n: NgfDatepickerI18n) {}
 
-  changeMonth(month: string) { this.select.emit(new NgbDate(this.date.year, toInteger(month), 1)); }
+  changeMonth(month: string) { this.select.emit(new NgfDate(this.date.year, toInteger(month), 1)); }
 
-  changeYear(year: string) { this.select.emit(new NgbDate(toInteger(year), this.date.month, 1)); }
+  changeYear(year: string) { this.select.emit(new NgfDate(toInteger(year), this.date.month, 1)); }
 }

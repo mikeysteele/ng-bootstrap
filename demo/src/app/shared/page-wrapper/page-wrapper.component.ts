@@ -12,8 +12,14 @@ export class PageWrapper {
 
   sidebarCollapsed = true;
   isLargeScreenOrLess: boolean;
-
+  isSmallScreenOrLess: boolean;
   constructor(ngZone: NgZone) {
+    // information extracted from https://getbootstrap.com/docs/4.1/layout/overview/
+    // TODO: we should implements our own mediamatcher, according to bootstrap layout.
+    const smallScreenQL = matchMedia('(max-width: 767.98px)');
+    // tslint:disable-next-line:deprecationsmallScreenQL.addListener((event) => ngZone.run(() => this.sidebarCollapsed = this.isSmallScreenOrLess = event.matches));
+    this.sidebarCollapsed = this.isSmallScreenOrLess = smallScreenQL.matches;
+    
     const largeScreenQL = matchMedia('(max-width: 1199.98px)');
     this.isLargeScreenOrLess = largeScreenQL.matches;
     // tslint:disable-next-line:deprecation

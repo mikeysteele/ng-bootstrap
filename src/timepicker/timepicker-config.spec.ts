@@ -1,8 +1,8 @@
-import {NgbTimepickerConfig} from './timepicker-config';
+import {NgfTimepickerConfig} from './timepicker-config';
 
-describe('ngb-timepicker-config', () => {
+describe('ngf-timepicker-config', () => {
   it('should have sensible default values', () => {
-    const config = new NgbTimepickerConfig();
+    const config = new NgfTimepickerConfig();
 
     expect(config.meridian).toBe(false);
     expect(config.spinners).toBe(true);

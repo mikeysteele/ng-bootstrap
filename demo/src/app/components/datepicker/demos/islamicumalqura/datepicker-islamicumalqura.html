@@ -3,14 +3,14 @@
   in Saudi Arabia for administrative purposes
 </p>
 
-<ngb-datepicker class="rtl" #dp [(ngModel)]="model" [firstDayOfWeek]="7">
-</ngb-datepicker>
+<ngf-datepicker class="rtl" #dp [(ngModel)]="model" [firstDayOfWeek]="7">
+</ngf-datepicker>
 
 <hr/>
 
-<button class="button btn-sm btn-outline-primary mr-2" (click)="selectToday();">Select Today</button>
-<button class="button btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo()">To current month</button>
-<button class="button btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo({year: 1434, month: 2})">To Saf. 1434</button>
+<button class="button small hollow primary margin-right-1" (click)="selectToday();">Select Today</button>
+<button class="button small hollow primary margin-right-1" (click)="dp.navigateTo()">To current month</button>
+<button class="button small hollow primary margin-right-1" (click)="dp.navigateTo({year: 1434, month: 2})">To Saf. 1434</button>
 
 <hr/>
 

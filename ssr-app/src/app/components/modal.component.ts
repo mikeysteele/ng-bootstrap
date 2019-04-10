@@ -26,11 +26,11 @@ function getDismissReason(reason: any): string {
         Hello from modal
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+        <button type="button" class="btn hollow dark" (click)="modal.close('Save click')">Save</button>
       </div>
     </ng-template>
 
-    <button class="btn btn-outline-primary" (click)="open(content)">Open modal</button>
+    <button class="btn hollow primary" (click)="open(content)">Open modal</button>
 
     <pre>{{closeResult}}</pre>
   `

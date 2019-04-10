@@ -1,5 +1,5 @@
 import {Component, Injectable} from '@angular/core';
-import {NgbDateAdapter, NgbDateStruct, NgbDateNativeAdapter} from '@ng-bootstrap/ng-bootstrap';
+import {NgfDateAdapter, NgfDateStruct, NgfDateNativeAdapter} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'ngbd-datepicker-adapter',
@@ -7,7 +7,7 @@ import {NgbDateAdapter, NgbDateStruct, NgbDateNativeAdapter} from '@ng-bootstrap
 
   // NOTE: For this example we are only providing current component, but probably
   // NOTE: you will want to provide your main App Module
-  providers: [{provide: NgbDateAdapter, useClass: NgbDateNativeAdapter}]
+  providers: [{provide: NgfDateAdapter, useClass: NgfDateNativeAdapter}]
 })
 export class NgbdDatepickerAdapter {
 

@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
 
 /**
- * A configuration service for the [`NgbTimepicker`](#/components/timepicker/api#NgbTimepicker) component.
+ * A configuration service for the [`NgfTimepicker`](#/components/timepicker/api#NgfTimepicker) component.
  *
  * You can inject this service, typically in your root component, and customize the values of its properties in
  * order to provide default values for all the timepickers used in the application.
  */
 @Injectable({providedIn: 'root'})
-export class NgbTimepickerConfig {
+export class NgfTimepickerConfig {
   meridian = false;
   spinners = true;
   seconds = false;

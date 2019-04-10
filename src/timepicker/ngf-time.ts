@@ -1,6 +1,6 @@
 import {isNumber, toInteger} from '../util/util';
 
-export class NgbTime {
+export class NgfTime {
   hour: number;
   minute: number;
   second: number;
@@ -20,6 +20,7 @@ export class NgbTime {
       this.hour = NaN;
     }
   }
+  
 
   changeMinute(step = 1) { this.updateMinute((isNaN(this.minute) ? 0 : this.minute) + step); }
 

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NgbCalendar, NgbDate, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import {NgfCalendar, NgfDate, NgfDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'ngbd-datepicker-customday',
@@ -26,11 +26,11 @@ import {NgbCalendar, NgbDate, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
   `]
 })
 export class NgbdDatepickerCustomday {
-  model: NgbDateStruct;
+  model: NgfDateStruct;
 
-  constructor(private calendar: NgbCalendar) {
+  constructor(private calendar: NgfCalendar) {
   }
 
-  isDisabled = (date: NgbDate, current: {month: number}) => date.month !== current.month;
-  isWeekend = (date: NgbDate) =>  this.calendar.getWeekday(date) >= 6;
+  isDisabled = (date: NgfDate, current: {month: number}) => date.month !== current.month;
+  isWeekend = (date: NgfDate) =>  this.calendar.getWeekday(date) >= 6;
 }

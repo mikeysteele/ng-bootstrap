@@ -19,29 +19,29 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {NgbCalendar} from './ngb-calendar';
-import {NgbDate} from './ngb-date';
-import {NgbDatepickerService} from './datepicker-service';
-import {NgbDatepickerKeyMapService} from './datepicker-keymap-service';
+import {NgfCalendar} from './ngb-calendar';
+import {NgfDate} from './ngb-date';
+import {NgfDatepickerService} from './datepicker-service';
+import {NgfDatepickerKeyMapService} from './datepicker-keymap-service';
 import {DatepickerViewModel, NavigationEvent} from './datepicker-view-model';
 import {DayTemplateContext} from './datepicker-day-template-context';
-import {NgbDatepickerConfig} from './datepicker-config';
-import {NgbDateAdapter} from './adapters/ngb-date-adapter';
-import {NgbDateStruct} from './ngb-date-struct';
-import {NgbDatepickerI18n} from './datepicker-i18n';
+import {NgfDatepickerConfig} from './datepicker-config';
+import {NgfDateAdapter} from './adapters/ngb-date-adapter';
+import {NgfDateStruct} from './ngb-date-struct';
+import {NgfDatepickerI18n} from './datepicker-i18n';
 import {isChangedDate} from './datepicker-tools';
 import {hasClassName} from '../util/util';
 
 const NGB_DATEPICKER_VALUE_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => NgbDatepicker),
+  useExisting: forwardRef(() => NgfDatepicker),
   multi: true
 };
 
 /**
  * An event emitted right before the navigation happens and the month displayed by the datepicker changes.
  */
-export interface NgbDatepickerNavigateEvent {
+export interface NgfDatepickerNavigateEvent {
   /**
    * The currently displayed month.
    */
@@ -63,17 +63,17 @@ export interface NgbDatepickerNavigateEvent {
 /**
  * A highly configurable component that helps you with selecting calendar dates.
  *
- * `NgbDatepicker` is meant to be displayed inline on a page or put inside a popup.
+ * `NgfDatepicker` is meant to be displayed inline on a page or put inside a popup.
  */
 @Component({
-  exportAs: 'ngbDatepicker',
-  selector: 'ngb-datepicker',
+  exportAs: 'ngfDatepicker',
+  selector: 'ngf-datepicker',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./datepicker.scss'],
   template: `
     <ng-template #dt let-date="date" let-currentMonth="currentMonth" let-selected="selected" let-disabled="disabled" let-focused="focused">
-      <div ngbDatepickerDayView
+      <div ngfDatepickerDayView
         [date]="date"
         [currentMonth]="currentMonth"
         [selected]="selected"
@@ -83,7 +83,7 @@ export interface NgbDatepickerNavigateEvent {
     </ng-template>
 
     <div class="ngb-dp-header bg-light">
-      <ngb-datepicker-navigation *ngIf="navigation !== 'none'"
+      <ngf-datepicker-navigation *ngIf="navigation !== 'none'"
         [date]="model.firstDate"
         [months]="model.months"
         [disabled]="model.disabled"
@@ -93,7 +93,7 @@ export interface NgbDatepickerNavigateEvent {
         [selectBoxes]="model.selectBoxes"
         (navigate)="onNavigateEvent($event)"
         (select)="onNavigateDateSelect($event)">
-      </ngb-datepicker-navigation>
+      </ngf-datepicker-navigation>
     </div>
 
     <div #months class="ngb-dp-months" (keydown)="onKeyDown($event)">
@@ -103,27 +103,27 @@ export interface NgbDatepickerNavigateEvent {
                 class="ngb-dp-month-name bg-light">
             {{ i18n.getMonthFullName(month.number, month.year) }} {{ i18n.getYearNumerals(month.year) }}
           </div>
-          <ngb-datepicker-month-view
+          <ngf-datepicker-month-view
             [month]="month"
             [dayTemplate]="dayTemplate || dt"
             [showWeekdays]="showWeekdays"
             [showWeekNumbers]="showWeekNumbers"
             (select)="onDateSelect($event)">
-          </ngb-datepicker-month-view>
+          </ngf-datepicker-month-view>
         </div>
       </ng-template>
     </div>
 
     <ng-template [ngTemplateOutlet]="footerTemplate"></ng-template>
   `,
-  providers: [NGB_DATEPICKER_VALUE_ACCESSOR, NgbDatepickerService, NgbDatepickerKeyMapService]
+  providers: [NGB_DATEPICKER_VALUE_ACCESSOR, NgfDatepickerService, NgfDatepickerKeyMapService]
 })
-export class NgbDatepicker implements OnDestroy,
+export class NgfDatepicker implements OnDestroy,
     OnChanges, OnInit, ControlValueAccessor {
   model: DatepickerViewModel;
 
   @ViewChild('months') private _monthsEl: ElementRef<HTMLElement>;
-  private _controlValue: NgbDate;
+  private _controlValue: NgfDate;
   private _destroyed$ = new Subject<void>();
 
   /**
@@ -143,7 +143,7 @@ export class NgbDatepicker implements OnDestroy,
    *
    * @since 3.3.0
    */
-  @Input() dayTemplateData: (date: NgbDate, current: {year: number, month: number}) => any;
+  @Input() dayTemplateData: (date: NgfDate, current: {year: number, month: number}) => any;
 
   /**
    * The number of months to display.
@@ -171,21 +171,21 @@ export class NgbDatepicker implements OnDestroy,
    *
    * `current` is the month that is currently displayed by the datepicker.
    */
-  @Input() markDisabled: (date: NgbDate, current: {year: number, month: number}) => boolean;
+  @Input() markDisabled: (date: NgfDate, current: {year: number, month: number}) => boolean;
 
   /**
    * The latest date that can be displayed or selected.
    *
    * If not provided, 'year' select box will display 10 years after the current month.
    */
-  @Input() maxDate: NgbDateStruct;
+  @Input() maxDate: NgfDateStruct;
 
   /**
    * The earliest date that can be displayed or selected.
    *
    * If not provided, 'year' select box will display 10 years before the current month.
    */
-  @Input() minDate: NgbDateStruct;
+  @Input() minDate: NgfDateStruct;
 
   /**
    * Navigation type.
@@ -230,25 +230,25 @@ export class NgbDatepicker implements OnDestroy,
   /**
    * An event emitted right before the navigation happens and displayed month changes.
    *
-   * See [`NgbDatepickerNavigateEvent`](#/components/datepicker/api#NgbDatepickerNavigateEvent) for the payload info.
+   * See [`NgfDatepickerNavigateEvent`](#/components/datepicker/api#NgfDatepickerNavigateEvent) for the payload info.
    */
-  @Output() navigate = new EventEmitter<NgbDatepickerNavigateEvent>();
+  @Output() navigate = new EventEmitter<NgfDatepickerNavigateEvent>();
 
   /**
    * An event emitted when user selects a date using keyboard or mouse.
    *
-   * The payload of the event is currently selected `NgbDate`.
+   * The payload of the event is currently selected `NgfDate`.
    */
-  @Output() select = new EventEmitter<NgbDate>();
+  @Output() select = new EventEmitter<NgfDate>();
 
   onChange = (_: any) => {};
   onTouched = () => {};
 
   constructor(
-      private _keyMapService: NgbDatepickerKeyMapService, public _service: NgbDatepickerService,
-      private _calendar: NgbCalendar, public i18n: NgbDatepickerI18n, config: NgbDatepickerConfig,
+      private _keyMapService: NgfDatepickerKeyMapService, public _service: NgfDatepickerService,
+      private _calendar: NgfCalendar, public i18n: NgfDatepickerI18n, config: NgfDatepickerConfig,
       private _cd: ChangeDetectorRef, private _elementRef: ElementRef<HTMLElement>,
-      private _ngbDateAdapter: NgbDateAdapter<any>, private _ngZone: NgZone) {
+      private _ngfDateAdapter: NgfDateAdapter<any>, private _ngZone: NgZone) {
     ['dayTemplate', 'dayTemplateData', 'displayMonths', 'firstDayOfWeek', 'footerTemplate', 'markDisabled', 'minDate',
      'maxDate', 'navigation', 'outsideDays', 'showWeekdays', 'showWeekNumbers', 'startDate']
         .forEach(input => this[input] = config[input]);
@@ -285,7 +285,7 @@ export class NgbDatepicker implements OnDestroy,
       if (isChangedDate(newSelectedDate, this._controlValue)) {
         this._controlValue = newSelectedDate;
         this.onTouched();
-        this.onChange(this._ngbDateAdapter.toModel(newSelectedDate));
+        this.onChange(this._ngfDateAdapter.toModel(newSelectedDate));
       }
 
       // handling focus change
@@ -316,7 +316,7 @@ export class NgbDatepicker implements OnDestroy,
    * Use the `[startDate]` input as an alternative.
    */
   navigateTo(date?: {year: number, month: number, day?: number}) {
-    this._service.open(NgbDate.from(date ? date.day ? date as NgbDateStruct : {...date, day: 1} : null));
+    this._service.open(NgfDate.from(date ? date.day ? date as NgfDateStruct : {...date, day: 1} : null));
   }
 
   ngAfterContentInit() {
@@ -358,14 +358,14 @@ export class NgbDatepicker implements OnDestroy,
     }
   }
 
-  onDateSelect(date: NgbDate) {
+  onDateSelect(date: NgfDate) {
     this._service.focus(date);
     this._service.select(date, {emitEvent: true});
   }
 
   onKeyDown(event: KeyboardEvent) { this._keyMapService.processKey(event); }
 
-  onNavigateDateSelect(date: NgbDate) { this._service.open(date); }
+  onNavigateDateSelect(date: NgfDate) { this._service.open(date); }
 
   onNavigateEvent(event: NavigationEvent) {
     switch (event) {
@@ -385,7 +385,7 @@ export class NgbDatepicker implements OnDestroy,
   setDisabledState(isDisabled: boolean) { this._service.disabled = isDisabled; }
 
   writeValue(value) {
-    this._controlValue = NgbDate.from(this._ngbDateAdapter.fromModel(value));
+    this._controlValue = NgfDate.from(this._ngfDateAdapter.fromModel(value));
     this._service.select(this._controlValue);
   }
 }

@@ -1,4 +1,4 @@
-# NG Bootstrap - Angular powered Bootstrap widgets
+# NG Foundation - Angular powered Foundation widgets
 
 [![npm version](https://badge.fury.io/js/%40ng-bootstrap%2Fng-bootstrap.svg)](https://badge.fury.io/js/%40ng-bootstrap%2Fng-bootstrap)
 [![Build Status](https://travis-ci.org/ng-bootstrap/ng-bootstrap.svg?branch=master)](https://travis-ci.org/ng-bootstrap/ng-bootstrap)
@@ -6,7 +6,7 @@
 [![devDependency Status](https://david-dm.org/ng-bootstrap/ng-bootstrap/dev-status.svg?branch=master)](https://david-dm.org/ng-bootstrap/ng-bootstrap#info=devDependencies)
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/pkozlowski.svg)](https://saucelabs.com/u/pkozlowski)
 
-[Angular](https://angular.io/) widgets built from the ground up using only [Bootstrap 4](https://getbootstrap.com/) CSS with APIs designed for the Angular ecosystem.
+[Angular](https://angular.io/) widgets built from the ground up using only [Foundation 4](https://getbootstrap.com/) CSS with APIs designed for the Angular ecosystem.
 No dependencies on 3rd party JavaScript.
 
 Please check our [demo site](https://ng-bootstrap.github.io) and the list of
@@ -30,10 +30,10 @@ Please check all components we have in action at https://ng-bootstrap.github.io
 
 ## Dependencies
 
-The only two dependencies are [Angular](https://angular.io) and [Bootstrap 4](https://getbootstrap.com) CSS. 
+The only two dependencies are [Angular](https://angular.io) and [Foundation 4](https://getbootstrap.com) CSS. 
 Here is the list of minimal required versions:
 
-| ng-bootstrap | Angular | Bootstrap CSS |
+| ng-bootstrap | Angular | Foundation CSS |
 | ------------ | ------- | ------------- |
 | 1.x.x        | 5.0.2   | 4.0.0         |
 | 2.x.x        | 6.0.0   | 4.0.0         |
@@ -45,7 +45,7 @@ Here is the list of minimal required versions:
 
 You need to have an Angular project with the supported Angular version. We strongly recommend using [Angular CLI](https://cli.angular.io) for this.
 
-You also need to add Bootstrap 4 CSS to your application by using your preferred way (it really depends on the setup you're using). Ex. for Angular CLI you can [get Bootstrap from npm](https://www.npmjs.com/package/bootstrap) and update your `angular.json` with something like:
+You also need to add Foundation 4 CSS to your application by using your preferred way (it really depends on the setup you're using). Ex. for Angular CLI you can [get Foundation from npm](https://www.npmjs.com/package/bootstrap) and update your `angular.json` with something like:
 
 ```json
 "styles": [
@@ -90,7 +90,7 @@ export class YourAppModule {
 
 ## Supported browsers
 
-We support the same browsers and versions supported by both Bootstrap 4 and Angular, whichever is _more_ restrictive. See [Angular browser support](https://angular.io/guide/browser-support) and [Bootstrap browser support](https://getbootstrap.com/docs/4.0/getting-started/browsers-devices/#supported-browsers) for more details, but on the high-level it should be something like:  
+We support the same browsers and versions supported by both Foundation 4 and Angular, whichever is _more_ restrictive. See [Angular browser support](https://angular.io/guide/browser-support) and [Foundation browser support](https://getbootstrap.com/docs/4.0/getting-started/browsers-devices/#supported-browsers) for more details, but on the high-level it should be something like:  
 
 * Chrome (45+)
 * Firefox (40+)

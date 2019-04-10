@@ -1,9 +1,9 @@
-import {NgbTimeStructAdapter} from './ngb-time-adapter';
+import {NgfTimeStructAdapter} from './ngf-time-adapter';
 
-describe('ngb-time model adapter', () => {
-  let adapter: NgbTimeStructAdapter;
+describe('ngf-time model adapter', () => {
+  let adapter: NgfTimeStructAdapter;
 
-  beforeEach(() => { adapter = new NgbTimeStructAdapter(); });
+  beforeEach(() => { adapter = new NgfTimeStructAdapter(); });
 
   describe('fromModel', () => {
 

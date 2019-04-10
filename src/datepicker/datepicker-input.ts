@@ -25,24 +25,24 @@ import {ngbAutoClose} from '../util/autoclose';
 import {ngbFocusTrap} from '../util/focus-trap';
 import {PlacementArray, positionElements} from '../util/positioning';
 
-import {NgbDateAdapter} from './adapters/ngb-date-adapter';
-import {NgbDatepicker, NgbDatepickerNavigateEvent} from './datepicker';
+import {NgfDateAdapter} from './adapters/ngb-date-adapter';
+import {NgfDatepicker, NgfDatepickerNavigateEvent} from './datepicker';
 import {DayTemplateContext} from './datepicker-day-template-context';
-import {NgbDatepickerService} from './datepicker-service';
-import {NgbCalendar} from './ngb-calendar';
-import {NgbDate} from './ngb-date';
-import {NgbDateParserFormatter} from './ngb-date-parser-formatter';
-import {NgbDateStruct} from './ngb-date-struct';
+import {NgfDatepickerService} from './datepicker-service';
+import {NgfCalendar} from './ngb-calendar';
+import {NgfDate} from './ngb-date';
+import {NgfDateParserFormatter} from './ngb-date-parser-formatter';
+import {NgfDateStruct} from './ngb-date-struct';
 
 const NGB_DATEPICKER_VALUE_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => NgbInputDatepicker),
+  useExisting: forwardRef(() => NgfInputDatepicker),
   multi: true
 };
 
 const NGB_DATEPICKER_VALIDATOR = {
   provide: NG_VALIDATORS,
-  useExisting: forwardRef(() => NgbInputDatepicker),
+  useExisting: forwardRef(() => NgfInputDatepicker),
   multi: true
 };
 
@@ -52,22 +52,22 @@ const NGB_DATEPICKER_VALIDATOR = {
  * Manages interaction with the input field itself, does value formatting and provides forms integration.
  */
 @Directive({
-  selector: 'input[ngbDatepicker]',
-  exportAs: 'ngbDatepicker',
+  selector: 'input[ngfDatepicker]',
+  exportAs: 'ngfDatepicker',
   host: {
     '(input)': 'manualDateChange($event.target.value)',
     '(change)': 'manualDateChange($event.target.value, true)',
     '(blur)': 'onBlur()',
     '[disabled]': 'disabled'
   },
-  providers: [NGB_DATEPICKER_VALUE_ACCESSOR, NGB_DATEPICKER_VALIDATOR, NgbDatepickerService]
+  providers: [NGB_DATEPICKER_VALUE_ACCESSOR, NGB_DATEPICKER_VALIDATOR, NgfDatepickerService]
 })
-export class NgbInputDatepicker implements OnChanges,
+export class NgfInputDatepicker implements OnChanges,
     OnDestroy, ControlValueAccessor, Validator {
   private _closed$ = new Subject();
-  private _cRef: ComponentRef<NgbDatepicker> = null;
+  private _cRef: ComponentRef<NgfDatepicker> = null;
   private _disabled = false;
-  private _model: NgbDate;
+  private _model: NgfDate;
   private _inputValue: string;
   private _zoneSubscription: any;
 
@@ -100,7 +100,7 @@ export class NgbInputDatepicker implements OnChanges,
    *
    * @since 3.3.0
    */
-  @Input() dayTemplateData: (date: NgbDate, current: {year: number, month: number}) => any;
+  @Input() dayTemplateData: (date: NgfDate, current: {year: number, month: number}) => any;
 
   /**
    * The number of months to display.
@@ -128,21 +128,21 @@ export class NgbInputDatepicker implements OnChanges,
    *
    * `current` is the month that is currently displayed by the datepicker.
    */
-  @Input() markDisabled: (date: NgbDate, current: {year: number, month: number}) => boolean;
+  @Input() markDisabled: (date: NgfDate, current: {year: number, month: number}) => boolean;
 
   /**
    * The earliest date that can be displayed or selected. Also used for form validation.
    *
    * If not provided, 'year' select box will display 10 years before the current month.
    */
-  @Input() minDate: NgbDateStruct;
+  @Input() minDate: NgfDateStruct;
 
   /**
    * The latest date that can be displayed or selected. Also used for form validation.
    *
    * If not provided, 'year' select box will display 10 years after the current month.
    */
-  @Input() maxDate: NgbDateStruct;
+  @Input() maxDate: NgfDateStruct;
 
   /**
    * Navigation type.
@@ -207,18 +207,18 @@ export class NgbInputDatepicker implements OnChanges,
   /**
    * An event emitted when user selects a date using keyboard or mouse.
    *
-   * The payload of the event is currently selected `NgbDate`.
+   * The payload of the event is currently selected `NgfDate`.
    *
    * @since 1.1.1
    */
-  @Output() dateSelect = new EventEmitter<NgbDate>();
+  @Output() dateSelect = new EventEmitter<NgfDate>();
 
   /**
    * Event emitted right after the navigation happens and displayed month changes.
    *
-   * See [`NgbDatepickerNavigateEvent`](#/components/datepicker/api#NgbDatepickerNavigateEvent) for the payload info.
+   * See [`NgfDatepickerNavigateEvent`](#/components/datepicker/api#NgfDatepickerNavigateEvent) for the payload info.
    */
-  @Output() navigate = new EventEmitter<NgbDatepickerNavigateEvent>();
+  @Output() navigate = new EventEmitter<NgfDatepickerNavigateEvent>();
 
   @Input()
   get disabled() {
@@ -238,10 +238,10 @@ export class NgbInputDatepicker implements OnChanges,
 
 
   constructor(
-      private _parserFormatter: NgbDateParserFormatter, private _elRef: ElementRef<HTMLInputElement>,
+      private _parserFormatter: NgfDateParserFormatter, private _elRef: ElementRef<HTMLInputElement>,
       private _vcRef: ViewContainerRef, private _renderer: Renderer2, private _cfr: ComponentFactoryResolver,
-      private _ngZone: NgZone, private _service: NgbDatepickerService, private _calendar: NgbCalendar,
-      private _dateAdapter: NgbDateAdapter<any>, @Inject(DOCUMENT) private _document: any,
+      private _ngZone: NgZone, private _service: NgfDatepickerService, private _calendar: NgfCalendar,
+      private _dateAdapter: NgfDateAdapter<any>, @Inject(DOCUMENT) private _document: any,
       private _changeDetector: ChangeDetectorRef) {
     this._zoneSubscription = _ngZone.onStable.subscribe(() => {
       if (this._cRef) {
@@ -266,18 +266,18 @@ export class NgbInputDatepicker implements OnChanges,
       return null;
     }
 
-    const ngbDate = this._fromDateStruct(this._dateAdapter.fromModel(value));
+    const ngfDate = this._fromDateStruct(this._dateAdapter.fromModel(value));
 
-    if (!this._calendar.isValid(ngbDate)) {
-      return {'ngbDate': {invalid: c.value}};
+    if (!this._calendar.isValid(ngfDate)) {
+      return {'ngfDate': {invalid: c.value}};
     }
 
-    if (this.minDate && ngbDate.before(NgbDate.from(this.minDate))) {
-      return {'ngbDate': {requiredBefore: this.minDate}};
+    if (this.minDate && ngfDate.before(NgfDate.from(this.minDate))) {
+      return {'ngfDate': {requiredBefore: this.minDate}};
     }
 
-    if (this.maxDate && ngbDate.after(NgbDate.from(this.maxDate))) {
-      return {'ngbDate': {requiredAfter: this.maxDate}};
+    if (this.maxDate && ngfDate.after(NgfDate.from(this.maxDate))) {
+      return {'ngfDate': {requiredAfter: this.maxDate}};
     }
   }
 
@@ -309,7 +309,7 @@ export class NgbInputDatepicker implements OnChanges,
    */
   open() {
     if (!this.isOpen()) {
-      const cf = this._cfr.resolveComponentFactory(NgbDatepicker);
+      const cf = this._cfr.resolveComponentFactory(NgfDatepicker);
       this._cRef = this._vcRef.createComponent(cf);
 
       this._applyPopupStyling(this._cRef.location.nativeElement);
@@ -393,7 +393,7 @@ export class NgbInputDatepicker implements OnChanges,
     this._zoneSubscription.unsubscribe();
   }
 
-  private _applyDatepickerInputs(datepickerInstance: NgbDatepicker): void {
+  private _applyDatepickerInputs(datepickerInstance: NgfDatepicker): void {
     ['dayTemplate', 'dayTemplateData', 'displayMonths', 'firstDayOfWeek', 'footerTemplate', 'markDisabled', 'minDate',
      'maxDate', 'navigation', 'outsideDays', 'showNavigation', 'showWeekdays', 'showWeekNumbers']
         .forEach((optionName: string) => {
@@ -410,7 +410,7 @@ export class NgbInputDatepicker implements OnChanges,
     this._renderer.addClass(nativeElement, 'show');
   }
 
-  private _subscribeForDatepickerOutputs(datepickerInstance: NgbDatepicker) {
+  private _subscribeForDatepickerOutputs(datepickerInstance: NgfDatepicker) {
     datepickerInstance.navigate.subscribe(navigateEvent => this.navigate.emit(navigateEvent));
     datepickerInstance.select.subscribe(date => {
       this.dateSelect.emit(date);
@@ -420,7 +420,7 @@ export class NgbInputDatepicker implements OnChanges,
     });
   }
 
-  private _writeModelValue(model: NgbDate) {
+  private _writeModelValue(model: NgfDate) {
     const value = this._parserFormatter.format(model);
     this._inputValue = value;
     this._renderer.setProperty(this._elRef.nativeElement, 'value', value);
@@ -430,8 +430,8 @@ export class NgbInputDatepicker implements OnChanges,
     }
   }
 
-  private _fromDateStruct(date: NgbDateStruct): NgbDate {
-    const ngbDate = date ? new NgbDate(date.year, date.month, date.day) : null;
-    return this._calendar.isValid(ngbDate) ? ngbDate : null;
+  private _fromDateStruct(date: NgfDateStruct): NgfDate {
+    const ngfDate = date ? new NgfDate(date.year, date.month, date.day) : null;
+    return this._calendar.isValid(ngfDate) ? ngfDate : null;
   }
 }

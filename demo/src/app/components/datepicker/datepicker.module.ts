@@ -10,7 +10,7 @@ import {
   NgbdDatepickerCalendarsComponent
 } from './calendars/datepicker-calendars.component';
 import { NgbdDatepickerAdapter } from './demos/adapter/datepicker-adapter';
-import { NgbdDatepickerAdapterModule } from './demos/adapter/datepicker-adpater.module';
+import { NgbdDatepickerAdapterModule } from './demos/adapter/datepicker-adapter.module';
 import { NgbdDatepickerBasic } from './demos/basic/datepicker-basic';
 import { NgbdDatepickerBasicModule } from './demos/basic/datepicker-basic.module';
 import { NgbdDatepickerConfig } from './demos/config/datepicker-config';

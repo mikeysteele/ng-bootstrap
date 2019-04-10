@@ -1,5 +1,8 @@
 // styles in src/style directory are applied to the whole page
 
+@import '~foundation-sites/scss/foundation';
+@include foundation-everything($prototype: true);
+
 header.navbar {
   background: linear-gradient(135deg, #0143a3, #0273d4);
 }
@@ -44,9 +47,7 @@ header.navbar {
 }
 
 header.title {
-  margin-left: -15px;
-  margin-right: -15px;
-  position: relative;
+
 
   .content-tabs {
     position: absolute;
@@ -366,25 +367,25 @@ span.token.tag {
 }
 
 // Right-To-Left layout for the Islamic Calendars
-ngb-datepicker.rtl {
+ngf-datepicker.rtl {
   direction: rtl;
 }
 
-ngb-datepicker.rtl ngb-datepicker-navigation-select select.custom-select {
+ngf-datepicker.rtl ngf-datepicker-navigation-select select.custom-select {
   background-position: left 0.25rem center;
 }
 
-ngb-datepicker.rtl .ngb-dp-arrow.right .ngb-dp-navigation-chevron {
+ngf-datepicker.rtl .ngb-dp-arrow.right .ngb-dp-navigation-chevron {
   transform: rotate(-135deg);
   margin: 0 0 0 0.25rem;
 }
 
-ngb-datepicker.rtl .ngb-dp-navigation-chevron {
+ngf-datepicker.rtl .ngb-dp-navigation-chevron {
   transform: rotate(45deg);
   margin: 0 0.25rem 0 0;
 }
 
-ngb-datepicker.hebrew {
+ngf-datepicker.hebrew {
 
   .ngb-dp-day {
     width: 2.75rem;

@@ -3,9 +3,9 @@
   In Israel it is used for religious purposes and frequently as an official calendar for civil purposes.
 </p>
 
-<ngb-datepicker class="hebrew rtl" #dp [(ngModel)]="model" [displayMonths]="1" [firstDayOfWeek]="7" [dayTemplate]="dt"
+<ngf-datepicker class="hebrew rtl" #dp [(ngModel)]="model" [displayMonths]="1" [firstDayOfWeek]="7" [dayTemplate]="dt"
 [dayTemplateData]="dayTemplateData">
-</ngb-datepicker>
+</ngf-datepicker>
 
 <ng-template #dt let-date let-data="data" let-selected="selected" let-currentMonth="currentMonth">
   <div class="hebrew-day" [class.outside]="date.month !== currentMonth" [class.selected]="selected">
@@ -16,8 +16,8 @@
 
 <hr/>
 
-<button class="button btn-sm btn-outline-primary mr-2" (click)="selectToday()">Select Today</button>
-<button class="button btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo()">To current month</button>
+<button class="button small hollow primary margin-right-1" (click)="selectToday()">Select Today</button>
+<button class="button small hollow primary margin-right-1" (click)="dp.navigateTo()">To current month</button>
 
 <hr/>
 

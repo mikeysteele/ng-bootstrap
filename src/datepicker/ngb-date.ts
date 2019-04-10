@@ -1,22 +1,22 @@
-import {NgbDateStruct} from './ngb-date-struct';
+import {NgfDateStruct} from './ngb-date-struct';
 import {isInteger} from '../util/util';
 
 /**
  * A simple class that represents a date that datepicker also uses internally.
  *
- * It is the implementation of the `NgbDateStruct` interface that adds some convenience methods,
+ * It is the implementation of the `NgfDateStruct` interface that adds some convenience methods,
  * like `.equals()`, `.before()`, etc.
  *
- * All datepicker APIs consume `NgbDateStruct`, but return `NgbDate`.
+ * All datepicker APIs consume `NgfDateStruct`, but return `NgfDate`.
  *
  * In many cases it is simpler to manipulate these objects together with
- * [`NgbCalendar`](#/components/datepicker/api#NgbCalendar) than native JS Dates.
+ * [`NgfCalendar`](#/components/datepicker/api#NgfCalendar) than native JS Dates.
  *
  * See the [date format overview](#/components/datepicker/overview#date-model) for more details.
  *
  * @since 3.0.0
  */
-export class NgbDate implements NgbDateStruct {
+export class NgfDate implements NgfDateStruct {
   /**
    * The year, for example 2016
    */
@@ -33,17 +33,17 @@ export class NgbDate implements NgbDateStruct {
   day: number;
 
   /**
-   * A **static method** that creates a new date object from the `NgbDateStruct`,
+   * A **static method** that creates a new date object from the `NgfDateStruct`,
    *
-   * ex. `NgbDate.from({year: 2000, month: 5, day: 1})`.
+   * ex. `NgfDate.from({year: 2000, month: 5, day: 1})`.
    *
-   * If the `date` is already of `NgbDate` type, the method will return the same object.
+   * If the `date` is already of `NgfDate` type, the method will return the same object.
    */
-  static from(date: NgbDateStruct): NgbDate {
-    if (date instanceof NgbDate) {
+  static from(date: NgfDateStruct): NgfDate {
+    if (date instanceof NgfDate) {
       return date;
     }
-    return date ? new NgbDate(date.year, date.month, date.day) : null;
+    return date ? new NgfDate(date.year, date.month, date.day) : null;
   }
 
   constructor(year: number, month: number, day: number) {
@@ -55,14 +55,14 @@ export class NgbDate implements NgbDateStruct {
   /**
    * Checks if the current date is equal to another date.
    */
-  equals(other: NgbDateStruct): boolean {
+  equals(other: NgfDateStruct): boolean {
     return other && this.year === other.year && this.month === other.month && this.day === other.day;
   }
 
   /**
    * Checks if the current date is before another date.
    */
-  before(other: NgbDateStruct): boolean {
+  before(other: NgfDateStruct): boolean {
     if (!other) {
       return false;
     }
@@ -81,7 +81,7 @@ export class NgbDate implements NgbDateStruct {
   /**
    * Checks if the current date is after another date.
    */
-  after(other: NgbDateStruct): boolean {
+  after(other: NgfDateStruct): boolean {
     if (!other) {
       return false;
     }

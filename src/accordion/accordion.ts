@@ -122,7 +122,7 @@ export class NgfPanel implements AfterContentChecked {
   /**
    * Type of the current panel.
    *
-   * Bootstrap provides styles for the following types: `'success'`, `'info'`, `'warning'`, `'danger'`, `'primary'`,
+   * Foundation provides styles for the following types: `'success'`, `'info'`, `'warning'`, `'danger'`, `'primary'`,
    * `'secondary'`, `'light'` and `'dark'`.
    */
   @Input() type: string;
@@ -233,7 +233,7 @@ export class NgfAccordion implements AfterContentChecked {
   /**
    * Type of panels.
    *
-   * Bootstrap provides styles for the following types: `'success'`, `'info'`, `'warning'`, `'danger'`, `'primary'`,
+   * Foundation provides styles for the following types: `'success'`, `'info'`, `'warning'`, `'danger'`, `'primary'`,
    * `'secondary'`, `'light'` and `'dark'`.
    */
   @Input() type: string;

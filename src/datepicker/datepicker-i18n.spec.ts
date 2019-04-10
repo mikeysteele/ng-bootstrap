@@ -1,14 +1,14 @@
-import {NgbDatepickerI18nDefault} from './datepicker-i18n';
+import {NgfDatepickerI18nDefault} from './datepicker-i18n';
 import {TestBed} from '@angular/core/testing';
-import {NgbDate} from './ngb-date';
+import {NgfDate} from './ngb-date';
 
-describe('ngb-datepicker-i18n-default', () => {
+describe('ngf-datepicker-i18n-default', () => {
 
-  let i18n: NgbDatepickerI18nDefault;
+  let i18n: NgfDatepickerI18nDefault;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({providers: [NgbDatepickerI18nDefault]});
-    i18n = TestBed.get(NgbDatepickerI18nDefault);
+    TestBed.configureTestingModule({providers: [NgfDatepickerI18nDefault]});
+    i18n = TestBed.get(NgfDatepickerI18nDefault);
   });
 
   it('should return abbreviated month name', () => {
@@ -33,7 +33,7 @@ describe('ngb-datepicker-i18n-default', () => {
   });
 
   it('should generate aria label for a date',
-     () => { expect(i18n.getDayAriaLabel(new NgbDate(2010, 10, 8))).toBe('Friday, October 8, 2010'); });
+     () => { expect(i18n.getDayAriaLabel(new NgfDate(2010, 10, 8))).toBe('Friday, October 8, 2010'); });
 
   it('should generate week number numerals', () => {
     expect(i18n.getWeekNumerals(1)).toBe('1');
@@ -41,8 +41,8 @@ describe('ngb-datepicker-i18n-default', () => {
   });
 
   it('should generate day numerals', () => {
-    expect(i18n.getDayNumerals(new NgbDate(2010, 10, 1))).toBe('1');
-    expect(i18n.getDayNumerals(new NgbDate(2010, 10, 31))).toBe('31');
+    expect(i18n.getDayNumerals(new NgfDate(2010, 10, 1))).toBe('1');
+    expect(i18n.getDayNumerals(new NgfDate(2010, 10, 31))).toBe('31');
   });
 
   it('should generate year numerals', () => {

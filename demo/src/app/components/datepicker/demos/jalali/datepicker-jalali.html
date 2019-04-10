@@ -3,13 +3,13 @@
   Variants of it are still in use in Iran and Afghanistan
 </p>
 
-<ngb-datepicker #dp [(ngModel)]="model" [firstDayOfWeek]="6"></ngb-datepicker>
+<ngf-datepicker #dp [(ngModel)]="model" [firstDayOfWeek]="6"></ngf-datepicker>
 
 <hr/>
 
-<button class="button btn-sm btn-outline-primary mr-2" (click)="selectToday()">Select Today</button>
-<button class="button btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo()">To current month</button>
-<button class="button btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo({year: 1396, month: 4})">To Tir. 1396</button>
+<button class="button small hollow primary margin-right-1" (click)="selectToday()">Select Today</button>
+<button class="button small hollow primary margin-right-1" (click)="dp.navigateTo()">To current month</button>
+<button class="button small hollow primary margin-right-1" (click)="dp.navigateTo({year: 1396, month: 4})">To Tir. 1396</button>
 
 <hr/>
 

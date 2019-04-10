@@ -1,24 +1,24 @@
 import {ChangeDetectorRef, Directive, ElementRef, forwardRef, Input, OnDestroy, Renderer2} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
-import {NgbButtonLabel} from './label';
+import {NgfButtonLabel} from './label';
 
 const NGB_RADIO_VALUE_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => NgbRadioGroup),
+  useExisting: forwardRef(() => NgfRadioGroup),
   multi: true
 };
 
 let nextId = 0;
 
 /**
- * Allows to easily create Bootstrap-style radio buttons.
+ * Allows to easily create Foundation-style radio buttons.
  *
  * Integrates with forms, so the value of a checked button is bound to the underlying form control
  * either in a reactive or template-driven way.
  */
-@Directive({selector: '[ngbRadioGroup]', host: {'role': 'radiogroup'}, providers: [NGB_RADIO_VALUE_ACCESSOR]})
-export class NgbRadioGroup implements ControlValueAccessor {
+@Directive({selector: '[ngfRadioGroup]', host: {'role': 'radiogroup'}, providers: [NGB_RADIO_VALUE_ACCESSOR]})
+export class NgfRadioGroup implements ControlValueAccessor {
   private _radios: Set<NgbRadio> = new Set<NgbRadio>();
   private _value = null;
   private _disabled: boolean;
@@ -71,10 +71,10 @@ export class NgbRadioGroup implements ControlValueAccessor {
 
 /**
  * A directive that marks an input of type "radio" as a part of the
- * [`NgbRadioGroup`](#/components/buttons/api#NgbRadioGroup).
+ * [`NgfRadioGroup`](#/components/buttons/api#NgfRadioGroup).
  */
 @Directive({
-  selector: '[ngbButton][type=radio]',
+  selector: '[ngfButton][type=radio]',
   host: {
     '[checked]': 'checked',
     '[disabled]': 'disabled',
@@ -135,7 +135,7 @@ export class NgbRadio implements OnDestroy {
   get nameAttr() { return this.name || this._group.name; }
 
   constructor(
-      private _group: NgbRadioGroup, private _label: NgbButtonLabel, private _renderer: Renderer2,
+      private _group: NgfRadioGroup, private _label: NgfButtonLabel, private _renderer: Renderer2,
       private _element: ElementRef<HTMLInputElement>, private _cd: ChangeDetectorRef) {
     this._group.register(this);
     this.updateDisabled();

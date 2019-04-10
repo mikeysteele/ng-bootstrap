@@ -44,7 +44,7 @@ export class NgfProgressbar {
   /**
    * The type of the progress bar.
    *
-   * Currently Bootstrap supports `"success"`, `"info"`, `"warning"` or `"danger"`.
+   * Currently Foundation supports `"success"`, `"info"`, `"warning"` or `"danger"`.
    */
   @Input() type: string;
 

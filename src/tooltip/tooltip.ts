@@ -17,7 +17,8 @@ import {
   ComponentFactoryResolver,
   NgZone,
   ViewEncapsulation,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  HostBinding
 } from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 
@@ -48,6 +49,8 @@ export class NgbTooltipWindow {
  */
 @Directive({selector: '[ngbTooltip]', exportAs: 'ngbTooltip'})
 export class NgbTooltip implements OnInit, OnDestroy {
+  @HostBinding('class')
+  elementClass = 'has-tip';
   /**
    * Indicates whether the tooltip should be closed on `Escape` key and inside/outside clicks:
    *

@@ -3,11 +3,11 @@ import {createGenericTestComponent, isBrowser} from '../test/common';
 
 import {Component} from '@angular/core';
 
-import {NgbDatepickerModule} from './datepicker.module';
-import {NgbDatepickerMonthView} from './datepicker-month-view';
+import {NgfDatepickerModule} from './datepicker.module';
+import {NgfDatepickerMonthView} from './datepicker-month-view';
 import {MonthViewModel} from './datepicker-view-model';
-import {NgbDate} from './ngb-date';
-import {NgbDatepickerDayView} from './datepicker-day-view';
+import {NgfDate} from './ngb-date';
+import {NgfDatepickerDayView} from './datepicker-day-view';
 
 const createTestComponent = (html: string) =>
     createGenericTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
@@ -39,16 +39,16 @@ function expectDates(element: HTMLElement, dates: string[]) {
   expect(result).toEqual(dates);
 }
 
-describe('ngb-datepicker-month-view', () => {
+describe('ngf-datepicker-month-view', () => {
 
   beforeEach(() => {
-    TestBed.overrideModule(NgbDatepickerModule, {set: {exports: [NgbDatepickerMonthView, NgbDatepickerDayView]}});
-    TestBed.configureTestingModule({declarations: [TestComponent], imports: [NgbDatepickerModule]});
+    TestBed.overrideModule(NgfDatepickerModule, {set: {exports: [NgfDatepickerMonthView, NgfDatepickerDayView]}});
+    TestBed.configureTestingModule({declarations: [TestComponent], imports: [NgfDatepickerModule]});
   });
 
   it('should show/hide weekdays', () => {
     const fixture = createTestComponent(
-        '<ngb-datepicker-month-view [month]="month" [showWeekdays]="showWeekdays"></ngb-datepicker-month-view>');
+        '<ngf-datepicker-month-view [month]="month" [showWeekdays]="showWeekdays"></ngf-datepicker-month-view>');
 
     expectWeekdays(fixture.nativeElement, ['Mo', 'Tu']);
 
@@ -59,7 +59,7 @@ describe('ngb-datepicker-month-view', () => {
 
   it('should show/hide week numbers', () => {
     const fixture = createTestComponent(
-        '<ngb-datepicker-month-view [month]="month" [showWeekNumbers]="showWeekNumbers"></ngb-datepicker-month-view>');
+        '<ngf-datepicker-month-view [month]="month" [showWeekNumbers]="showWeekNumbers"></ngf-datepicker-month-view>');
 
     expectWeekNumbers(fixture.nativeElement, ['1', '2', '3']);
 
@@ -71,7 +71,7 @@ describe('ngb-datepicker-month-view', () => {
   it('should use custom template to display dates', () => {
     const fixture = createTestComponent(`
         <ng-template #tpl let-date="date">{{ date.day }}</ng-template>
-        <ngb-datepicker-month-view [month]="month" [dayTemplate]="tpl"></ngb-datepicker-month-view>
+        <ngf-datepicker-month-view [month]="month" [dayTemplate]="tpl"></ngf-datepicker-month-view>
       `);
     expectDates(fixture.nativeElement, ['', '1', '2', '3', '4', '']);
   });
@@ -79,7 +79,7 @@ describe('ngb-datepicker-month-view', () => {
   it('should use "date" as an implicit value for the template', () => {
     const fixture = createTestComponent(`
         <ng-template #tpl let-d>{{ d.day }}</ng-template>
-        <ngb-datepicker-month-view [month]="month" [dayTemplate]="tpl"></ngb-datepicker-month-view>
+        <ngf-datepicker-month-view [month]="month" [dayTemplate]="tpl"></ngf-datepicker-month-view>
       `);
     expectDates(fixture.nativeElement, ['', '1', '2', '3', '4', '']);
   });
@@ -87,7 +87,7 @@ describe('ngb-datepicker-month-view', () => {
   it('should send date selection events', () => {
     const fixture = createTestComponent(`
         <ng-template #tpl let-date="date">{{ date.day }}</ng-template>
-        <ngb-datepicker-month-view [month]="month" [dayTemplate]="tpl" (select)="onClick($event)"></ngb-datepicker-month-view>
+        <ngf-datepicker-month-view [month]="month" [dayTemplate]="tpl" (select)="onClick($event)"></ngf-datepicker-month-view>
       `);
 
     spyOn(fixture.componentInstance, 'onClick');
@@ -95,13 +95,13 @@ describe('ngb-datepicker-month-view', () => {
     const dates = getDates(fixture.nativeElement);
     dates[1].click();
 
-    expect(fixture.componentInstance.onClick).toHaveBeenCalledWith(new NgbDate(2016, 8, 1));
+    expect(fixture.componentInstance.onClick).toHaveBeenCalledWith(new NgfDate(2016, 8, 1));
   });
 
   it('should not send date selection events for hidden and disabled dates', () => {
     const fixture = createTestComponent(`
         <ng-template #tpl let-date="date">{{ date.day }}</ng-template>
-        <ngb-datepicker-month-view [month]="month" [dayTemplate]="tpl" (select)="onClick($event)"></ngb-datepicker-month-view>
+        <ngf-datepicker-month-view [month]="month" [dayTemplate]="tpl" (select)="onClick($event)"></ngf-datepicker-month-view>
       `);
 
     spyOn(fixture.componentInstance, 'onClick');
@@ -116,7 +116,7 @@ describe('ngb-datepicker-month-view', () => {
   it('should set cursor to pointer or default', () => {
     const fixture = createTestComponent(`
       <ng-template #tpl let-date="date">{{ date.day }}</ng-template>
-      <ngb-datepicker-month-view [month]="month" [dayTemplate]="tpl" (change)="onClick($event)"></ngb-datepicker-month-view>
+      <ngf-datepicker-month-view [month]="month" [dayTemplate]="tpl" (change)="onClick($event)"></ngf-datepicker-month-view>
     `);
 
     const dates = getDates(fixture.nativeElement);
@@ -131,7 +131,7 @@ describe('ngb-datepicker-month-view', () => {
   it('should apply correct CSS classes to days', () => {
     const fixture = createTestComponent(`
         <ng-template #tpl let-date="date">{{ date.day }}</ng-template>
-        <ngb-datepicker-month-view [month]="month" [dayTemplate]="tpl"></ngb-datepicker-month-view>
+        <ngf-datepicker-month-view [month]="month" [dayTemplate]="tpl"></ngf-datepicker-month-view>
     `);
 
     let dates = getDates(fixture.nativeElement);
@@ -152,8 +152,8 @@ describe('ngb-datepicker-month-view', () => {
   it('should not display collapsed weeks', () => {
     const fixture = createTestComponent(`
         <ng-template #tpl let-date="date">{{ date.day }}</ng-template>
-        <ngb-datepicker-month-view [month]="month" [dayTemplate]="tpl">
-        </ngb-datepicker-month-view>
+        <ngf-datepicker-month-view [month]="month" [dayTemplate]="tpl">
+        </ngf-datepicker-month-view>
     `);
 
     expectDates(fixture.nativeElement, ['', '1', '2', '3', '4', '']);
@@ -162,7 +162,7 @@ describe('ngb-datepicker-month-view', () => {
   it('should add correct aria-label attribute', () => {
     const fixture = createTestComponent(`
         <ng-template #tpl let-date="date">{{ date.day }}</ng-template>
-        <ngb-datepicker-month-view [month]="month" [dayTemplate]="tpl"></ngb-datepicker-month-view>
+        <ngf-datepicker-month-view [month]="month" [dayTemplate]="tpl"></ngf-datepicker-month-view>
     `);
 
     let dates = getDates(fixture.nativeElement);
@@ -173,8 +173,8 @@ describe('ngb-datepicker-month-view', () => {
 @Component({selector: 'test-cmp', template: ''})
 class TestComponent {
   month: MonthViewModel = {
-    firstDate: new NgbDate(2016, 8, 1),
-    lastDate: new NgbDate(2016, 8, 31),
+    firstDate: new NgfDate(2016, 8, 1),
+    lastDate: new NgfDate(2016, 8, 31),
     year: 2016,
     number: 8,
     weekdays: [1, 2],
@@ -184,11 +184,11 @@ class TestComponent {
         number: 1,
         days: [
           {
-            date: new NgbDate(2016, 7, 4),
+            date: new NgfDate(2016, 7, 4),
             context: {
               currentMonth: 8,
-              $implicit: new NgbDate(2016, 7, 4),
-              date: new NgbDate(2016, 7, 4),
+              $implicit: new NgfDate(2016, 7, 4),
+              date: new NgfDate(2016, 7, 4),
               disabled: false,
               focused: false,
               selected: false,
@@ -199,11 +199,11 @@ class TestComponent {
             hidden: true
           },
           {
-            date: new NgbDate(2016, 8, 1),
+            date: new NgfDate(2016, 8, 1),
             context: {
               currentMonth: 8,
-              $implicit: new NgbDate(2016, 8, 1),
-              date: new NgbDate(2016, 8, 1),
+              $implicit: new NgfDate(2016, 8, 1),
+              date: new NgfDate(2016, 8, 1),
               disabled: false,
               focused: false,
               selected: false,
@@ -221,11 +221,11 @@ class TestComponent {
         number: 2,
         days: [
           {
-            date: new NgbDate(2016, 8, 2),
+            date: new NgfDate(2016, 8, 2),
             context: {
               currentMonth: 8,
-              $implicit: new NgbDate(2016, 8, 2),
-              date: new NgbDate(2016, 8, 2),
+              $implicit: new NgfDate(2016, 8, 2),
+              date: new NgfDate(2016, 8, 2),
               disabled: true,
               focused: false,
               selected: false,
@@ -236,11 +236,11 @@ class TestComponent {
             hidden: false
           },
           {
-            date: new NgbDate(2016, 8, 3),
+            date: new NgfDate(2016, 8, 3),
             context: {
               currentMonth: 8,
-              $implicit: new NgbDate(2016, 8, 3),
-              date: new NgbDate(2016, 8, 3),
+              $implicit: new NgfDate(2016, 8, 3),
+              date: new NgfDate(2016, 8, 3),
               disabled: false,
               focused: false,
               selected: false,
@@ -258,11 +258,11 @@ class TestComponent {
         number: 3,
         days: [
           {
-            date: new NgbDate(2016, 8, 4),
+            date: new NgfDate(2016, 8, 4),
             context: {
               currentMonth: 8,
-              $implicit: new NgbDate(2016, 8, 4),
-              date: new NgbDate(2016, 8, 4),
+              $implicit: new NgfDate(2016, 8, 4),
+              date: new NgfDate(2016, 8, 4),
               disabled: false,
               focused: false,
               selected: false,
@@ -273,11 +273,11 @@ class TestComponent {
             hidden: false
           },
           {
-            date: new NgbDate(2016, 9, 1),
+            date: new NgfDate(2016, 9, 1),
             context: {
               currentMonth: 8,
-              $implicit: new NgbDate(2016, 9, 1),
-              date: new NgbDate(2016, 9, 1),
+              $implicit: new NgfDate(2016, 9, 1),
+              date: new NgfDate(2016, 9, 1),
               disabled: false,
               focused: false,
               selected: false,
@@ -295,11 +295,11 @@ class TestComponent {
         number: 4,
         days: [
           {
-            date: new NgbDate(2016, 9, 2),
+            date: new NgfDate(2016, 9, 2),
             context: {
               currentMonth: 8,
-              $implicit: new NgbDate(2016, 9, 2),
-              date: new NgbDate(2016, 9, 2),
+              $implicit: new NgfDate(2016, 9, 2),
+              date: new NgfDate(2016, 9, 2),
               disabled: false,
               focused: false,
               selected: false,
@@ -310,11 +310,11 @@ class TestComponent {
             hidden: true
           },
           {
-            date: new NgbDate(2016, 9, 3),
+            date: new NgfDate(2016, 9, 3),
             context: {
               currentMonth: 8,
-              $implicit: new NgbDate(2016, 9, 3),
-              date: new NgbDate(2016, 9, 3),
+              $implicit: new NgfDate(2016, 9, 3),
+              date: new NgfDate(2016, 9, 3),
               disabled: false,
               focused: false,
               selected: false,

@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
 import {
-  NgbCalendar,
-  NgbCalendarHebrew, NgbDate,
-  NgbDatepickerI18n,
-  NgbDatepickerI18nHebrew,
-  NgbDateStruct
+  NgfCalendar,
+  NgfCalendarHebrew, NgfDate,
+  NgfDatepickerI18n,
+  NgfDatepickerI18nHebrew,
+  NgfDateStruct
 } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -35,21 +35,21 @@ import {
     }
   `],
   providers: [
-    {provide: NgbCalendar, useClass: NgbCalendarHebrew},
-    {provide: NgbDatepickerI18n, useClass: NgbDatepickerI18nHebrew}
+    {provide: NgfCalendar, useClass: NgfCalendarHebrew},
+    {provide: NgfDatepickerI18n, useClass: NgfDatepickerI18nHebrew}
   ]
 })
 export class NgbdDatepickerHebrew {
 
-  model: NgbDateStruct;
+  model: NgfDateStruct;
 
-  constructor(private calendar: NgbCalendar, public i18n: NgbDatepickerI18n) {
+  constructor(private calendar: NgfCalendar, public i18n: NgfDatepickerI18n) {
     this.dayTemplateData = this.dayTemplateData.bind(this);
   }
 
-  dayTemplateData(date: NgbDate) {
+  dayTemplateData(date: NgfDate) {
     return {
-      gregorian: (this.calendar as NgbCalendarHebrew).toGregorian(date)
+      gregorian: (this.calendar as NgfCalendarHebrew).toGregorian(date)
     };
   }
 

@@ -2,10 +2,10 @@ import {NgModule, ModuleWithProviders} from '@angular/core';
 
 import {NgfAccordionModule} from './accordion/accordion.module';
 import {NgfCalloutModule} from './callout/callout.module';
-import {NgbButtonsModule} from './buttons/buttons.module';
+import {NgfButtonsModule} from './buttons/buttons.module';
 import {NgbCarouselModule} from './carousel/carousel.module';
-import {NgbCollapseModule} from './collapse/collapse.module';
-import {NgbDatepickerModule} from './datepicker/datepicker.module';
+import {NgfCollapseModule} from './collapse/collapse.module';
+import {NgfDatepickerModule} from './datepicker/datepicker.module';
 import {NgfDropdownModule} from './dropdown/dropdown.module';
 import {NgfModalModule} from './modal/modal.module';
 import {NgfPaginationModule} from './pagination/pagination.module';
@@ -13,7 +13,7 @@ import {NgbPopoverModule} from './popover/popover.module';
 import {NgfProgressbarModule} from './progressbar/progressbar.module';
 import {NgbRatingModule} from './rating/rating.module';
 import {NgfTabsModule} from './tabs/tabs.module';
-import {NgbTimepickerModule} from './timepicker/timepicker.module';
+import {NgfTimepickerModule} from './timepicker/timepicker.module';
 import {NgbTooltipModule} from './tooltip/tooltip.module';
 import {NgbTypeaheadModule} from './typeahead/typeahead.module';
 
@@ -30,29 +30,29 @@ export {
   NgfPanelToggle
 } from './accordion/accordion.module';
 export {NgfCalloutModule, NgfCalloutConfig, NgfCallout} from './callout/callout.module';
-export {NgbButtonsModule, NgbButtonLabel, NgbCheckBox, NgbRadio, NgbRadioGroup} from './buttons/buttons.module';
+export {NgfButtonsModule, NgfButtonLabel, NgfCheckbox, NgbRadio, NgfRadioGroup} from './buttons/buttons.module';
 export {NgbCarouselModule, NgbCarouselConfig, NgbCarousel, NgbSlide} from './carousel/carousel.module';
-export {NgbCollapseModule, NgbCollapse} from './collapse/collapse.module';
+export {NgfCollapseModule, NgfCollapse} from './collapse/collapse.module';
 export {
-  NgbCalendar,
-  NgbPeriod,
-  NgbCalendarGregorian,
-  NgbCalendarIslamicCivil,
-  NgbCalendarIslamicUmalqura,
-  NgbCalendarHebrew,
-  NgbCalendarPersian,
-  NgbDatepickerModule,
-  NgbDatepickerI18n,
-  NgbDatepickerI18nHebrew,
-  NgbDatepickerConfig,
-  NgbDateStruct,
-  NgbDate,
-  NgbDateParserFormatter,
-  NgbDateAdapter,
-  NgbDateNativeAdapter,
-  NgbDateNativeUTCAdapter,
-  NgbDatepicker,
-  NgbInputDatepicker
+  NgfCalendar,
+  NgfPeriod,
+  NgfCalendarGregorian,
+  NgfCalendarIslamicCivil,
+  NgfCalendarIslamicUmalqura,
+  NgfCalendarHebrew,
+  NgfCalendarPersian,
+  NgfDatepickerModule,
+  NgfDatepickerI18n,
+  NgfDatepickerI18nHebrew,
+  NgfDatepickerConfig,
+  NgfDateStruct,
+  NgfDate,
+  NgfDateParserFormatter,
+  NgfDateAdapter,
+  NgfDateNativeAdapter,
+  NgfDateNativeUTCAdapter,
+  NgfDatepicker,
+  NgfInputDatepicker
 } from './datepicker/datepicker.module';
 export {
   NgfDropdownModule,
@@ -88,19 +88,19 @@ export {NgfProgressbarModule, NgfProgressbarConfig, NgfProgressbar} from './prog
 export {NgbRatingModule, NgbRatingConfig, NgbRating} from './rating/rating.module';
 export {
   NgfTabsModule,
-  NgbTabChangeEvent,
+  NgfTabChangeEvent,
   NgfTabsConfig,
   NgfTabs,
   NgfTab,
-  NgbTabContent,
-  NgbTabTitle
+  NgfTabContent,
+  NgfTabTitle
 } from './tabs/tabs.module';
 export {
-  NgbTimepickerModule,
-  NgbTimepickerConfig,
-  NgbTimeStruct,
-  NgbTimepicker,
-  NgbTimeAdapter
+  NgfTimepickerModule,
+  NgfTimepickerConfig,
+  NgfTimeStruct,
+  NgfTimepicker,
+  NgfTimeAdapter
 } from './timepicker/timepicker.module';
 export {NgbTooltipModule, NgbTooltipConfig, NgbTooltip} from './tooltip/tooltip.module';
 export {
@@ -114,9 +114,9 @@ export {
 export {Placement} from './util/positioning';
 
 const NGF_MODULES = [
-  NgfAccordionModule, NgfCalloutModule, NgbButtonsModule, NgbCarouselModule, NgbCollapseModule, NgbDatepickerModule,
+  NgfAccordionModule, NgfCalloutModule, NgfButtonsModule, NgbCarouselModule, NgfCollapseModule, NgfDatepickerModule,
   NgfDropdownModule, NgfModalModule, NgfPaginationModule, NgbPopoverModule, NgfProgressbarModule, NgbRatingModule,
-  NgfTabsModule, NgbTimepickerModule, NgbTooltipModule, NgbTypeaheadModule
+  NgfTabsModule, NgfTimepickerModule, NgbTooltipModule, NgbTypeaheadModule
 ];
 
 @NgModule({imports: NGF_MODULES, exports: NGF_MODULES})

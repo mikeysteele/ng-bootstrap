@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'buttons-component',
   template: `
     <h5>Radio</h5>
-    <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="radio">
+    <div class="button-group button-group-toggle" ngfRadioGroup name="radioBasic" [(ngModel)]="radio">
       <label ngbButtonLabel class="btn-primary">
         <input ngbButton type="radio" [value]="1"> Left (pre-checked)
       </label>
@@ -17,7 +17,7 @@ import { Component } from '@angular/core';
     </div>
 
     <h5 class="mt-3">Checkbox</h5>
-    <div class="btn-group btn-group-toggle">
+    <div class="button-group button-group-toggle">
       <label class="btn-primary" ngbButtonLabel>
         <input type="checkbox" ngbButton [(ngModel)]="checkbox.left"> Left (pre-checked)
       </label>

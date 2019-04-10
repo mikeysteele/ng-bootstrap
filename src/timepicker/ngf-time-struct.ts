@@ -1,7 +1,7 @@
 /**
  * An interface for the time model used by the timepicker.
  */
-export interface NgbTimeStruct {
+export interface NgfTimeStruct {
   /**
    * The hour in the `[0, 23]` range.
    */

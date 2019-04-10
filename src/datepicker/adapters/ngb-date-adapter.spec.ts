@@ -1,9 +1,9 @@
-import {NgbDateStructAdapter} from './ngb-date-adapter';
+import {NgfDateStructAdapter} from './ngb-date-adapter';
 
 describe('ngb-date model adapter', () => {
-  let adapter: NgbDateStructAdapter;
+  let adapter: NgfDateStructAdapter;
 
-  beforeEach(() => { adapter = new NgbDateStructAdapter(); });
+  beforeEach(() => { adapter = new NgfDateStructAdapter(); });
 
   describe('fromModel', () => {
 

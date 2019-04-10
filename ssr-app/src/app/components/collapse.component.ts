@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'collapse-component',
   template: `
-    <div [ngbCollapse]="isCollapsed">
+    <div [ngfCollapse]="isCollapsed">
       <div class="card">
         <div class="card-body">This is not collapsed</div>
       </div>

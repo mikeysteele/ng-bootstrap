@@ -1,26 +1,26 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component} from '@angular/core';
-import {NgbDatepickerModule, NgbDateStruct} from './datepicker.module';
-import {NgbCalendar, NgbCalendarGregorian} from './ngb-calendar';
-import {NgbDate} from './ngb-date';
+import {NgfDatepickerModule, NgfDateStruct} from './datepicker.module';
+import {NgfCalendar, NgfCalendarGregorian} from './ngb-calendar';
+import {NgfDate} from './ngb-date';
 import {getMonthSelect, getYearSelect} from '../test/datepicker/common';
-import {NgbDatepickerI18n, NgbDatepickerI18nDefault} from './datepicker-i18n';
+import {NgfDatepickerI18n, NgfDatepickerI18nDefault} from './datepicker-i18n';
 
-describe('ngb-datepicker integration', () => {
+describe('ngf-datepicker integration', () => {
 
   beforeEach(
-      () => { TestBed.configureTestingModule({declarations: [TestComponent], imports: [NgbDatepickerModule]}); });
+      () => { TestBed.configureTestingModule({declarations: [TestComponent], imports: [NgfDatepickerModule]}); });
 
   it('should allow overriding datepicker calendar', () => {
 
-    class FixedTodayCalendar extends NgbCalendarGregorian {
-      getToday() { return new NgbDate(2000, 7, 1); }
+    class FixedTodayCalendar extends NgfCalendarGregorian {
+      getToday() { return new NgfDate(2000, 7, 1); }
     }
 
     TestBed.overrideComponent(TestComponent, {
       set: {
-        template: `<ngb-datepicker></ngb-datepicker>`,
-        providers: [{provide: NgbCalendar, useClass: FixedTodayCalendar}]
+        template: `<ngf-datepicker></ngf-datepicker>`,
+        providers: [{provide: NgfCalendar, useClass: FixedTodayCalendar}]
       }
     });
     const fixture = TestBed.createComponent(TestComponent);
@@ -34,7 +34,7 @@ describe('ngb-datepicker integration', () => {
 
     const ALPHABET = 'ABCDEFGHIJKLMNOPRSTQUVWXYZ';
 
-    class CustomI18n extends NgbDatepickerI18nDefault {
+    class CustomI18n extends NgfDatepickerI18nDefault {
       // alphabetic months: Jan -> A, Feb -> B, etc
       getMonthShortName(month: number) { return ALPHABET[month - 1]; }
 
@@ -42,7 +42,7 @@ describe('ngb-datepicker integration', () => {
       getMonthFullName(month: number) { return ALPHABET[month - 1]; }
 
       // alphabetic days: 1 -> A, 2 -> B, etc
-      getDayNumerals(date: NgbDateStruct) { return ALPHABET[date.day - 1]; }
+      getDayNumerals(date: NgfDateStruct) { return ALPHABET[date.day - 1]; }
 
       // alphabetic week numbers: 1 -> A, 2 -> B, etc
       getWeekNumerals(week: number) { return ALPHABET[week - 1]; }
@@ -57,13 +57,13 @@ describe('ngb-datepicker integration', () => {
       TestBed.overrideComponent(TestComponent, {
         set: {
           template: `
-            <ngb-datepicker [startDate]="{year: 2018, month: 1}"
+            <ngf-datepicker [startDate]="{year: 2018, month: 1}"
                             [minDate]="{year: 2017, month: 1, day: 1}"
                             [maxDate]="{year: 2019, month: 12, day: 31}"
                             [showWeekNumbers]="true"
                             [displayMonths]="2"
-            ></ngb-datepicker>`,
-          providers: [{provide: NgbDatepickerI18n, useClass: CustomI18n}]
+            ></ngf-datepicker>`,
+          providers: [{provide: NgfDatepickerI18n, useClass: CustomI18n}]
         }
       });
 

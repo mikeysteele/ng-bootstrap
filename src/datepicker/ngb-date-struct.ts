@@ -1,11 +1,11 @@
 /**
  * An interface of the date model used by the datepicker.
  *
- * All datepicker APIs consume `NgbDateStruct`, but return `NgbDate`.
+ * All datepicker APIs consume `NgfDateStruct`, but return `NgfDate`.
  *
  * See the [date format overview](#/components/datepicker/overview#date-model) for more details.
  */
-export interface NgbDateStruct {
+export interface NgfDateStruct {
   /**
    * The year, for example 2016
    */

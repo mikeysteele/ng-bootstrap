@@ -1,18 +1,18 @@
 import {padNumber, toInteger, isNumber} from '../util/util';
-import {NgbDateStruct} from './ngb-date-struct';
+import {NgfDateStruct} from './ngb-date-struct';
 import {Injectable} from '@angular/core';
 
 export function NGB_DATEPICKER_PARSER_FORMATTER_FACTORY() {
-  return new NgbDateISOParserFormatter();
+  return new NgfDateISOParserFormatter();
 }
 
 /**
  * An abstract service for parsing and formatting dates for the
- * [`NgbInputDatepicker`](#/components/datepicker/api#NgbInputDatepicker) directive.
- * Converts between the internal `NgbDateStruct` model presentation and a `string` that is displayed in the
+ * [`NgfInputDatepicker`](#/components/datepicker/api#NgfInputDatepicker) directive.
+ * Converts between the internal `NgfDateStruct` model presentation and a `string` that is displayed in the
  * input element.
  *
- * When user types something in the input this service attempts to parse it into a `NgbDateStruct` object.
+ * When user types something in the input this service attempts to parse it into a `NgfDateStruct` object.
  * And vice versa, when users selects a date in the calendar with the mouse, it must be displayed as a `string`
  * in the input.
  *
@@ -22,27 +22,27 @@ export function NGB_DATEPICKER_PARSER_FORMATTER_FACTORY() {
  * See the [date format overview](#/components/datepicker/overview#date-model) for more details.
  */
 @Injectable({providedIn: 'root', useFactory: NGB_DATEPICKER_PARSER_FORMATTER_FACTORY})
-export abstract class NgbDateParserFormatter {
+export abstract class NgfDateParserFormatter {
   /**
-   * Parses the given `string` to an `NgbDateStruct`.
+   * Parses the given `string` to an `NgfDateStruct`.
    *
    * Implementations should try their best to provide a result, even
    * partial. They must return `null` if the value can't be parsed.
    */
-  abstract parse(value: string): NgbDateStruct;
+  abstract parse(value: string): NgfDateStruct;
 
   /**
-   * Formats the given `NgbDateStruct` to a `string`.
+   * Formats the given `NgfDateStruct` to a `string`.
    *
    * Implementations should return an empty string if the given date is `null`,
    * and try their best to provide a partial result if the given date is incomplete or invalid.
    */
-  abstract format(date: NgbDateStruct): string;
+  abstract format(date: NgfDateStruct): string;
 }
 
 @Injectable()
-export class NgbDateISOParserFormatter extends NgbDateParserFormatter {
-  parse(value: string): NgbDateStruct {
+export class NgfDateISOParserFormatter extends NgfDateParserFormatter {
+  parse(value: string): NgfDateStruct {
     if (value) {
       const dateParts = value.trim().split('-');
       if (dateParts.length === 1 && isNumber(dateParts[0])) {
@@ -56,7 +56,7 @@ export class NgbDateISOParserFormatter extends NgbDateParserFormatter {
     return null;
   }
 
-  format(date: NgbDateStruct): string {
+  format(date: NgfDateStruct): string {
     return date ?
         `${date.year}-${isNumber(date.month) ? padNumber(date.month) : ''}-${isNumber(date.day) ? padNumber(date.day) : ''}` :
         '';

@@ -20,7 +20,7 @@ function createKeyDownEvent(key: number) {
 }
 
 function getAriaState(compiled) {
-  const stars = getStars(compiled, '.sr-only');
+  const stars = getStars(compiled, '.show-for-sr');
   return stars.map(star => star.textContent === '(*)');
 }
 
@@ -28,12 +28,12 @@ function getStar(compiled, num: number) {
   return getStars(compiled)[num - 1];
 }
 
-function getStars(element, selector = 'span:not(.sr-only)') {
+function getStars(element, selector = 'span:not(.show-for-sr)') {
   return <HTMLElement[]>Array.from(element.querySelectorAll(selector));
 }
 
 function getDbgStar(element, num: number) {
-  return element.queryAll(By.css('span:not(.sr-only)'))[num - 1];
+  return element.queryAll(By.css('span:not(.show-for-sr)'))[num - 1];
 }
 
 function getState(element: DebugElement | HTMLElement) {
@@ -395,7 +395,7 @@ describe('ngb-rating', () => {
       const fixture = createTestComponent('<ngb-rating max="5"></ngb-rating>');
 
       const compiled = fixture.nativeElement;
-      const hiddenStars = getStars(compiled, '.sr-only');
+      const hiddenStars = getStars(compiled, '.show-for-sr');
 
       expect(hiddenStars.length).toBe(5);
     });

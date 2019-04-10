@@ -1,5 +1,5 @@
-import {NgbDate} from '../ngb-date';
-import {fromJSDate, NgbCalendar, NgbPeriod, toJSDate} from '../ngb-calendar';
+import {NgfDate} from '../ngb-date';
+import {fromJSDate, NgfCalendar, NgfPeriod, toJSDate} from '../ngb-calendar';
 import {Injectable} from '@angular/core';
 import {isNumber} from '../../util/util';
 import {
@@ -16,7 +16,7 @@ import {
  * @since 3.2.0
  */
 @Injectable()
-export class NgbCalendarHebrew extends NgbCalendar {
+export class NgfCalendarHebrew extends NgfCalendar {
   getDaysPerWeek() { return 7; }
 
   getMonths(year?: number) {
@@ -29,15 +29,15 @@ export class NgbCalendarHebrew extends NgbCalendar {
 
   getWeeksPerMonth() { return 6; }
 
-  isValid(date: NgbDate): boolean {
+  isValid(date: NgfDate): boolean {
     let b = date && isNumber(date.year) && isNumber(date.month) && isNumber(date.day);
     b = b && date.month > 0 && date.month <= (isHebrewLeapYear(date.year) ? 13 : 12);
     b = b && date.day > 0 && date.day <= getDaysInHebrewMonth(date.month, date.year);
     return b && !isNaN(toGregorian(date).getTime());
   }
 
-  getNext(date: NgbDate, period: NgbPeriod = 'd', number = 1) {
-    date = new NgbDate(date.year, date.month, date.day);
+  getNext(date: NgfDate, period: NgfPeriod = 'd', number = 1) {
+    date = new NgfDate(date.year, date.month, date.day);
 
     switch (period) {
       case 'y':
@@ -56,28 +56,28 @@ export class NgbCalendarHebrew extends NgbCalendar {
     }
   }
 
-  getPrev(date: NgbDate, period: NgbPeriod = 'd', number = 1) { return this.getNext(date, period, -number); }
+  getPrev(date: NgfDate, period: NgfPeriod = 'd', number = 1) { return this.getNext(date, period, -number); }
 
-  getWeekday(date: NgbDate) {
+  getWeekday(date: NgfDate) {
     const day = toGregorian(date).getDay();
     // in JS Date Sun=0, in ISO 8601 Sun=7
     return day === 0 ? 7 : day;
   }
 
-  getWeekNumber(week: NgbDate[], firstDayOfWeek: number) {
+  getWeekNumber(week: NgfDate[], firstDayOfWeek: number) {
     const date = week[week.length - 1];
     return Math.ceil(getDayNumberInHebrewYear(date) / 7);
   }
 
-  getToday(): NgbDate { return fromGregorian(new Date()); }
+  getToday(): NgfDate { return fromGregorian(new Date()); }
 
   /**
    * @since 3.4.0
    */
-  toGregorian(date: NgbDate): NgbDate { return fromJSDate(toGregorian(date)); }
+  toGregorian(date: NgfDate): NgfDate { return fromJSDate(toGregorian(date)); }
 
   /**
    * @since 3.4.0
    */
-  fromGregorian(date: NgbDate): NgbDate { return fromGregorian(toJSDate(date)); }
+  fromGregorian(date: NgfDate): NgfDate { return fromGregorian(toJSDate(date)); }
 }

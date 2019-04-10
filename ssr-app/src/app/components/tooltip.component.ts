@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'tooltip-component',
   template: `
-    <button type="button" class="btn btn-outline-secondary" ngbTooltip="Tooltip">
+    <button type="button" class="btn hollow secondary" ngbTooltip="Tooltip">
       Hover me
     </button>
   `

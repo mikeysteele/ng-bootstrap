@@ -7,7 +7,7 @@
 
     <div class="input-group">
       <div ngfDropdown class="d-inline-block mr-1" [container]="container">
-        <button class="btn btn-outline-secondary" id="dropdown" ngfDropdownToggle>Choose and option</button>
+        <button class="btn hollow secondary" id="dropdown" ngfDropdownToggle>Choose and option</button>
         <div ngfDropdownMenu aria-labelledby="dropdown">
           <button ngfDropdownItem id="item-1">One</button>
           <hr>
@@ -21,8 +21,8 @@
 
     <input type="text" class="form-control mr-3" style="width: 100px" placeholder="after" id="after" />
 
-    <button type="button" class="btn btn-outline-secondary mr-1" id="container-inline" (click)="container = undefined">Append inline</button>
-    <button type="button" class="btn btn-outline-secondary mr-1" id="container-body" (click)="container = 'body'">Append to body</button>
+    <button type="button" class="btn hollow secondary mr-1" id="container-inline" (click)="container = undefined">Append inline</button>
+    <button type="button" class="btn hollow secondary mr-1" id="container-body" (click)="container = 'body'">Append to body</button>
 
     <span class="ml-3">container is {{ container ? container : 'inline' }}</span>
 

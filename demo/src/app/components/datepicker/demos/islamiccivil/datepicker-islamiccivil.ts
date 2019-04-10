@@ -1,6 +1,6 @@
 import {Component, Injectable} from '@angular/core';
 import {
-  NgbDateStruct, NgbCalendar, NgbCalendarIslamicCivil, NgbDatepickerI18n
+  NgfDateStruct, NgfCalendar, NgfCalendarIslamicCivil, NgfDatepickerI18n
 } from '@ng-bootstrap/ng-bootstrap';
 
 const WEEKDAYS = ['ن', 'ث', 'ر', 'خ', 'ج', 'س', 'ح'];
@@ -8,7 +8,7 @@ const MONTHS = ['محرم', 'صفر', 'ربيع الأول', 'ربيع الآخ�
   'ذو القعدة', 'ذو الحجة'];
 
 @Injectable()
-export class IslamicI18n extends NgbDatepickerI18n {
+export class IslamicI18n extends NgfDatepickerI18n {
 
   getWeekdayShortName(weekday: number) {
     return WEEKDAYS[weekday - 1];
@@ -22,7 +22,7 @@ export class IslamicI18n extends NgbDatepickerI18n {
     return MONTHS[month - 1];
   }
 
-  getDayAriaLabel(date: NgbDateStruct): string {
+  getDayAriaLabel(date: NgfDateStruct): string {
     return `${date.day}-${date.month}-${date.year}`;
   }
 }
@@ -31,15 +31,15 @@ export class IslamicI18n extends NgbDatepickerI18n {
   selector: 'ngbd-datepicker-islamiccivil',
   templateUrl: './datepicker-islamiccivil.html',
   providers: [
-    {provide: NgbCalendar, useClass: NgbCalendarIslamicCivil},
-    {provide: NgbDatepickerI18n, useClass: IslamicI18n}
+    {provide: NgfCalendar, useClass: NgfCalendarIslamicCivil},
+    {provide: NgfDatepickerI18n, useClass: IslamicI18n}
   ]
 })
 export class NgbdDatepickerIslamiccivil {
 
-  model: NgbDateStruct;
+  model: NgfDateStruct;
 
-  constructor(private calendar: NgbCalendar) {}
+  constructor(private calendar: NgfCalendar) {}
 
   selectToday() {
     this.model = this.calendar.getToday();

@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {NgbCalendar, NgbDate, NgbDateNativeAdapter} from '@ng-bootstrap/ng-bootstrap';
+import {NgfCalendar, NgfDate, NgfDateNativeAdapter} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'ngbd-datepicker-demo-overview',
@@ -27,7 +27,7 @@ import {NgbCalendar, NgbDate, NgbDateNativeAdapter} from '@ng-bootstrap/ng-boots
       </span>
     </ng-template>
 
-    <ngb-datepicker
+    <ngf-datepicker
       (select)="onDateSelection($event)"
       [dayTemplate]="dayTemplate"
       [markDisabled]="markDisabled"
@@ -35,7 +35,7 @@ import {NgbCalendar, NgbDate, NgbDateNativeAdapter} from '@ng-bootstrap/ng-boots
       [minDate]="today"
       outsideDays="hidden"
       [displayMonths]="2">
-    </ngb-datepicker>
+    </ngf-datepicker>
   `,
   styles: [`
     .custom-day {
@@ -66,17 +66,17 @@ import {NgbCalendar, NgbDate, NgbDateNativeAdapter} from '@ng-bootstrap/ng-boots
       background-color: rgba(2, 117, 216, 0.5);
     }
   `],
-  providers: [NgbDateNativeAdapter]
+  providers: [NgfDateNativeAdapter]
 })
 
 export class NgbdDatepickerOverviewDemoComponent {
 
-  today: NgbDate;
+  today: NgfDate;
 
-  hoveredDate: NgbDate;
+  hoveredDate: NgfDate;
 
-  fromDate: NgbDate;
-  toDate: NgbDate;
+  fromDate: NgfDate;
+  toDate: NgfDate;
 
   holidays: {month, day, text}[] = [
     {month: 1, day: 1, text: 'New Years Day'},
@@ -90,23 +90,23 @@ export class NgbdDatepickerOverviewDemoComponent {
     {month: 12, day: 25, text: 'Christmas Day'}
   ];
 
-  constructor(private calendar: NgbCalendar, public adapter: NgbDateNativeAdapter) {
+  constructor(private calendar: NgfCalendar, public adapter: NgfDateNativeAdapter) {
     this.markDisabled = this.markDisabled.bind(this);
     this.today = calendar.getToday();
     this.fromDate = this.getFirstAvailableDate(this.today);
     this.toDate = this.getFirstAvailableDate(calendar.getNext(this.today, 'd', 15));
   }
 
-  isHoliday(date: NgbDate): string {
+  isHoliday(date: NgfDate): string {
     const holiday = this.holidays.find(h => h.day === date.day && h.month === date.month);
     return holiday ? holiday.text : '';
   }
 
-  markDisabled(date: NgbDate, current: {month: number}) {
+  markDisabled(date: NgfDate, current: {month: number}) {
     return this.isHoliday(date) || (this.isWeekend(date) && date.month === current.month);
   }
 
-  onDateSelection(date: NgbDate) {
+  onDateSelection(date: NgfDate) {
     if (!this.fromDate && !this.toDate) {
       this.fromDate = date;
     } else if (this.fromDate && !this.toDate && (date.after(this.fromDate) || date.equals(this.fromDate))) {
@@ -117,7 +117,7 @@ export class NgbdDatepickerOverviewDemoComponent {
     }
   }
 
-  getTooltip(date: NgbDate) {
+  getTooltip(date: NgfDate) {
     const holidayTooltip = this.isHoliday(date);
 
     if (holidayTooltip) {
@@ -129,26 +129,26 @@ export class NgbdDatepickerOverviewDemoComponent {
     }
   }
 
-  getFirstAvailableDate(date): NgbDate {
+  getFirstAvailableDate(date): NgfDate {
     while (this.isWeekend(date) || this.isHoliday(date)) {
       date = this.calendar.getNext(date, 'd', 1);
     }
     return date;
   }
 
-  isWeekend(date: NgbDate) {
+  isWeekend(date: NgfDate) {
     return this.calendar.getWeekday(date) >= 6;
   }
 
-  isRange(date: NgbDate) {
+  isRange(date: NgfDate) {
     return date.equals(this.fromDate) || date.equals(this.toDate) || this.isInside(date) || this.isHovered(date);
   }
 
-  isHovered(date: NgbDate) {
+  isHovered(date: NgfDate) {
     return this.fromDate && !this.toDate && this.hoveredDate && date.after(this.fromDate) && date.before(this.hoveredDate);
   }
 
-  isInside(date: NgbDate) {
+  isInside(date: NgfDate) {
     return date.after(this.fromDate) && date.before(this.toDate);
   }
 }

@@ -41,8 +41,8 @@ export class ComponentWrapper {
     // TODO: we should implements our own mediamatcher, according to bootstrap layout.
     const smallScreenQL = matchMedia('(max-width: 767.98px)');
     // tslint:disable-next-line:deprecation
-    smallScreenQL.addListener((event) => ngZone.run(() => this.isSmallScreenOrLess = event.matches));
-    this.isSmallScreenOrLess = smallScreenQL.matches;
+    smallScreenQL.addListener((event) => ngZone.run(() => this.sidebarCollapsed = this.isSmallScreenOrLess = event.matches));
+    this.sidebarCollapsed = this.isSmallScreenOrLess = smallScreenQL.matches;
 
     const largeScreenQL = matchMedia('(max-width: 1199.98px)');
     this.isLargeScreenOrLess = largeScreenQL.matches;

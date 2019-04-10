@@ -1,0 +1,8 @@
+:host {
+    margin: 0;
+  } 
+  ::ng-deep {
+    input[type="checkbox"], input[type="radio"] { 
+        display: none;
+    }
+  }

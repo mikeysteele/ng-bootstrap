@@ -1,5 +1,5 @@
-<ngb-timepicker [(ngModel)]="time" [seconds]="seconds"></ngb-timepicker>
-<button class="button btn-sm btn-outline-{{seconds ? 'success' : 'danger'}}" (click)="toggleSeconds()">
+<ngf-timepicker [(ngModel)]="time" [seconds]="seconds"></ngf-timepicker>
+<button class="button small hollow {{seconds ? 'success' : 'danger'}}" (click)="toggleSeconds()">
     Seconds - {{seconds ? "ON" : "OFF"}}
 </button>
 <hr>

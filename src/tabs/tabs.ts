@@ -19,7 +19,7 @@ let nextId = 0;
  * Alternatively you could use the `NgfTab.title` input for string titles.
  */
 @Directive({selector: 'ng-template[ngfTabTitle]'})
-export class NgbTabTitle {
+export class NgfTabTitle {
   constructor(public templateRef: TemplateRef<any>) {}
 }
 
@@ -27,7 +27,7 @@ export class NgbTabTitle {
  * A directive to wrap content to be displayed in a tab.
  */
 @Directive({selector: 'ng-template[ngfTabContent]'})
-export class NgbTabContent {
+export class NgfTabContent {
   constructor(public templateRef: TemplateRef<any>) {}
 }
 
@@ -46,7 +46,7 @@ export class NgfTab implements AfterContentChecked {
   /**
    * The tab title.
    *
-   * Use the [`NgbTabTitle`](#/components/tabs/api#NgbTabTitle) directive for non-string titles.
+   * Use the [`NgfTabTitle`](#/components/tabs/api#NgfTabTitle) directive for non-string titles.
    */
   @Input() title: string;
 
@@ -55,11 +55,11 @@ export class NgfTab implements AfterContentChecked {
    */
   @Input() disabled = false;
 
-  titleTpl: NgbTabTitle | null;
-  contentTpl: NgbTabContent | null;
+  titleTpl: NgfTabTitle | null;
+  contentTpl: NgfTabContent | null;
 
-  @ContentChildren(NgbTabTitle, {descendants: false}) titleTpls: QueryList<NgbTabTitle>;
-  @ContentChildren(NgbTabContent, {descendants: false}) contentTpls: QueryList<NgbTabContent>;
+  @ContentChildren(NgfTabTitle, {descendants: false}) titleTpls: QueryList<NgfTabTitle>;
+  @ContentChildren(NgfTabContent, {descendants: false}) contentTpls: QueryList<NgfTabContent>;
 
   ngAfterContentChecked() {
     // We are using @ContentChildren instead of @ContentChild as in the Angular version being used
@@ -74,7 +74,7 @@ export class NgfTab implements AfterContentChecked {
 /**
  * The payload of the change event fired right before the tab change.
  */
-export interface NgbTabChangeEvent {
+export interface NgfTabChangeEvent {
   /**
    * The id of the currently active tab.
    */
@@ -160,7 +160,7 @@ export class NgfTabs implements AfterContentChecked {
   /**
    * Type of navigation to be used for tabs.
    *
-   * Currently Bootstrap supports only `"tabs"` and `"pills"`.
+   * Currently Foundation supports only `"tabs"` and `"pills"`.
    *
    * Since `3.0.0` can also be an arbitrary string (ex. for custom themes).
    */
@@ -169,9 +169,9 @@ export class NgfTabs implements AfterContentChecked {
   /**
    * A tab change event emitted right before the tab change happens.
    *
-   * See [`NgbTabChangeEvent`](#/components/tabs/api#NgbTabChangeEvent) for payload details.
+   * See [`NgfTabChangeEvent`](#/components/tabs/api#NgfTabChangeEvent) for payload details.
    */
-  @Output() tabChange = new EventEmitter<NgbTabChangeEvent>();
+  @Output() tabChange = new EventEmitter<NgfTabChangeEvent>();
 
   constructor(config: NgfTabsConfig) {
     this.type = config.type;

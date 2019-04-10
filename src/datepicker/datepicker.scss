@@ -1,4 +1,4 @@
-ngb-datepicker {
+ngf-datepicker {
   border: 1px solid #dfdfdf;
   border-radius: 0.25rem;
   display: inline-block;
@@ -12,7 +12,7 @@ ngb-datepicker {
   border-radius: 0.25rem 0.25rem 0 0;
   padding-top: 0.25rem;
 }
-ngb-datepicker-month-view {
+ngf-datepicker-month-view {
   pointer-events: auto;
 }
 .ngb-dp-month-name {
@@ -23,7 +23,7 @@ ngb-datepicker-month-view {
 }
 
 .ngb-dp-month {
-  & + .ngb-dp-month > ngb-datepicker-month-view > .ngb-dp-week {
+  & + .ngb-dp-month > ngf-datepicker-month-view > .ngb-dp-week {
     padding-left: 1rem;
   }
 
@@ -39,7 +39,7 @@ ngb-datepicker-month-view {
     padding-left: .25rem;
   }
 
-  & > ngb-datepicker-month-view > .ngb-dp-week:last-child {
+  & > ngf-datepicker-month-view > .ngb-dp-week:last-child {
     padding-bottom: .25rem;
   }
 }

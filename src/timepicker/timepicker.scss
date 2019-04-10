@@ -1,4 +1,4 @@
-ngb-timepicker {
+ngf-timepicker {
   font-size: 1rem;
 }
 
@@ -48,5 +48,17 @@ ngb-timepicker {
   &-spacer {
     width: 1em;
     text-align: center;
+  }
+  &-input{
+    &.large{
+      padding: .5rem 1rem;
+      font-size: 1.25rem;
+      height: 3rem;
+    }
+    &.small{
+      padding: .25rem .5rem;
+      font-size: .875rem;
+      height: 1.7rem;
+    }
   }
 }

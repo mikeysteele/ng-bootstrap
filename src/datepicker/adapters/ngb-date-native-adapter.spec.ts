@@ -1,9 +1,9 @@
-import {NgbDateNativeAdapter} from './ngb-date-native-adapter';
+import {NgfDateNativeAdapter} from './ngb-date-native-adapter';
 
 describe('ngb-date-native model adapter', () => {
-  let adapter: NgbDateNativeAdapter;
+  let adapter: NgfDateNativeAdapter;
 
-  beforeEach(() => { adapter = new NgbDateNativeAdapter(); });
+  beforeEach(() => { adapter = new NgfDateNativeAdapter(); });
 
   describe('fromModel', () => {
 

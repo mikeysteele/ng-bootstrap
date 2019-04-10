@@ -138,7 +138,7 @@ export class NgfPaginationPrevious {
     <ng-template #ellipsis>...</ng-template>
     <ng-template #defaultNumber let-page let-currentPage="currentPage">
       {{ page }}
-      <span *ngIf="page === currentPage" class="sr-only">(current)</span>
+      <span *ngIf="page === currentPage" class="show-for-sr">(current)</span>
     </ng-template>
     <ul [class]="'pagination' + (size ? ' pagination-' + size : '')">
 
@@ -257,7 +257,7 @@ export class NgfPagination implements OnChanges {
   /**
    * The pagination display size.
    *
-   * Bootstrap currently supports small and large sizes.
+   * Foundation currently supports small and large sizes.
    */
   @Input() size: 'sm' | 'lg';
 

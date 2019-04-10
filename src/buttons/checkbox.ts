@@ -1,23 +1,23 @@
 import {ChangeDetectorRef, Directive, forwardRef, Input} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
-import {NgbButtonLabel} from './label';
+import {NgfButtonLabel} from './label';
 
 const NGB_CHECKBOX_VALUE_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => NgbCheckBox),
+  useExisting: forwardRef(() => NgfCheckbox),
   multi: true
 };
 
 
 /**
- * Allows to easily create Bootstrap-style checkbox buttons.
+ * Allows to easily create Foundation-style checkbox buttons.
  *
  * Integrates with forms, so the value of a checked button is bound to the underlying form control
  * either in a reactive or template-driven way.
  */
 @Directive({
-  selector: '[ngbButton][type=checkbox]',
+  selector: '[ngfButton][type=checkbox]',
   host: {
     'autocomplete': 'off',
     '[checked]': 'checked',
@@ -28,7 +28,7 @@ const NGB_CHECKBOX_VALUE_ACCESSOR = {
   },
   providers: [NGB_CHECKBOX_VALUE_ACCESSOR]
 })
-export class NgbCheckBox implements ControlValueAccessor {
+export class NgfCheckbox implements ControlValueAccessor {
   checked;
 
   /**
@@ -56,7 +56,7 @@ export class NgbCheckBox implements ControlValueAccessor {
     }
   }
 
-  constructor(private _label: NgbButtonLabel, private _cd: ChangeDetectorRef) {}
+  constructor(private _label: NgfButtonLabel, private _cd: ChangeDetectorRef) {}
 
   onInputChange($event) {
     const modelToPropagate = $event.target.checked ? this.valueChecked : this.valueUnChecked;

@@ -1,5 +1,5 @@
 import {Component, Injectable} from '@angular/core';
-import {NgbDatepickerI18n, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import {NgfDatepickerI18n, NgfDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
 const I18N_VALUES = {
   'fr': {
@@ -18,7 +18,7 @@ export class I18n {
 
 // Define custom service providing the months and weekdays translations
 @Injectable()
-export class CustomDatepickerI18n extends NgbDatepickerI18n {
+export class CustomDatepickerI18n extends NgfDatepickerI18n {
 
   constructor(private _i18n: I18n) {
     super();
@@ -34,7 +34,7 @@ export class CustomDatepickerI18n extends NgbDatepickerI18n {
     return this.getMonthShortName(month);
   }
 
-  getDayAriaLabel(date: NgbDateStruct): string {
+  getDayAriaLabel(date: NgfDateStruct): string {
     return `${date.day}-${date.month}-${date.year}`;
   }
 }
@@ -42,8 +42,8 @@ export class CustomDatepickerI18n extends NgbDatepickerI18n {
 @Component({
   selector: 'ngbd-datepicker-i18n',
   templateUrl: './datepicker-i18n.html',
-  providers: [I18n, {provide: NgbDatepickerI18n, useClass: CustomDatepickerI18n}] // define custom NgbDatepickerI18n provider
+  providers: [I18n, {provide: NgfDatepickerI18n, useClass: CustomDatepickerI18n}] // define custom NgfDatepickerI18n provider
 })
 export class NgbdDatepickerI18n {
-  model: NgbDateStruct;
+  model: NgfDateStruct;
 }

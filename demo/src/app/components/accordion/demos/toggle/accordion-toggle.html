@@ -1,4 +1,4 @@
-<ngf-accordion #acc="ngfAccordion" [allowAllClosed]="false">
+<ngf-accordion #acc="ngfAccordion" [allowAllClosed]="true">
   <ngf-panel id="toggle-1" title="First panel">
     <ng-template ngfPanelContent>
       Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
@@ -23,6 +23,6 @@
 
 <hr/>
 
-<button class="button small primary mr-2" (click)="acc.toggle('toggle-1')">Toggle first</button>
-<button class="button small primary mr-2" (click)="acc.toggle('toggle-2')">Toggle second</button>
+<button class="button small primary margin-right-1" (click)="acc.toggle('toggle-1')">Toggle first</button>
+<button class="button small primary margin-right-1" (click)="acc.toggle('toggle-2')">Toggle second</button>
 

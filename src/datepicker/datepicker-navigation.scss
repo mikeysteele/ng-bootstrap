@@ -1,4 +1,4 @@
-ngb-datepicker-navigation {
+ngf-datepicker-navigation {
   display: flex;
   align-items: center;
 }
@@ -32,6 +32,10 @@ ngb-datepicker-navigation {
 
     &.right {
       justify-content: flex-end;
+    }
+    button{
+      padding-top: 0;
+      padding-bottom: 0;
     }
 
   }

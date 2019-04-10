@@ -52,17 +52,17 @@ const DEMOS = [
   selector: 'ngbd-datepicker-calendars',
   template: `
     <p>
-      Datepicker relies on <code>NgbCalendar</code> abstract class for calendar-related calculations.
-      Default implementation is the <code>NgbCalendarGregorian</code>, but can be any
+      Datepicker relies on <code>NgfCalendar</code> abstract class for calendar-related calculations.
+      Default implementation is the <code>NgfCalendarGregorian</code>, but can be any
       calendar that has notion of days, months and years.
     </p>
 
     <p>For instance, other calendar implementations available are:</p>
     <ul class="list-unstyled ml-4">
-      <li><code>NgbCalendarHebrew</code> + <code>NgbDatepickerI18nHebrew</code></li>
-      <li><code>NgbCalendarPersian</code></li>
-      <li><code>NgbCalendarIslamicCivil</code></li>
-      <li><code>NgbCalendarIslamicUmalqura</code></li>
+      <li><code>NgfCalendarHebrew</code> + <code>NgfDatepickerI18nHebrew</code></li>
+      <li><code>NgfCalendarPersian</code></li>
+      <li><code>NgfCalendarIslamicCivil</code></li>
+      <li><code>NgfCalendarIslamicUmalqura</code></li>
     </ul>
 
     <ngf-callout [closeable]="false">
@@ -101,8 +101,8 @@ export class NgbdDatepickerCalendarsComponent extends NgfdExamplesPage {
   snippets = {
     calendars: `
 providers: [
-  {provide: NgbCalendar, useClass: NgbCalendarHebrew},
-  {provide: NgbDatepickerI18n, useClass: NgbDatepickerI18nHebrew}
+  {provide: NgfCalendar, useClass: NgfCalendarHebrew},
+  {provide: NgfDatepickerI18n, useClass: NgfDatepickerI18nHebrew}
 ]
 `
   };

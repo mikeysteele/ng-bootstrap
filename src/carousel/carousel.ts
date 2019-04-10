@@ -70,11 +70,11 @@ export class NgbSlide {
     </div>
     <a class="carousel-control-prev" role="button" (click)="prev()" *ngIf="showNavigationArrows">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only" i18n="@@ngb.carousel.previous">Previous</span>
+      <span class="show-for-sr" i18n="@@ngb.carousel.previous">Previous</span>
     </a>
     <a class="carousel-control-next" role="button" (click)="next()" *ngIf="showNavigationArrows">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only" i18n="@@ngb.carousel.next">Next</span>
+      <span class="show-for-sr" i18n="@@ngb.carousel.next">Next</span>
     </a>
   `
 })
