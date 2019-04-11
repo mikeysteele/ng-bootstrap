@@ -51,8 +51,8 @@ export class NgfDropdownItem {
 @Directive({
   selector: '[ngfDropdownMenu]',
   host: {
-    '[class.dropdown-menu]': 'true',
-    '[class.show]': 'dropdown.isOpen()',
+    '[class.dropdown-pane]': 'true',
+    '[class.is-open]': 'dropdown.isOpen()',
     '[attr.x-placement]': 'placement',
     '(keydown.ArrowUp)': 'dropdown.onKeyDown($event)',
     '(keydown.ArrowDown)': 'dropdown.onKeyDown($event)',
@@ -100,7 +100,7 @@ export class NgfDropdownAnchor {
 @Directive({
   selector: '[ngfDropdownToggle]',
   host: {
-    'class': 'dropdown-toggle',
+    'class': 'dropdown',
     'aria-haspopup': 'true',
     '[attr.aria-expanded]': 'dropdown.isOpen()',
     '(click)': 'toggleOpen()',
@@ -122,7 +122,12 @@ export class NgfDropdownToggle extends NgfDropdownAnchor {
 /**
  * A directive that provides contextual overlays for displaying lists of links and more.
  */
-@Directive({selector: '[ngfDropdown]', exportAs: 'ngfDropdown', host: {'[class.show]': 'isOpen()'}})
+@Directive({
+  selector: '[ngfDropdown]', 
+  exportAs: 'ngfDropdown', 
+  host: {
+    '[class.is-open]': 'isOpen()'
+  }})
 export class NgfDropdown implements OnInit, OnDestroy {
   private _closed$ = new Subject<void>();
   private _zoneSubscription: Subscription;

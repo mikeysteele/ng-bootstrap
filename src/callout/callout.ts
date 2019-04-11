@@ -25,7 +25,7 @@ import {NgfCalloutConfig} from './callout-config';
   encapsulation: ViewEncapsulation.None,
   host: {'role': 'callout', 'class': 'callout', '[class.callout-closeable]': 'closeable'},
   template: `
-    <button *ngIf="closeable" type="button" class="close" aria-label="Close" i18n-aria-label="@@ngb.callout.close"
+    <button *ngIf="closeable" type="button" class="close-button" aria-label="Close" i18n-aria-label="@@ngb.callout.close"
       (click)="closeHandler()">
       <span aria-hidden="true">&times;</span>
     </button>
