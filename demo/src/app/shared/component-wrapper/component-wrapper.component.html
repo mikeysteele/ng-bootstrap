@@ -3,7 +3,7 @@
     <div class="cell small-12 large-2"
       style="border-right: 1px solid rgba(0, 0, 0, 0.1)">
       <div
-        class="d-lg-none d-flex py-2 px-4 align-items-center text-body sidebar-collapsed"
+        class="d-lg-none flex-container py-2 px-4 align-items-center text-body sidebar-collapsed"
         (click)="sidebarCollapsed = !sidebarCollapsed"
         role="button"
       >
@@ -25,13 +25,13 @@
     </div>
 
     <div class="cell small-12 large-10 padding-1">
-      <header class="bg-light pt-4 pb-md-5 px-4 px-lg-5 d-flex d-md-block align-items-center title">
+      <header class="bg-light pt-4 pb-md-5 px-4 px-lg-5 d-md-block align-items-center title">
         <h1 class="mb-4 mr-auto mr-md-none">{{ component | titlecase }}</h1>
 
-        <ul class="nav nav-tabs px-4 px-lg-5 content-tabs justify-content-md-start justify-content-end">
+        <ul class="tabs">
 
-          <li class="nav-item" *ngFor="let childRoute of route.routeConfig.children">
-            <a class="nav-link" routerLink="./{{childRoute.path}}" [class.active]="activeTab === childRoute.path">
+          <li class="tabs-title" *ngFor="let childRoute of route.routeConfig.children">
+            <a routerLink="./{{childRoute.path}}" [attr.aria-selected]="activeTab === childRoute.path ? 'true' : 'false'">
               {{ childRoute.path | titlecase }}
             </a>
           </li>
@@ -59,7 +59,9 @@
         </ul>
       </header>
 
-      <section class="grid grid-x py-5 px-2 px-md-4 px-lg-5">
+      <section class="tabs-content padding-1">
+        <div class="grid grid-x">
+
         <div class="cell small-12 large-9 px-md-0 pr-xl-4">
           <router-outlet (activate)="updateNavigation($event)"></router-outlet>
         </div>
@@ -72,6 +74,8 @@
             <ng-template #divider>&nbsp;</ng-template>
           </ul>
         </div>
+      </div>
+
       </section>
 
     </div>

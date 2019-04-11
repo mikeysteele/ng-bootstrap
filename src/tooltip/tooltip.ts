@@ -49,8 +49,7 @@ export class NgbTooltipWindow {
  */
 @Directive({selector: '[ngbTooltip]', exportAs: 'ngbTooltip'})
 export class NgbTooltip implements OnInit, OnDestroy {
-  @HostBinding('class')
-  elementClass = 'has-tip';
+
   /**
    * Indicates whether the tooltip should be closed on `Escape` key and inside/outside clicks:
    *

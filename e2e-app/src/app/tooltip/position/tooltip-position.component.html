@@ -6,8 +6,8 @@
     <button class="btn hollow secondary mx-1" id="flex-center" (click)="setPosition('center')">Center</button>
     <button class="btn hollow secondary mx-1" id="flex-right" (click)="setPosition('end')">Right</button>
   </div>
-  <div class="d-flex {{flexPosition}}">
-    <div class="d-flex flex-column">
+  <div class="flex-container {{flexPosition}}">
+    <div class="flex-container flex-column">
       <button id="btn-normal" type="button" container="body" triggers="click" class="btn hollow secondary" placement="auto" [ngbTooltip]="content">
         Normal tooltip
       </button>

@@ -9,7 +9,7 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
-import {NgfTabsConfig} from './tabs-config';
+import { NgfTabsConfig } from './tabs-config';
 
 let nextId = 0;
 
@@ -18,23 +18,23 @@ let nextId = 0;
  *
  * Alternatively you could use the `NgfTab.title` input for string titles.
  */
-@Directive({selector: 'ng-template[ngfTabTitle]'})
+@Directive({ selector: 'ng-template[ngfTabTitle]' })
 export class NgfTabTitle {
-  constructor(public templateRef: TemplateRef<any>) {}
+  constructor(public templateRef: TemplateRef<any>) { }
 }
 
 /**
  * A directive to wrap content to be displayed in a tab.
  */
-@Directive({selector: 'ng-template[ngfTabContent]'})
+@Directive({ selector: 'ng-template[ngfTabContent]' })
 export class NgfTabContent {
-  constructor(public templateRef: TemplateRef<any>) {}
+  constructor(public templateRef: TemplateRef<any>) { }
 }
 
 /**
  * A directive representing an individual tab.
  */
-@Directive({selector: 'ngf-tab'})
+@Directive({ selector: 'ngf-tab' })
 export class NgfTab implements AfterContentChecked {
   /**
    * The tab identifier.
@@ -58,8 +58,8 @@ export class NgfTab implements AfterContentChecked {
   titleTpl: NgfTabTitle | null;
   contentTpl: NgfTabContent | null;
 
-  @ContentChildren(NgfTabTitle, {descendants: false}) titleTpls: QueryList<NgfTabTitle>;
-  @ContentChildren(NgfTabContent, {descendants: false}) contentTpls: QueryList<NgfTabContent>;
+  @ContentChildren(NgfTabTitle, { descendants: false }) titleTpls: QueryList<NgfTabTitle>;
+  @ContentChildren(NgfTabContent, { descendants: false }) contentTpls: QueryList<NgfTabContent>;
 
   ngAfterContentChecked() {
     // We are using @ContentChildren instead of @ContentChild as in the Angular version being used
@@ -98,7 +98,8 @@ export interface NgfTabChangeEvent {
   selector: 'ngf-tabs',
   exportAs: 'ngfTabs',
   template: `
-    <ul [class]="'tabs ' + type + (orientation == 'horizontal'?  ' ' + justifyClass : ' flex-column')" role="tablist">
+    <div [class]="headerWrapperClass">
+    <ul [class]="'tabs ' + (orientation == 'horizontal'?  '':  orientation)" role="tablist">
       <li class="tabs-title" [class.is-active]="tab.id === activeId" *ngFor="let tab of tabs">
         <a [id]="tab.id" role="tab"  [class.disabled]="tab.disabled"
           href (click)="select(tab.id); $event.preventDefault()" role="tab" [attr.tabindex]="(tab.disabled ? '-1': undefined)"
@@ -109,17 +110,20 @@ export interface NgfTabChangeEvent {
         </a>
       </li>
     </ul>
-    <div class="tabs-content">
-      <ng-template ngFor let-tab [ngForOf]="tabs">
-        <div
-          class="tabs-panel {{tab.id === activeId ? 'is-active' : ''}}"
-          *ngIf="!destroyOnHide || tab.id === activeId"
-          role="tabpanel"
-          [attr.aria-labelledby]="tab.id" id="{{tab.id}}-panel"
-          [attr.aria-expanded]="tab.id === activeId">
-          <ng-template [ngTemplateOutlet]="tab.contentTpl?.templateRef"></ng-template>
-        </div>
-      </ng-template>
+    </div>
+    <div [class]="contentWrapperClass">
+      <div class="tabs-content">
+        <ng-template ngFor let-tab [ngForOf]="tabs">
+          <div
+            class="tabs-panel {{tab.id === activeId ? 'is-active' : ''}}"
+            *ngIf="!destroyOnHide || tab.id === activeId"
+            role="tabpanel"
+            [attr.aria-labelledby]="tab.id" id="{{tab.id}}-panel"
+            [attr.aria-expanded]="tab.id === activeId">
+            <ng-template [ngTemplateOutlet]="tab.contentTpl?.templateRef"></ng-template>
+          </div>
+        </ng-template>
+      </div>
     </div>
   `
 })
@@ -158,14 +162,13 @@ export class NgfTabs implements AfterContentChecked {
   @Input() orientation: 'horizontal' | 'vertical';
 
   /**
-   * Type of navigation to be used for tabs.
-   *
-   * Currently Foundation supports only `"tabs"` and `"pills"`.
-   *
-   * Since `3.0.0` can also be an arbitrary string (ex. for custom themes).
+   * The class to put on the header container.
    */
-  @Input() type: 'tabs' | 'pills' | string;
-
+  @Input() headerWrapperClass: string = '';
+  /**
+   * The class to put on the content container.
+   */
+  @Input() contentWrapperClass: string = '';
   /**
    * A tab change event emitted right before the tab change happens.
    *
@@ -174,7 +177,6 @@ export class NgfTabs implements AfterContentChecked {
   @Output() tabChange = new EventEmitter<NgfTabChangeEvent>();
 
   constructor(config: NgfTabsConfig) {
-    this.type = config.type;
     this.justify = config.justify;
     this.orientation = config.orientation;
   }
@@ -191,7 +193,7 @@ export class NgfTabs implements AfterContentChecked {
       let defaultPrevented = false;
 
       this.tabChange.emit(
-          {activeId: this.activeId, nextId: selectedTab.id, preventDefault: () => { defaultPrevented = true; }});
+        { activeId: this.activeId, nextId: selectedTab.id, preventDefault: () => { defaultPrevented = true; } });
 
       if (!defaultPrevented) {
         this.activeId = selectedTab.id;

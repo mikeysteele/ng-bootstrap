@@ -10,5 +10,4 @@ import {Injectable} from '@angular/core';
 export class NgfTabsConfig {
   justify: 'start' | 'center' | 'end' | 'fill' | 'justified' = 'start';
   orientation: 'horizontal' | 'vertical' = 'horizontal';
-  type: 'tabs' | 'pills' = 'tabs';
 }

@@ -61,7 +61,7 @@ describe('ngf-tabs', () => {
   it('should initialize inputs with default values', () => {
     const defaultConfig = new NgfTabsConfig();
     const tabs = new NgfTabs(new NgfTabsConfig());
-    expect(tabs.type).toBe(defaultConfig.type);
+    expect(tabs.orientation).toBe(defaultConfig.orientation);
   });
 
   it('should render tabs and select first tab as active by default', () => {
@@ -556,7 +556,7 @@ describe('ngf-tabs', () => {
 
     beforeEach(inject([NgfTabsConfig], (c: NgfTabsConfig) => {
       config = c;
-      config.type = 'pills';
+      config.orientation = 'horizontal';
     }));
 
     it('should initialize inputs with provided config', () => {
@@ -564,13 +564,13 @@ describe('ngf-tabs', () => {
       fixture.detectChanges();
 
       let tabs = fixture.componentInstance;
-      expect(tabs.type).toBe(config.type);
+      expect(tabs.orientation).toBe(config.orientation);
     });
   });
 
   describe('Custom config as provider', () => {
     let config = new NgfTabsConfig();
-    config.type = 'pills';
+    config.orientation = 'horizontal';
 
     beforeEach(() => {
       TestBed.configureTestingModule(
@@ -582,7 +582,7 @@ describe('ngf-tabs', () => {
       fixture.detectChanges();
 
       let tabs = fixture.componentInstance;
-      expect(tabs.type).toBe(config.type);
+      expect(tabs.orientation).toBe(config.orientation);
     });
   });
 });
