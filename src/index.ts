@@ -16,6 +16,14 @@ import {NgfTabsModule} from './tabs/tabs.module';
 import {NgfTimepickerModule} from './timepicker/timepicker.module';
 import {NgbTooltipModule} from './tooltip/tooltip.module';
 import {NgbTypeaheadModule} from './typeahead/typeahead.module';
+import {NgfOffCanvasModule} from './off-canvas/off-canvas.module';
+export {
+  NgfOffCanvasModule,
+  NgfOffCanvas,
+  NgfOffCanvasWrapper,
+  NgfOffCanvasContent,
+  NgfOffCanvasToggle
+} from './off-canvas/off-canvas.module';
 
 export {
   NgfAccordionModule,
@@ -116,7 +124,7 @@ export {Placement} from './util/positioning';
 const NGF_MODULES = [
   NgfAccordionModule, NgfCalloutModule, NgfButtonsModule, NgbCarouselModule, NgfCollapseModule, NgfDatepickerModule,
   NgfDropdownModule, NgfModalModule, NgfPaginationModule, NgbPopoverModule, NgfProgressbarModule, NgbRatingModule,
-  NgfTabsModule, NgfTimepickerModule, NgbTooltipModule, NgbTypeaheadModule
+  NgfTabsModule, NgfTimepickerModule, NgbTooltipModule, NgbTypeaheadModule, NgfOffCanvasModule
 ];
 
 @NgModule({imports: NGF_MODULES, exports: NGF_MODULES})

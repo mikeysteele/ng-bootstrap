@@ -6,7 +6,7 @@ import {CodeHighlightService} from './code-highlight.service';
   selector: 'ngbd-code',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <pre style="margin: -15px" class="language-{{ lang }}"><code #code class="language-{{ lang }}"></code></pre>
+    <pre class="language-{{ lang }}"><code #code class="language-{{ lang }}"></code></pre>
   `
 })
 export class NgbdCodeComponent implements AfterViewInit {

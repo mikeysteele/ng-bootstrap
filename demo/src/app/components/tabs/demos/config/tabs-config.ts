@@ -10,6 +10,5 @@ export class NgbdTabsConfig {
   constructor(config: NgfTabsConfig) {
     // customize default values of tabss used by this component tree
     config.justify = 'center';
-    config.type = 'pills';
   }
 }

@@ -1,5 +1,5 @@
 // styles in src/style directory are applied to the whole page
-
+@import '~foundation-sites/scss/global';
 @import '~foundation-sites/scss/foundation';
 @include foundation-everything($prototype: true);
 
@@ -306,10 +306,16 @@ div.component-demo {
       .tabs-content {
         flex: 1;
         overflow: auto;
+        .tabs-panel {
+          padding: 0;
+        }
       }
 
       pre {
         margin: 0;
+        &, code[class*='language-'], &[class*='language-']{
+          background: #e6e6e6;
+        }
       }
     }
   
