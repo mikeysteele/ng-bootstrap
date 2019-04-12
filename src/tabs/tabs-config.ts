@@ -8,6 +8,6 @@ import {Injectable} from '@angular/core';
  */
 @Injectable({providedIn: 'root'})
 export class NgfTabsConfig {
-  justify: 'start' | 'center' | 'end' | 'fill' | 'justified' = 'start';
+  justify: 'start' | 'center' | 'end' | 'fill' | 'justified';
   orientation: 'horizontal' | 'vertical' = 'horizontal';
 }

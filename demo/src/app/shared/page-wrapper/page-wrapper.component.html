@@ -2,33 +2,26 @@
   <div class="grid-x">
     <div class="cell small-12 large-2"
        style="border-right: 1px solid rgba(0, 0, 0, 0.1)">
-      <div
-        class="hide-for-large flex-container py-2 px-4 align-items-center text-body"
-        (click)="sidebarCollapsed = !sidebarCollapsed"
-        role="button"
-      >
-        <span class="mr-auto">Menu</span>
-        <button
-          class="clear button p-0"
-          aria-controls="doc-nav"
-          [attr.aria-expanded]="!sidebarCollapsed"
-          aria-label="Toggle documentation navigation"
-        >
-          <svg class="align-middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg>
-        </button>
-      </div>
+      
       <ngbd-side-nav
         id="doc-nav"
-        [ngfCollapse]="sidebarCollapsed"
-        class="show-for-large my-3 collapse sidebar"
+        class="show-for-large my-3 sidebar"
       ></ngbd-side-nav>
     </div>
-
+    <ng-template #sideNav let-modal>
+        <button class="close-button" (click)="modal.close()" aria-label="Close modal" type="button">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      <ngbd-side-nav (navigationChanged)="modal.close()"></ngbd-side-nav>
+    </ng-template>
     <div class="cell small-12 large-10 padding-1">
-      <header class="bg-light pt-4 pb-md-5 px-4 px-lg-5 flex-container d-md-block align-items-center title">
-        <h1 class="mt-0">{{ pageTitle }}</h1>
-
-        <ul class="nav nav-tabs px-4 px-lg-5 content-tabs justify-content-md-start justify-content-end">
+        <header class="flex-container align-justify">
+          
+          <h1 class="mb-4 mr-auto mr-md-none">{{ pageTitle | titlecase }}</h1>
+          <button class="primary hollow button hide-for-large" (click)="openModal(sideNav)"> Component List </button>
+          
+        </header>
+        <ul class="tabs">
 
           <li
             ngfDropdown placement="bottom-right"
@@ -46,7 +39,6 @@
             </div>
           </li>
         </ul>
-      </header>
 
       <section class="grid grid-x py-5 px-2 px-md-4 px-lg-5">
         <div class="cell small-12 px-md-0 pr-xl-4">

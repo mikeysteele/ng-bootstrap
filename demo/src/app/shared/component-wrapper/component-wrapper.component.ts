@@ -1,10 +1,10 @@
-import { Component, NgZone } from '@angular/core';
+import { Component, NgZone, ViewChild, ViewContainerRef } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
 import { NgfdApiPage } from '../../components/shared/api-page/api.component';
 import { NgfdExamplesPage } from '../../components/shared/examples-page/examples.component';
-
+import { NgfModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'component-wrapper',
@@ -22,8 +22,8 @@ export class ComponentWrapper {
   sidebarCollapsed = true;
 
   tableOfContent: any[] = [];
-
-  constructor(public route: ActivatedRoute, private _router: Router, ngZone: NgZone) {
+ 
+  constructor(public route: ActivatedRoute, private _router: Router, ngZone: NgZone, private modalService: NgfModal) {
     // This component is used in route definition 'components'
     // So next child route will always be ':componentType' & next one will always be ':pageType' (or tab)
     this._router.events.pipe(
@@ -86,5 +86,8 @@ export class ComponentWrapper {
       // TODO: maybe we should also have an abstract class to test instanceof
       this.tableOfContent = Object.values(component.sections).map(section => section);
     }
+  }
+  public openModal(sideNav){
+    this.modalService.open(sideNav)
   }
 }

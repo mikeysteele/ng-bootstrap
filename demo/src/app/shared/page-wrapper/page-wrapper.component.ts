@@ -1,5 +1,6 @@
 import {Component, ContentChildren, Input, NgZone, QueryList} from '@angular/core';
 import {NgbdPageHeaderComponent} from './page-header.component';
+import { NgfModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'ngbd-page-wrapper',
@@ -13,7 +14,7 @@ export class PageWrapper {
   sidebarCollapsed = true;
   isLargeScreenOrLess: boolean;
   isSmallScreenOrLess: boolean;
-  constructor(ngZone: NgZone) {
+  constructor(ngZone: NgZone, private modalService: NgfModal) {
     // information extracted from https://getbootstrap.com/docs/4.1/layout/overview/
     // TODO: we should implements our own mediamatcher, according to bootstrap layout.
     const smallScreenQL = matchMedia('(max-width: 767.98px)');
@@ -28,5 +29,8 @@ export class PageWrapper {
 
   get tableOfContents() {
     return this._tableOfContents ? this._tableOfContents.toArray() : [];
+  }
+  public openModal(sideNav){
+    this.modalService.open(sideNav)
   }
 }

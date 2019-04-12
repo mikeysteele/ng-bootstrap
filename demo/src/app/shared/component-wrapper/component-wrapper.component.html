@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="grid-x">
-    <div class="cell small-12 large-2"
+    <div class="cell small-12 large-2  show-for-large"
       style="border-right: 1px solid rgba(0, 0, 0, 0.1)">
       <div
         class="hide-for-large flex-container padding-vertcal-1 padding-horizontal-2 align-justify align-middle text-body"
@@ -19,16 +19,23 @@
       </div>
       <ngbd-side-nav
         id="doc-nav"
-        [ngfCollapse]="sidebarCollapsed"
-        class="my-3 collapse sidebar"
+        class="my-3  sidebar"
       ></ngbd-side-nav>
     </div>
-
+    <ng-template #sideNav let-modal>
+        <button class="close-button" (click)="modal.close()" aria-label="Close modal" type="button">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      <ngbd-side-nav (navigationChanged)="modal.close()"></ngbd-side-nav>
+    </ng-template>
     <div class="cell small-12 large-10 padding-1">
-      <header class="bg-light pt-4 pb-md-5 px-4 px-lg-5 d-md-block align-items-center title">
+      <header class="flex-container align-justify">
+        
         <h1 class="mb-4 mr-auto mr-md-none">{{ component | titlecase }}</h1>
-
-        <ul class="tabs">
+        <button class="primary hollow button hide-for-large" (click)="openModal(sideNav)"> Component List </button>
+        
+      </header>
+      <ul class="tabs">
 
           <li class="tabs-title" *ngFor="let childRoute of route.routeConfig.children">
             <a routerLink="./{{childRoute.path}}" [attr.aria-selected]="activeTab === childRoute.path ? 'true' : 'false'">
@@ -57,8 +64,6 @@
             </div>
           </li>
         </ul>
-      </header>
-
       <section class="tabs-content padding-1">
         <div class="grid grid-x">
 

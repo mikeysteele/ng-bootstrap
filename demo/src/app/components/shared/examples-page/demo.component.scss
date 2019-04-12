@@ -1,0 +1,20 @@
+
+.demo-component{
+    $border: 1px solid #cacaca ;
+    border: $border;
+    margin-bottom: 1.5rem;
+    .demo-component-header{
+        border-bottom: $border;
+        a{
+            border: none;
+            border-right: $border
+        }
+    }
+    .tabs-code{
+        ::ng-deep{
+            .tabs{
+                background: #f7f7f7;
+            }
+        }
+    }
+}

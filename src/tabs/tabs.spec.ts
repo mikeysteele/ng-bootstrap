@@ -339,16 +339,7 @@ describe('ngf-tabs', () => {
     expect(fixture.nativeElement.querySelector('ul')).not.toHaveCssClass('nav-tabs');
   });
 
-  it('should have the "justify-content-start" class by default', () => {
-    const fixture = createTestComponent(`
-         <ngf-tabs>
-           <ngf-tab title="bar"><ng-template ngfTabContent>Bar</ng-template></ngf-tab>
-         </ngf-tabs>
-       `);
-
-    expect(fixture.nativeElement.querySelector('ul')).toHaveCssClass('justify-content-start');
-  });
-
+  
   it('should have the "justify-content-center" class upon setting justify to center', () => {
     const fixture = createTestComponent(`
          <ngf-tabs justify="center">
@@ -389,28 +380,7 @@ describe('ngf-tabs', () => {
     expect(fixture.nativeElement.querySelector('ul')).toHaveCssClass('nav-justified');
   });
 
-  it('should have the "justify-content-start" class upon setting orientation to horizontal', () => {
-    const fixture = createTestComponent(`
-        <ngf-tabs orientation="horizontal">
-          <ngf-tab title="bar"><ng-template ngfTabContent>Bar</ng-template></ngf-tab>
-        </ngf-tabs>
-      `);
-
-    expect(fixture.nativeElement.querySelector('ul')).not.toHaveCssClass('flex-column');
-    expect(fixture.nativeElement.querySelector('ul')).toHaveCssClass('justify-content-start');
-  });
-
-  it('should have the "flex-column" class upon setting orientation to vertical', () => {
-    const fixture = createTestComponent(`
-        <ngf-tabs orientation="vertical">
-          <ngf-tab title="bar"><ng-template ngfTabContent>Bar</ng-template></ngf-tab>
-        </ngf-tabs>
-      `);
-
-    expect(fixture.nativeElement.querySelector('ul')).toHaveCssClass('flex-column');
-    expect(fixture.nativeElement.querySelector('ul')).not.toHaveCssClass('justify-content-start');
-  });
-
+  
 
   it('should change active tab by calling select on an exported directive instance', () => {
     const fixture = createTestComponent(`

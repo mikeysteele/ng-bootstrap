@@ -5,7 +5,8 @@ import {Analytics} from '../../../shared/analytics/analytics';
 @Component({
   selector: 'ngbd-widget-demo',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './demo.component.html'
+  templateUrl: './demo.component.html',
+  styleUrls: ['./demo.component.scss']
 })
 export class NgbdWidgetDemoComponent {
   @Input() demoTitle: string;

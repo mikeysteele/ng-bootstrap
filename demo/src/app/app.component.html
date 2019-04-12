@@ -1,12 +1,24 @@
 <div ngfOffCanvasWrapper>
 
-  <div ngfOffCanvas placement="top">
+  <div ngfOffCanvas placement="left">
 
   </div>
   <div ngfOffCanvasContent>
-    <header class="navbar navbar-expand navbar-dark px-4 flex-column flex-md-row">
-      <a ngfOffCanvasToggle>Toggle</a>
-      <a class="navbar-brand mr-md-2 mr-0" routerLink="/" aria-label="NG Foundation" (click)="navbarCollapsed = true">
+    <header class="title-bar flex-container align-justify  padding-vertical-0">
+      <div class="title-bar-left flex-container align-center">
+          <button class="hide-for-large" type="button" ngfOffCanvasToggle
+          aria-controls="navbarContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon">          
+            <svg class="align-middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg>
+          </span>
+        </button>  
+        <h4 class="">Ng Foundation</h4>
+      </div>
+      <div class="title-bar-right  show-for-large">
+
+     
+      <!-- <a class="navbar-brand mr-md-2 mr-0" routerLink="/" aria-label="NG Foundation" (click)="navbarCollapsed = true">
         <svg class="align-middle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
           width="36" height="36" viewBox="0 0 512 512">
           <defs>
@@ -27,23 +39,23 @@
             fill="#fff" />
         </svg>
         <span class="margin-left-1 d-xl-none hide-for-large d-md-none d-inline">ng-bootstrap</span>
-      </a>
+      </a> -->
 
-      <div class="navbar-nav-scroll">
-        <ul class="navbar-nav flex-row">
-          <li class="nav-item" [routerLinkActive]="['active']">
-            <a class="nav-link" [routerLink]="['/home']" (click)="navbarCollapsed = true">Home</a>
+ 
+        <ul class="menu float-right">
+          <li [routerLinkActive]="['active']">
+            <a class="padding-1" [routerLink]="['/home']" (click)="navbarCollapsed = true">Home</a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['active']">
-            <a class="nav-link" [routerLink]="['/getting-started']" (click)="navbarCollapsed = true">Getting Started</a>
+          <li [routerLinkActive]="['active']">
+            <a class="" [routerLink]="['/getting-started']" (click)="navbarCollapsed = true">Getting Started</a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['active']">
-            <a class="nav-link" [routerLink]="['/components']" (click)="navbarCollapsed = true">Components</a>
+          <li [routerLinkActive]="['active']">
+            <a class="" [routerLink]="['/components']" (click)="navbarCollapsed = true">Components</a>
           </li>
         </ul>
       </div>
 
-      <ul class="social-buttons navbar-nav flex-row ml-md-auto d-none d-lg-flex align-items-center">
+      <!-- <ul class="social-buttons navbar-nav flex-row ml-md-auto d-none d-lg-flex align-items-center">
         <a class="github-button" href="https://github.com/ng-bootstrap/ng-bootstrap" rel="noopener" target="_blank"
           data-size="large" data-show-count="true" data-count-aria-label="# stargazers on GitHub"
           aria-label="Star ng-bootstrap/ng-bootstrap on GitHub">Star</a>
@@ -51,14 +63,9 @@
           class="twitter-hashtag-button" data-size="large"
           data-text="I&#39;m checking out ng-bootstrap, THE Angular UI framework for Foundation CSS"
           data-url="https://ng-bootstrap.github.io" data-show-count="true">Tweet #ngbootstrap</a>
-      </ul>
+      </ul> -->
 
-      <button class="navbar-toggler navbar-toggler-right" type="button" (click)="navbarCollapsed = !navbarCollapsed"
-        [attr.aria-expanded]="!navbarCollapsed" aria-controls="navbarContent" aria-expanded="false"
-        aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
+      
     </header>
 
 

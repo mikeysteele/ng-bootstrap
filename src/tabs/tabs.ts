@@ -99,9 +99,9 @@ export interface NgfTabChangeEvent {
   exportAs: 'ngfTabs',
   template: `
     <div [class]="headerWrapperClass">
-    <ul [class]="'tabs ' + (orientation == 'horizontal'?  '':  orientation)" role="tablist">
+    <ul [class]="'tabs ' + (orientation == 'horizontal'?  '':  orientation) + (justifyClass || '')" role="tablist">
       <li class="tabs-title" [class.is-active]="tab.id === activeId" *ngFor="let tab of tabs">
-        <a [id]="tab.id" role="tab"  [class.disabled]="tab.disabled"
+        <a [id]="tab.id" role="tab"  [class.disabled]="tab.disabled" 
           href (click)="select(tab.id); $event.preventDefault()" role="tab" [attr.tabindex]="(tab.disabled ? '-1': undefined)"
           [attr.aria-controls]="(!destroyOnHide || tab.id === activeId ? tab.id + '-panel' : null)"
           [attr.aria-expanded]="tab.id === activeId" [attr.aria-disabled]="tab.disabled"
@@ -149,10 +149,13 @@ export class NgfTabs implements AfterContentChecked {
    */
   @Input()
   set justify(className: 'start' | 'center' | 'end' | 'fill' | 'justified') {
+    if (!className){
+      return;
+    }
     if (className === 'fill' || className === 'justified') {
       this.justifyClass = `nav-${className}`;
     } else {
-      this.justifyClass = `justify-content-${className}`;
+      this.justifyClass = ` flex-container align-${className}`;
     }
   }
 
