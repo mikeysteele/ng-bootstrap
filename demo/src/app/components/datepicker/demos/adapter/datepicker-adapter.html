@@ -1,8 +1,8 @@
 <p>These datepickers use custom Date adapter that lets you use your own model implementation.
 In this example we are converting from and to a JS native Date object</p>
 
-<div class="row">
-  <div class="col-6">
+<div class="grid grid-x">
+  <div class="cell small-6">
     <ngf-datepicker #d1 [(ngModel)]="model1" #c1="ngModel"></ngf-datepicker>
 
     <hr/>
@@ -13,17 +13,18 @@ In this example we are converting from and to a JS native Date object</p>
     <pre>State: {{ c1.status }}</pre>
   </div>
 
-  <div class="col-6">
+  <div class="cell small-6">
     <form class="form-inline">
-      <div class="form-group">
-        <div class="input-group">
-          <input class="form-control" placeholder="yyyy-mm-dd"
-                 name="d2" #c2="ngModel" [(ngModel)]="model2" ngfDatepicker #d2="ngfDatepicker">
-          <div class="input-group-append">
-            <button class="button hollow secondary calendar" (click)="d2.toggle()" type="button"></button>
-          </div>
-        </div>
-      </div>
+      <fieldset>
+          <div class="input-group">
+              <input type="text" class="input-group-field" placeholder="yyyy-mm-dd"
+                     name="d2" #c2="ngModel" [(ngModel)]="model2" ngfDatepicker #d2="ngfDatepicker">
+              <div class="input-group-button">
+                <button class="button hollow secondary calendar" (click)="d2.toggle()" type="button"></button>
+              </div>
+            </div>
+      </fieldset>
+        
     </form>
 
     <hr/>

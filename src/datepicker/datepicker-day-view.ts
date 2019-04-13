@@ -8,8 +8,9 @@ import {NgfDatepickerI18n} from './datepicker-i18n';
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./datepicker-day-view.scss'],
   host: {
-    'class': 'primary',
-    '[class.bg-primary]': 'selected',
+    'class': 'custom-day',
+    '[class.selected]': 'selected',
+
     '[class.text-white]': 'selected',
     '[class.text-muted]': 'isMuted()',
     '[class.outside]': 'isMuted()',

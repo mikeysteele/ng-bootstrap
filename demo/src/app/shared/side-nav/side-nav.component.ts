@@ -9,7 +9,9 @@ export const cl = [
   {
     name: 'Controls',  
     components: [
-      'Buttons'
+      'Buttons',
+      'Datepicker',
+      'Rating'
     ]
   },
   {
@@ -24,13 +26,20 @@ export const cl = [
       'Tabs'
     ]
   },
-    {
-      name: 'Media',  
-      components: [
-        'Progressbar',
-        'Tooltip'
-      ]
-    }
+  {
+    name: 'Navigation',  
+    components: [
+      'Magellen',
+      'Pagination'
+    ]
+  },
+  {
+    name: 'Media',  
+    components: [
+      'Progressbar',
+      'Tooltip'
+    ]
+  }
 ]
 @Component({
   selector: 'ngbd-side-nav',

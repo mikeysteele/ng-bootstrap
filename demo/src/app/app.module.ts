@@ -24,6 +24,7 @@ import {NgbdTypeaheadModule} from './components/typeahead/typeahead.module';
 import {DefaultComponent} from './default';
 import {GettingStarted} from './getting-started';
 import {NgfdSharedModule} from './shared';
+import {NgbdOffCanvasModule} from './components/off-canvas/off-canvas.module';
 
 const DEMOS = [
   NgbdAccordionModule,
@@ -42,7 +43,8 @@ const DEMOS = [
   NgbdTabsModule,
   NgbdTimepickerModule,
   NgbdTooltipModule,
-  NgbdTypeaheadModule
+  NgbdTypeaheadModule,
+  NgbdOffCanvasModule
 ];
 
 @NgModule({

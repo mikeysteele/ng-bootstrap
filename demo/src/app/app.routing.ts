@@ -18,6 +18,8 @@ import {ROUTES as TABSET_ROUTES} from './components/tabs/tabs.module';
 import {ROUTES as TIMEPICKER_ROUTES} from './components/timepicker/timepicker.module';
 import {ROUTES as TOOLTIP_ROUTES} from './components/tooltip/tooltip.module';
 import {ROUTES as TYPEAHEAD_ROUTES} from './components/typeahead/typeahead.module';
+import {ROUTES as OFF_CANVAS_ROUTES} from './components/off-canvas/off-canvas.module';
+
 import {DefaultComponent} from './default';
 import {GettingStarted} from './getting-started';
 
@@ -43,6 +45,7 @@ const routes: Routes = [
   { path: 'components/timepicker', children: TIMEPICKER_ROUTES },
   { path: 'components/tooltip', children: TOOLTIP_ROUTES },
   { path: 'components/typeahead', children: TYPEAHEAD_ROUTES },
+  { path: 'components/off-canvas', children: OFF_CANVAS_ROUTES },
   { path: '**', redirectTo: 'home' }
 ];
 

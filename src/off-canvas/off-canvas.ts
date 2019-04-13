@@ -5,7 +5,7 @@ import {
     Directive,
     EventEmitter,
     forwardRef,
-    ChangeDetectorRef,
+    Host,
     Inject,
     Input,
     Renderer2,
@@ -96,7 +96,7 @@ import {
       this.canvases = this._content.reduce((cs, c) => {
         cs = {
           ...cs,
-          [c.id]: c
+          [c.id || c.placement]: c
         }
         return cs
       }, {})
@@ -105,7 +105,7 @@ import {
       if (!this.content){
         return;
       }
-      const {[id || '']: canvas, ...canvases} = this.canvases;
+      const {[id]: canvas, ...canvases} = this.canvases;
       canvas.isOpen = !canvas.isOpen;
       Object.values(canvases).forEach((c) => {
         c.isOpen = !c.isOpen;
@@ -129,7 +129,7 @@ import {
         this.backdrop = undefined;
       }else{
         const backdrop = this.attachBackdrop();
-        backdrop.instance.clicked.pipe(take(1)).subscribe(() => this.toggleCanvas(this.activeCanvas.id));
+        backdrop.instance.clicked.pipe(take(1)).subscribe(() => this.toggleCanvas(this.activeCanvas.id || this.activeCanvas.placement));
         this.backdrop = backdrop.location.nativeElement;
       }
     }
@@ -152,7 +152,7 @@ import {
     }
   })
   export class NgfOffCanvasToggle{
-    @Input('ngfOffCanvasContent') id;
+    @Input('ngfOffCanvasToggle') id;
     constructor(@Inject(forwardRef(() => NgfOffCanvasWrapper)) private wrapper) {}
     @HostListener('click')
     toggle(){
