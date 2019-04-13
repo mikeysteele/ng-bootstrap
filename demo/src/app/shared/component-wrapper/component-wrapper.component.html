@@ -20,7 +20,7 @@
       <ngbd-side-nav
         id="doc-nav"
         class="sidebar"
-      ></ngbd-side-nav>
+      ></ngbd-side-nav>      
     </div>
     <ng-template #sideNav let-modal>
         <button class="close-button" (click)="modal.close()" aria-label="Close modal" type="button">
@@ -28,7 +28,7 @@
           </button>
       <ngbd-side-nav (navigationChanged)="modal.close()"></ngbd-side-nav>
     </ng-template>
-    <div class="cell small-12 large-10 padding-1">
+    <div class="cell small-12 large-7 padding-1">
       <header class="flex-container align-justify">
         
         <h1 class="mb-4 mr-auto mr-md-none">{{ component | titlecase }}</h1>
@@ -64,26 +64,18 @@
             </div>
           </li>
         </ul>
-      <section class="tabs-content padding-1">
-        <div class="grid grid-x">
-
-        <div class="cell small-12 large-9 px-md-0 pr-xl-4">
-          <router-outlet (activate)="updateNavigation($event)"></router-outlet>
-        </div>
-
-        <div class="cell small-12 large-3 show-for-large" *ngIf="!isLargeScreenOrLess">
-          <ul class="vertical menu" ngfMagellen>
-            <li *ngFor="let topic of tableOfContent">
-              <a *ngIf="topic.title else divider" [routerLink]="['.', this.activeTab]" [href]="'#'+topic.fragment"[fragment]="topic.fragment">{{topic.title}}</a>
-            </li>
-            <ng-template #divider>&nbsp;</ng-template>
-          </ul>
-        </div>
-      </div>
-
+      <section class="tabs-content padding-1">        
+          <router-outlet (activate)="updateNavigation($event)"></router-outlet>        
       </section>
-
     </div>
+    <div class="cell small-12 large-3 show-for-large" *ngIf="!isLargeScreenOrLess">
+        <ul class="vertical menu" ngfMagellen style="position: sticky; top:0px ">
+          <li *ngFor="let topic of tableOfContent">
+            <a *ngIf="topic.title else divider" [routerLink]="['.', this.activeTab]" [ngfMagellenAnchor]="'#'+topic.fragment" [fragment]="topic.fragment">{{topic.title}}</a>
+          </li>
+          <ng-template #divider>&nbsp;</ng-template>
+        </ul>
+      </div>
   </div>
 </div>
 

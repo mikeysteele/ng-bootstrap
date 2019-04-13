@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgfMagellen, NgfMagellenWrapper, NgfMagellenTarget } from './magellen';
-export { NgfMagellen, NgfMagellenWrapper, NgfMagellenTarget  } from './magellen';
-const DIRECTIVES = [NgfMagellen, NgfMagellenWrapper, NgfMagellenTarget];
+import { NgfMagellen, NgfMagellenWrapper, NgfMagellenTarget, NgfMagellenAnchor } from './magellen';
+export { NgfMagellen, NgfMagellenWrapper, NgfMagellenTarget, NgfMagellenAnchor   } from './magellen';
+const DIRECTIVES = [NgfMagellen, NgfMagellenWrapper, NgfMagellenTarget, NgfMagellenAnchor ];
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [
-    DIRECTIVES
+    ...DIRECTIVES
   ],
   exports: [
-    DIRECTIVES
+    ...DIRECTIVES
   ]
 })
 export class NgfMagellenModule { }

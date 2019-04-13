@@ -1,5 +1,5 @@
 import {
-    AfterContentChecked,
+    ComponentFactoryResolver,
     AfterViewInit,
     ContentChildren,
     Directive,
@@ -10,18 +10,20 @@ import {
     Input,
     Renderer2,
     Output,
-    QueryList,
-    TemplateRef,
+    ApplicationRef,
+    Injector,
     HostListener,
-    ContentChild
+    ContentChild,
+    Component
   } from '@angular/core';
-  
+  import {DOCUMENT} from '@angular/common';
+  import {take} from 'rxjs/operators';
   @Directive({
     selector: '[ngfOffCanvas]',
     host: {
       '[class.off-canvas]': 'true',
-      '[class.is-open]': 'true',
-      '[class.is-closed]': '!true',
+      '[class.is-open]': 'isOpen',
+      '[class.is-closed]': '!isOpen',
       '[class.placement-left]': 'placement === "left"',
       '[class.placement-top]': 'placement === "top"',
       '[class.placement-right]': 'placement === "right"',
@@ -63,13 +65,12 @@ import {
     public get isOpen(){
       return this.leftOpen || this.rightOpen || this.topOpen || this.bottomOpen;
     }
-    constructor(private cdr: ChangeDetectorRef) {
+    constructor() {
 
     }
     public setActiveCanvas(e: NgfOffCanvas){
       this[e.placement+'Open'] = e.isOpen;
       this.transition = e.transition
-      this.cdr.detectChanges();
     }
   }
 
@@ -88,7 +89,7 @@ import {
     @ContentChildren(NgfOffCanvas) _content;
 
     isOpen = false;
-    constructor(private renderer: Renderer2) {
+    constructor(@Inject(DOCUMENT) private _document, private _cfr: ComponentFactoryResolver, private _applicationRef: ApplicationRef, private _injector: Injector,) {
 
     }
     ngAfterViewInit(){
@@ -127,12 +128,17 @@ import {
         this.backdrop.remove();
         this.backdrop = undefined;
       }else{
-        const backdrop = this.renderer.createElement('div');
-        backdrop.className= 'js-off-canvas-overlay is-overlay-fixed is-visible is-closable';
-        backdrop.onclick = () => this.toggleCanvas(this.activeCanvas.id);
-        document.body.appendChild(backdrop);
-        this.backdrop = backdrop;
+        const backdrop = this.attachBackdrop();
+        backdrop.instance.clicked.pipe(take(1)).subscribe(() => this.toggleCanvas(this.activeCanvas.id));
+        this.backdrop = backdrop.location.nativeElement;
       }
+    }
+    private attachBackdrop(){
+      const backdropFactory = this._cfr.resolveComponentFactory(NgfOffCanvasBackdrop);
+      const backdropCmptRef = backdropFactory.create(this._injector);
+      this._applicationRef.attachView(backdropCmptRef.hostView);
+      this._document.body.appendChild(backdropCmptRef.location.nativeElement);
+      return backdropCmptRef;
     }
   }
 
@@ -146,13 +152,24 @@ import {
     }
   })
   export class NgfOffCanvasToggle{
-    @Input() placement: 'left' | 'right' | 'top' | 'bottom';
     @Input('ngfOffCanvasContent') id;
     constructor(@Inject(forwardRef(() => NgfOffCanvasWrapper)) private wrapper) {}
     @HostListener('click')
     toggle(){
       this.wrapper.toggleCanvas(this.id);
     }
+  }
+
+  @Component({
+    selector: 'ngf-offcanvas-backdrop',
+    template: '',
+    host: {
+      'class': 'js-off-canvas-overlay is-overlay-fixed is-visible is-closable',
+      '(click)': 'clicked.emit()'
+    }
+  })
+  export class NgfOffCanvasBackdrop{
+    @Output() clicked = new EventEmitter();
   }
 
 
