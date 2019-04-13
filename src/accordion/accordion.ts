@@ -1,5 +1,5 @@
 import {
-  AfterContentInit,
+  AfterViewInit,
   AfterContentChecked,
   Component,
   ContentChildren,
@@ -186,10 +186,10 @@ export interface NgfPanelChangeEvent {
       </a>
     </ng-template>
     <ng-template ngFor let-panel [ngForOf]="panels">
-      <div class="accordion-item">
+      <div class="accordion-item" [class.is-active]="panel.isOpen">
       
  
-        <div role="tab" id="{{panel.id}}-header" [class]="'accordion-title ' + (panel.type ? 'bg-'+panel.type: type ? 'bg-'+type : '')">
+        <div role="tab" [attr.aria-expanded]="panel.isOpen" id="{{panel.id}}-header" [class]="'accordion-title ' + (panel.type ? 'bg-'+panel.type: type ? 'bg-'+type : '')">
           <ng-template [ngTemplateOutlet]="panel.headerTpl?.templateRef || t"
                        [ngTemplateOutletContext]="{$implicit: panel, opened: panel.isOpen}"></ng-template>
         </div>
@@ -201,7 +201,7 @@ export interface NgfPanelChangeEvent {
     </ng-template>
   `
 })
-export class NgfAccordion implements AfterContentChecked, AfterContentInit {
+export class NgfAccordion implements AfterContentChecked, AfterViewInit {
   @ContentChildren(NgfPanel) panels: QueryList<NgfPanel>;
 
   /**
@@ -306,7 +306,7 @@ export class NgfAccordion implements AfterContentChecked, AfterContentInit {
       this._changeOpenState(panel, !panel.isOpen);
     }
   }
-  ngAfterContentInit(){
+  ngAfterViewInit(){
     this._updateActiveIds();
   }
   ngAfterContentChecked() {
@@ -346,7 +346,7 @@ export class NgfAccordion implements AfterContentChecked, AfterContentInit {
 
       if (!defaultPrevented) {
         panel.isOpen = nextState;
-
+        
         if (nextState && !this.multiExpand) {
           this._closeOthers(panel.id);
         }
@@ -366,6 +366,9 @@ export class NgfAccordion implements AfterContentChecked, AfterContentInit {
   private _findPanelById(panelId: string): NgfPanel | null { return this.panels.find(p => p.id === panelId); }
 
   private _updateActiveIds() {
-    this.activeIds = this.panels.filter(panel => panel.isOpen && !panel.disabled).map(panel => panel.id);
+    this.activeIds = this.panels.filter(panel => panel.isOpen && !panel.disabled).map(panel => {
+      //panel.titleTpl.expanded = panel.isOpen;
+      return  panel.id
+    });
   }
 }

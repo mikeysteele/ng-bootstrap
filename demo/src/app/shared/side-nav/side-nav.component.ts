@@ -41,6 +41,27 @@ export const cl = [
       border-right: 1px solid #efefef;
       background: #f7f7f7;
     }
+    .toc ::ng-deep .accordion-title {
+      border: none;
+      background: none !important;
+      padding-bottom: 0.5rem;
+    }
+    .toc ::ng-deep .accordion-title a {
+      color: black;
+      font-weight: 700;
+
+    }
+    .toc ::ng-deep .accordion-content {
+      border: none;
+      background: none;
+    }
+    .toc ::ng-deep .accordion-content ul {
+      list-style: none;
+    }
+    .toc ::ng-deep .accordion-content li,
+    .toc ::ng-deep .accordion-title a  {
+      font-size: 0.8rem;
+    }
   `]
 })
 export class SideNavComponent {
