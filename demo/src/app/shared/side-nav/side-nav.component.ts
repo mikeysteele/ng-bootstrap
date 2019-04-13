@@ -5,7 +5,33 @@ export const componentsList = [
   'Accordion', 'Callout', 'Buttons', 'Carousel', 'Collapse', 'Datepicker', 'Dropdown', 'Modal', 'Pagination', 'Popover',
   'Progressbar', 'Rating', 'Table', 'Tabs', 'Timepicker', 'Tooltip', 'Typeahead'
 ];
-
+export const cl = [
+  {
+    name: 'Controls',  
+    components: [
+      'Button'
+    ]
+  },
+  {
+    name: 'Containers',
+    components: [
+      'Accordion',
+      'Callout',
+      'Dropdown',
+      'Off Canvas',
+      'Reveal',
+      'Table',
+      'Tabs'
+    ]
+  },
+    {
+      name: 'Media',  
+      components: [
+        'Progressbar',
+        'Tooltip'
+      ]
+    }
+]
 @Component({
   selector: 'ngbd-side-nav',
   templateUrl: './side-nav.component.html',
@@ -18,7 +44,7 @@ export const componentsList = [
   `]
 })
 export class SideNavComponent {
-  components = componentsList;
+  components = cl;
   @Output() navigationChanged = new EventEmitter();
   constructor(private router: Router) {}
 

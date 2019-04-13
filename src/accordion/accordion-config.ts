@@ -8,8 +8,7 @@ import {Injectable} from '@angular/core';
  */
 @Injectable({providedIn: 'root'})
 export class NgfAccordionConfig {
-  multiExpand = true;
+  multiExpand = false;
   allowAllClosed = false;
-
   type: string;
 }

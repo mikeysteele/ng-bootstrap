@@ -1,4 +1,5 @@
 import {
+  AfterContentInit,
   AfterContentChecked,
   Component,
   ContentChildren,
@@ -110,7 +111,7 @@ export class NgfPanel implements AfterContentChecked {
    */
   @Input() id = `ngf-panel-${nextId++}`;
 
-  isOpen = false;
+  @Input() isOpen = false;
 
   /**
    *  The panel title.
@@ -200,7 +201,7 @@ export interface NgfPanelChangeEvent {
     </ng-template>
   `
 })
-export class NgfAccordion implements AfterContentChecked {
+export class NgfAccordion implements AfterContentChecked, AfterContentInit {
   @ContentChildren(NgfPanel) panels: QueryList<NgfPanel>;
 
   /**
@@ -305,7 +306,9 @@ export class NgfAccordion implements AfterContentChecked {
       this._changeOpenState(panel, !panel.isOpen);
     }
   }
-
+  ngAfterContentInit(){
+    this._updateActiveIds();
+  }
   ngAfterContentChecked() {
     // active id updates
     if (isString(this.activeIds)) {
@@ -313,7 +316,11 @@ export class NgfAccordion implements AfterContentChecked {
     }
 
     // update panels open states
-    this.panels.forEach(panel => panel.isOpen = !panel.disabled && this.activeIds.indexOf(panel.id) > -1);
+    this.panels.forEach(panel => {
+      if (!panel.isOpen){
+        panel.isOpen = (!panel.disabled && this.activeIds.indexOf(panel.id) > -1);
+      }
+    });
 
     // multiExpand updates
     if (this.activeIds.length > 1 && !this.multiExpand) {

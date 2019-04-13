@@ -5,13 +5,18 @@
 
   <div class="toc-item mb-4" [class.is-active]="isActive(['/components'], false)">
     <a class="toc-link" (click)="navigate(['/components'])">Components</a>
-    <ul class="nav flex-column">
-      <li
-        *ngFor="let component of components"
-        [class.active]="isActive(['/components', component.toLowerCase()], false)"
-      >
-        <a class="toc-link" (click)="navigate(['/components', component.toLowerCase()])">{{ component }}</a>
-      </li>
-    </ul>
+
+
+    <ngf-accordion [multiExpand]="true" >
+      <ngf-panel [isOpen]="true" *ngFor="let group of components" title="{{group.name}}" id="config-panel-{{group.name.toLowerCase()}}">
+        <ng-template ngfPanelContent>
+          <ul class="flex-column">
+            <li *ngFor="let component of group.components">
+              <a class="toc-link" (click)="navigate(['/components', component.toLowerCase()])">{{ component }}</a>
+            </li>
+          </ul>
+        </ng-template>
+      </ngf-panel>
+    </ngf-accordion>
   </div>
 </nav>
