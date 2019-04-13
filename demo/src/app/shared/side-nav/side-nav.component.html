@@ -1,18 +1,24 @@
 <nav class="toc py-3">
   <div class="toc-item mb-4" [class.is-active]="isActive(['/getting-started'], false)">
-    <a class="toc-link" routerLink="/getting-started">Getting Started</a>
   </div>
 
   <div class="toc-item mb-4" [class.is-active]="isActive(['/components'], false)">
-    <a class="toc-link" (click)="navigate(['/components'])">Components</a>
-
-
+    
     <ngf-accordion [multiExpand]="true" >
+      <ngf-panel [isOpen]="true" title="Getting Started" id="1">
+        <ng-template ngfPanelContent>
+          <ul>
+            <li>
+                <a class="toc-link" (click)="navigate(['/getting-started'])">Welcome</a>
+            </li>
+          </ul>
+        </ng-template>
+      </ngf-panel>
       <ngf-panel [isOpen]="true" *ngFor="let group of components" title="{{group.name}}" id="config-panel-{{group.name.toLowerCase()}}">
         <ng-template ngfPanelContent>
           <ul class="flex-column">
             <li *ngFor="let component of group.components">
-              <a class="toc-link" (click)="navigate(['/components', component.toLowerCase()])">{{ component }}</a>
+              <a class="toc-link" [routerLink]="['/components', component.toLowerCase().replace(' ', '-')]" routerLinkActive="is-active" (click)="navigate(['/components', component.toLowerCase().replace(' ', '-')])">{{ component }}</a>
             </li>
           </ul>
         </ng-template>

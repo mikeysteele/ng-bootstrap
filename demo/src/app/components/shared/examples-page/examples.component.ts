@@ -4,9 +4,11 @@ import {ActivatedRoute} from '@angular/router';
 import {NgfdDemoList} from '../demo-list';
 
 @Component({
-  template: `
-    <ngbd-widget-demo
-      *ngFor="let demo of demos"
+  template: `<ng-container *ngFor="let demo of demos">
+  
+ 
+    <ngbd-widget-demo 
+      ngfMagellenTarget="{{demo.id || demo.title.toLowerCase().replace(' ', '-')}}"  
       [id]="demo.id"
       [demoTitle]="demo.title"
       [code]="demo.code"
@@ -17,6 +19,7 @@ import {NgfdDemoList} from '../demo-list';
     >
       <ng-template [ngComponentOutlet]="demo.type"></ng-template>
     </ngbd-widget-demo>
+    </ng-container>
   `
 })
 export class NgfdExamplesPage {

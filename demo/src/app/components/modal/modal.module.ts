@@ -83,6 +83,6 @@ export const ROUTES = [
 })
 export class NgfdModalModule {
   constructor(demoList: NgfdDemoList) {
-    demoList.register('modal', DEMOS);
+    demoList.register('reveal', DEMOS);
   }
 }

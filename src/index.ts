@@ -17,6 +17,9 @@ import {NgfTimepickerModule} from './timepicker/timepicker.module';
 import {NgbTooltipModule} from './tooltip/tooltip.module';
 import {NgbTypeaheadModule} from './typeahead/typeahead.module';
 import {NgfOffCanvasModule} from './off-canvas/off-canvas.module';
+import { NgfMagellenModule } from './magellen/magellen.module';
+
+export { NgfMagellenModule, NgfMagellen, NgfMagellenWrapper, NgfMagellenTarget  } from './magellen/magellen.module';
 export {
   NgfOffCanvasModule,
   NgfOffCanvas,
@@ -24,6 +27,7 @@ export {
   NgfOffCanvasContent,
   NgfOffCanvasToggle
 } from './off-canvas/off-canvas.module';
+
 
 export {
   NgfAccordionModule,
@@ -124,7 +128,7 @@ export {Placement} from './util/positioning';
 const NGF_MODULES = [
   NgfAccordionModule, NgfCalloutModule, NgfButtonsModule, NgbCarouselModule, NgfCollapseModule, NgfDatepickerModule,
   NgfDropdownModule, NgfModalModule, NgfPaginationModule, NgbPopoverModule, NgfProgressbarModule, NgbRatingModule,
-  NgfTabsModule, NgfTimepickerModule, NgbTooltipModule, NgbTypeaheadModule, NgfOffCanvasModule
+  NgfTabsModule, NgfTimepickerModule, NgbTooltipModule, NgbTypeaheadModule, NgfOffCanvasModule, NgfMagellenModule
 ];
 
 @NgModule({imports: NGF_MODULES, exports: NGF_MODULES})

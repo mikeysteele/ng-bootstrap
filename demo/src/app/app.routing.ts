@@ -33,7 +33,7 @@ const routes: Routes = [
   { path: 'components/collapse', children: COLLAPSE_ROUTES },
   { path: 'components/datepicker', children: DATEPICKER_ROUTES },
   { path: 'components/dropdown', children: DROPDOWN_ROUTES },
-  { path: 'components/modal', children: MODAL_ROUTES },
+  { path: 'components/reveal', children: MODAL_ROUTES },
   { path: 'components/pagination', children: PAGINATION_ROUTES },
   { path: 'components/popover', children: POPOVER_ROUTES },
   { path: 'components/progressbar', children: PROGRESSBAR_ROUTES },

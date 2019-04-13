@@ -9,7 +9,7 @@ export const cl = [
   {
     name: 'Controls',  
     components: [
-      'Button'
+      'Buttons'
     ]
   },
   {
@@ -40,6 +40,7 @@ export const cl = [
       padding-top: 1rem;
       border-right: 1px solid #efefef;
       background: #f7f7f7;
+      min-height: 100%;
     }
     .toc ::ng-deep .accordion-title {
       border: none;
@@ -57,10 +58,15 @@ export const cl = [
     }
     .toc ::ng-deep .accordion-content ul {
       list-style: none;
+      margin-bottom: 0;
+      margin-left: 0;
     }
     .toc ::ng-deep .accordion-content li,
     .toc ::ng-deep .accordion-title a  {
       font-size: 0.8rem;
+    }
+    a.is-active{
+      color: #1779ba !important;
     }
   `]
 })

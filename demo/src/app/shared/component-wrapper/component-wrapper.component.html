@@ -1,6 +1,6 @@
-<div class="container-fluid">
+<div ngfMagellenWrapper>
   <div class="grid-x">
-    <div class="cell small-12 large-2  show-for-large"
+    <div class="cell small-12 large-2  show-for-large padding-horizontal-1"
       style="border-right: 1px solid rgba(0, 0, 0, 0.1)">
       <div
         class="hide-for-large flex-container padding-vertcal-1 padding-horizontal-2 align-justify align-middle text-body"
@@ -19,7 +19,7 @@
       </div>
       <ngbd-side-nav
         id="doc-nav"
-        class="my-3  sidebar"
+        class="sidebar"
       ></ngbd-side-nav>
     </div>
     <ng-template #sideNav let-modal>
@@ -72,9 +72,9 @@
         </div>
 
         <div class="cell small-12 large-3 show-for-large" *ngIf="!isLargeScreenOrLess">
-          <ul class="vertical menu">
+          <ul class="vertical menu" ngfMagellen>
             <li *ngFor="let topic of tableOfContent">
-              <a *ngIf="topic.title else divider" [routerLink]="['.', this.activeTab]" [fragment]="topic.fragment">{{topic.title}}</a>
+              <a *ngIf="topic.title else divider" [routerLink]="['.', this.activeTab]" [href]="'#'+topic.fragment"[fragment]="topic.fragment">{{topic.title}}</a>
             </li>
             <ng-template #divider>&nbsp;</ng-template>
           </ul>
