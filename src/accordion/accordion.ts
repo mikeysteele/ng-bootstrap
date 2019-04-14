@@ -265,7 +265,7 @@ export class NgfAccordion implements AfterContentChecked, AfterViewInit {
   expand(panelId: string): void { this._changeOpenState(this._findPanelById(panelId), true); }
 
   /**
-   * Expands all panels, if `[multiExpand]` is `false`.
+   * Expands all panels, if `[multiExpand]` is `true`.
    *
    * If `[multiExpand]` is `false`, it will expand the first panel, unless there is already a panel opened.
    */
@@ -277,6 +277,25 @@ export class NgfAccordion implements AfterContentChecked, AfterViewInit {
     } else {
       this.panels.forEach(panel => this._changeOpenState(panel, true));
     }
+  }
+
+  /**
+   * Expands all panels, if `[allowAllClosed]` is `false`.
+   *
+   * If `[allowAllClosed]` is `true`, it will expand the first panel, and close the rest.
+   */
+  collapseAll(): void {
+    if (!this.allowAllClosed && this.activeIds.length === 1){
+      return;
+    }
+    this.panels.forEach(panel => {
+      if (panel === this.panels.first && !this.allowAllClosed){
+        this._changeOpenState(panel, true)
+      }else{
+        this._changeOpenState(panel, false)
+      }
+    });
+   
   }
 
   /**

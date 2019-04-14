@@ -105,38 +105,6 @@ header.title {
   }
 }
 
-.toc {
-  margin-left: -15px;
-  margin-right: -15px;
-  font-size: 1.1rem;
-
-  .toc-item {
-    .toc-link {
-      display: block;
-      padding: 0.25rem 1.5rem;
-      color: rgba(0, 0, 0, 0.65);
-    }
-
-    .nav > li > a {
-      font-size: 0.85em;
-
-      &:hover, &:focus {
-        text-decoration: none;
-        color:#0275d8;
-      }
-    }
-
-    .nav > li.active > a {
-      font-weight: 500;
-      color: rgba(0, 0, 0, 0.85);
-    }
-
-    &.active > .toc-link {
-      font-weight: 500;
-      color: rgba(0, 0, 0, 0.85);
-    }
-  }
-}
 
 .contextual-nav .nav {
   position: sticky;

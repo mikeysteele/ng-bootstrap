@@ -1,7 +1,7 @@
-<div ngfMagellenWrapper>
+<div ngfMagellenWrapper  offset="43">
   <div class="grid-x">
     <div class="cell small-12 large-2  show-for-large padding-horizontal-1"
-      style="border-right: 1px solid rgba(0, 0, 0, 0.1)">
+      >
       <div
         class="hide-for-large flex-container padding-vertcal-1 padding-horizontal-2 align-justify align-middle text-body"
         (click)="sidebarCollapsed = !sidebarCollapsed"
@@ -19,6 +19,7 @@
       </div>
       <ngbd-side-nav
         id="doc-nav"
+        style="position: fixed; top: 43px; width: 16.666667%; left: 0; bottom: 0"
         class="sidebar"
       ></ngbd-side-nav>      
     </div>
@@ -69,7 +70,8 @@
       </section>
     </div>
     <div class="cell small-12 large-3 show-for-large" *ngIf="!isLargeScreenOrLess">
-        <ul class="vertical menu" ngfMagellen style="position: sticky; top:0px ">
+        <ul class="vertical menu" ngfMagellen style="position: fixed; top:50px">
+          <li class="title">{{component}}</li>
           <li *ngFor="let topic of tableOfContent">
             <a *ngIf="topic.title else divider" [routerLink]="['.', this.activeTab]" [ngfMagellenAnchor]="'#'+topic.fragment" [fragment]="topic.fragment">{{topic.title}}</a>
           </li>

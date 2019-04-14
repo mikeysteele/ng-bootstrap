@@ -51,5 +51,8 @@ const routes: Routes = [
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes, {
   enableTracing: false,
-  useHash: true
+  useHash: true,
+  scrollPositionRestoration: 'enabled',
+  anchorScrolling: 'enabled',
+  scrollOffset: [0, 43] 
 });

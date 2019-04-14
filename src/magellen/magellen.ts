@@ -11,31 +11,46 @@ import {
     Renderer2,
     OnDestroy,
     ElementRef,
-    TemplateRef,
+    HostBinding,
     HostListener,
     ContentChild,
     Component,
     ViewChildren
   } from '@angular/core';
+  import { DOCUMENT } from '@angular/common';
+
   @Directive({
     selector: 'a[ngfMagellenAnchor]',
     host: {
-      '[class.is-active]': 'isActive'
+      '[class.is-active]': 'isActive',
     }
   })
-  export class NgfMagellenAnchor implements AfterViewInit{
+  export class NgfMagellenAnchor{
     @Input('ngfMagellenAnchor') public id;
     @Input() public href;
 
     public isActive;
-    ngAfterViewInit(){
-     
+    constructor(@Inject(forwardRef(() => NgfMagellenWrapper)) private wrapper, @Inject(DOCUMENT) private document){
+      
     }
+    // @HostListener('click')
+    // scrollIntoView($event){
+    //   $event.preventDefault();
+    //   $event.stopPropagation();
+    //   setTimeout(() => {
+    //     const offSet = this.wrapper.offset;
+    //     const target = document.querySelector(this.id || this.href);
+    //     const scroll = target.offsetTop - offSet;
+    //     window.scrollTo(window.scrollX, scroll);
+    //   })
+      
+    // }
+    
   } 
   @Directive({
     selector: '[ngfMagellen]',
     host: {
-
+      '[class.ngf-magellen]': 'true'
     }
   })
   export class NgfMagellen{
@@ -90,7 +105,7 @@ import {
   export class NgfMagellenWrapper {
     public targets:  NgfMagellenTarget[] = [];
     @Input() offset = 0;
-    @Input() boundary = 30;
+    @Input() boundary = 20;
     @ContentChild(NgfMagellen) magellen;
 
     @HostListener('window:scroll', ['$event'])
@@ -99,10 +114,13 @@ import {
         return;
       }
       setTimeout(() => {
-        const active = this.targets.filter((t) => (t.el.offsetTop - window.scrollY) < this.boundary ).pop() || {id: undefined};
-        this.magellen.activeId = active.id;
-      })
- 
+        console.log('post')
+        const active = this.targets.filter((t) => {
+          const targetPos = (window.scrollY + +this.offset) + this.boundary; //the scroll position where elements are 'active'
+          return targetPos > t.el.offsetTop;
+        }).pop() || {id: undefined}
+          this.magellen.activeId = active.id;
+        });
     }
     addTarget(target){
       this.targets = [

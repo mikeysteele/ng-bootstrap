@@ -8,7 +8,8 @@ import { NgfModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'component-wrapper',
-  templateUrl: 'component-wrapper.component.html'
+  templateUrl: 'component-wrapper.component.html',
+  styleUrls: ['./component-wrapper.scss']
 })
 
 export class ComponentWrapper {

@@ -1,6 +1,6 @@
 <p>Foundation split buttons and dropdowns on button groups are supported with the existing dropdown directives.</p>
 
-<div class="group mr-3">
+<div class="button-group">
   <button type="button" class="button success">Plain ol' button</button>
   <div class="group" ngfDropdown role="group" aria-label="Button group with nested dropdown">
     <button class="button primary" ngfDropdownToggle>Drop me</button>
@@ -12,10 +12,12 @@
   </div>
 </div>
 
-<div class="group mr-3">
+<div class="button-group">
   <button type="button" class="button primary">Split me</button>
   <div class="group" ngfDropdown role="group" aria-label="Button group with nested dropdown">
-    <button class="button primary dropdown-toggle-split" ngfDropdownToggle></button>
+    <button class="button primary arrow-only" ngfDropdownToggle>
+        <span class="show-for-sr">Show menu</span>
+    </button>
     <div class="dropdown-menu" ngfDropdownMenu>
       <button ngfDropdownItem>One</button>
       <button ngfDropdownItem>Two</button>
@@ -24,7 +26,7 @@
   </div>
 </div>
 
-<div class="group mr-3">
+<div class="button-group">
   <div class="group" ngfDropdown role="group" aria-label="Button group with nested dropdown">
     <button class="button danger" ngfDropdownToggle>Select me</button>
     <div class="dropdown-menu" ngfDropdownMenu>
@@ -33,7 +35,7 @@
       <button ngfDropdownItem>Four!</button>
     </div>
   </div>
-  <div class="group" ngfDropdown role="group" aria-label="Button group with nested dropdown">
+  <div class="button-group" ngfDropdown role="group" aria-label="Button group with nested dropdown">
     <button class="button success" ngfDropdownToggle>Or me</button>
     <div class="dropdown-menu" ngfDropdownMenu>
       <button ngfDropdownItem>One</button>

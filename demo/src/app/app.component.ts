@@ -8,7 +8,19 @@ import { Analytics } from './shared/analytics/analytics';
 
 @Component({
   selector: 'ngbd-app',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  styles: [`
+      header.title-bar{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 2;
+      }
+      .wrapper{
+        padding-top: 50px
+      }
+  `]
 })
 export class AppComponent implements OnInit {
   navbarCollapsed = true;

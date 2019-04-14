@@ -1,0 +1,22 @@
+@import '~foundation-sites/scss/global';
+@import '~foundation-sites/scss/util/color';
+@import '~foundation-sites/scss/components/button';
+
+@include add-foundation-colors;
+@include foundation-button;
+
+.ngf-magellen{
+
+    .title{
+        padding: 0.5rem 0.85rem;
+        text-transform: uppercase;
+        font-size: 0.7rem;
+    }
+    a{        
+        font-size: 0.85rem;
+        &.is-active{
+            @extend .button.primary;
+        }
+    }
+
+}

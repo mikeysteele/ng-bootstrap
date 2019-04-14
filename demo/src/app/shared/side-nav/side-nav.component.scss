@@ -1,0 +1,51 @@
+@import '~foundation-sites/scss/global';
+@import '~foundation-sites/scss/util/color';
+@include add-foundation-colors;
+
+.toc{
+  padding-top: 1rem;
+  border-right: 1px solid #efefef;
+  background: #f7f7f7;
+  min-height: 100%;
+  ::ng-deep{  
+    .accordion-title {
+      border: none;
+      background: none !important;
+      padding-bottom: 0.5rem;
+      padding-top: 0.5rem;
+    }
+    .accordion-title a {
+      color: black;
+      font-weight: 700;    
+    }
+    .accordion-content {
+      border: none;
+      background: none;   
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+
+      margin-left: 0.5rem;
+    }
+    .accordion-content ul {
+      list-style: none;
+      margin-bottom: 0;
+      margin-left: 0;
+    }
+    .accordion-content li,
+    .accordion-title a  {
+        font-size: 0.8rem;
+    }
+  } 
+  a{
+    color: initial;
+    font-size: 0.85rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    line-height: 1.5;
+    display: block;
+    &.is-active{
+      color: $primary-color
+    }
+  }
+}
+  

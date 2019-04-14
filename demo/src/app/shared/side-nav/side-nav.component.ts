@@ -44,40 +44,7 @@ export const cl = [
 @Component({
   selector: 'ngbd-side-nav',
   templateUrl: './side-nav.component.html',
-  styles: [`
-    .toc{
-      padding-top: 1rem;
-      border-right: 1px solid #efefef;
-      background: #f7f7f7;
-      min-height: 100%;
-    }
-    .toc ::ng-deep .accordion-title {
-      border: none;
-      background: none !important;
-      padding-bottom: 0.5rem;
-    }
-    .toc ::ng-deep .accordion-title a {
-      color: black;
-      font-weight: 700;
-
-    }
-    .toc ::ng-deep .accordion-content {
-      border: none;
-      background: none;
-    }
-    .toc ::ng-deep .accordion-content ul {
-      list-style: none;
-      margin-bottom: 0;
-      margin-left: 0;
-    }
-    .toc ::ng-deep .accordion-content li,
-    .toc ::ng-deep .accordion-title a  {
-      font-size: 0.8rem;
-    }
-    a.is-active{
-      color: #1779ba !important;
-    }
-  `]
+  styleUrls: ['./side-nav.component.scss']
 })
 export class SideNavComponent {
   components = cl;

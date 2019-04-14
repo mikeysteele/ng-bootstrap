@@ -53,20 +53,18 @@ export class NgfModalWindow implements OnInit,
   @HostBinding('style.top.px')
   public top;
 
-
-  backdropClick($event): void {
-    if (this.backdrop === true && this._elRef.nativeElement === $event.target) {
-      this.dismiss(ModalDismissReasons.BACKDROP_CLICK);
-    }
-  }
-
+  
   escKey($event): void {
     if (this.keyboard && !$event.defaultPrevented) {
       this.dismiss(ModalDismissReasons.ESC);
     }
   }
 
-  dismiss(reason): void { this.dismissEvent.emit(reason); }
+  dismiss(reason: string | ModalDismissReasons): void { 
+    if (reason !== ModalDismissReasons.BACKDROP_CLICK && !this.backdrop){
+      this.dismissEvent.emit(reason); 
+    }
+  }
 
   ngOnInit() {
     this._elWithFocus = this._document.activeElement;

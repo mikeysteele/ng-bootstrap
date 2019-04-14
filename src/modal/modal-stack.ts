@@ -19,6 +19,7 @@ import {isDefined, isString} from '../util/util';
 import {NgfModalBackdrop} from './modal-backdrop';
 import {NgfActiveModal, NgfModalRef} from './modal-ref';
 import {NgfModalWindow} from './modal-window';
+import { ModalDismissReasons } from './modal-dismiss-reasons';
 
 @Injectable({providedIn: 'root'})
 export class NgfModalStack {
@@ -82,6 +83,7 @@ export class NgfModalStack {
 
     if (backdropCmptRef && backdropCmptRef.instance) {
       this._applyBackdropOptions(backdropCmptRef.instance, options);
+      backdropCmptRef.instance.backdropClick.subscribe(() => this.dismissAll(ModalDismissReasons.BACKDROP_CLICK))
     }
     return ngbModalRef;
   }
