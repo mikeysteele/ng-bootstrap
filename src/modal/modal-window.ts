@@ -23,7 +23,6 @@ import { DomSanitizer } from '@angular/platform-browser';
     'role': 'dialog',
     'tabindex': '-1',
     '(keyup.esc)': 'escKey($event)',
-    '(click)': 'backdropClick($event)',
     '[attr.aria-modal]': 'true',
     '[attr.aria-labelledby]': 'ariaLabelledBy',
     'style': 'display: block;'

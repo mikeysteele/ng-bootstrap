@@ -16,7 +16,6 @@ export class NgfModalBackdrop {
   onClick($event){
     if ($event.target === this.elementRef.nativeElement){
       this.backdropClick.emit()
-    }
-    
+    }    
   }
 }
