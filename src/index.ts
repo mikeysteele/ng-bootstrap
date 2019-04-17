@@ -82,6 +82,7 @@ export {
   NgfModalOptions,
   NgfActiveModal,
   NgfModalRef,
+  ModalOpen,
   ModalDismissReasons
 } from './modal/modal.module';
 export {
