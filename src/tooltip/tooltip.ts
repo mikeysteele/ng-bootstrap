@@ -24,7 +24,7 @@ import {DOCUMENT} from '@angular/common';
 
 import {listenToTriggers} from '../util/triggers';
 import {ngbAutoClose} from '../util/autoclose';
-import {positionElements, PlacementArray} from '../util/positioning';
+import {positionElements, PlacementArray, Placement} from '../util/positioning';
 import {PopupService} from '../util/popup';
 
 import {NgbTooltipConfig} from './tooltip-config';
@@ -35,13 +35,16 @@ let nextId = 0;
   selector: 'ngb-tooltip-window',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  host: {'[class]': '"tooltip show" + (tooltipClass ? " " + tooltipClass : "")', 'role': 'tooltip', '[id]': 'id'},
-  template: `<div class="arrow"></div><div class="tooltip-inner"><ng-content></ng-content></div>`,
+  host: {
+    '[class]': '"tooltip" + (placement ? " " + placement : "")', 'role': 'tooltip', '[id]': 'id'},
+  template: `<ng-content></ng-content>`,
   styleUrls: ['./tooltip.scss']
 })
 export class NgbTooltipWindow {
   @Input() id: string;
   @Input() tooltipClass: string;
+  @Input() placement: string;
+
 }
 
 /**
@@ -134,7 +137,7 @@ export class NgbTooltip implements OnInit, OnDestroy {
   private _windowRef: ComponentRef<NgbTooltipWindow>;
   private _unregisterListenersFn;
   private _zoneSubscription: any;
-
+  private _placement: Placement;
   constructor(
       private _elementRef: ElementRef<HTMLElement>, private _renderer: Renderer2, injector: Injector,
       componentFactoryResolver: ComponentFactoryResolver, viewContainerRef: ViewContainerRef, config: NgbTooltipConfig,
@@ -152,9 +155,9 @@ export class NgbTooltip implements OnInit, OnDestroy {
 
     this._zoneSubscription = _ngZone.onStable.subscribe(() => {
       if (this._windowRef) {
-        positionElements(
+        this._placement = positionElements(
             this._elementRef.nativeElement, this._windowRef.location.nativeElement, this.placement,
-            this.container === 'body', 'bs-tooltip');
+            this.container === 'body');
       }
     });
   }

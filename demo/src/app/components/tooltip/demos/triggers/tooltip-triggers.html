@@ -11,7 +11,7 @@
   Alternatively you can take full manual control over tooltip opening / closing events.
 </p>
 
-<button type="button" class="button hollow secondary margin-right-1" ngbTooltip="What a great tip!" [autoClose]="false" triggers="manual" #t="ngbTooltip" (click)="t.open()">
+<button type="button" placement="left" class="button hollow secondary margin-right-1" ngbTooltip="What a great tip!" [autoClose]="false" triggers="manual" #t="ngbTooltip" (click)="t.open()">
   Click me to open a tooltip
 </button>
 <button type="button" class="button hollow secondary margin-right-1" (click)="t.close()">

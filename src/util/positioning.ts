@@ -201,6 +201,9 @@ export function positionElements(
   // Remove old placement classes to avoid issues
   if (baseClass) {
     allowedPlacements.forEach((placementToRemove) => { classList.remove(`${baseClass}-${placementToRemove}`); });
+  } else {
+    allowedPlacements.forEach((placementToRemove) => { classList.remove(placementToRemove); });
+
   }
 
   // replace auto placement with other placements
@@ -229,6 +232,7 @@ export function positionElements(
     let addedClasses = addClassesToTarget(testPlacement);
 
     if (positionService.positionElements(hostElement, targetElement, testPlacement, appendToBody)) {
+      targetElement.classList.add(testPlacement);
       isInViewport = true;
       break;
     }
